@@ -1,0 +1,785 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Pleasant Futuristic Light Theme */
+    --background: 220 33% 98%;
+    /* Soft cool white #F5F7FA */
+    --foreground: 222 47% 11%;
+    /* Deep navy #0F172A */
+    --heading: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 192 81% 32%;
+    /* #06B6D4 -> Darker 700 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215 14% 34%;
+    --accent: 294 90% 55%;
+    /* #B921CC */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 191 95% 45%;
+    --radius: 1rem;
+    --radius-lg: 24px;
+
+    /* Spacing Scale */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-7: 1.75rem;
+    --space-8: 2rem;
+
+    /* Theme-specific card backgrounds */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+
+    /* Gradient definitions */
+    --gradient-purple-1: #E9D5FF;
+    --gradient-purple-2: #D8B4FE;
+    --gradient-purple-3: #C084FC;
+    --gradient-purple-4: #A855F7;
+  }
+
+  .dark {
+    /* Homepage Design System Spec */
+    --background: 235 30% 8%;
+    /* #0e0f1a */
+    --foreground: 230 26% 77%;
+    /* #B3B9D6 (Body) */
+    --heading: 225 33% 98%;
+    /* #F6F8FE (Primary Text) */
+
+    --card: 233 26% 14%;
+    --card-foreground: 230 26% 77%;
+    --popover: 233 26% 14%;
+    --popover-foreground: 230 26% 77%;
+
+    --primary: 194 100% 65%;
+    /* #4ED6FF (Neon Cyan) */
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 233 26% 14%;
+    --secondary-foreground: 225 33% 98%;
+
+    --muted: 233 16% 20%;
+    --muted-foreground: 230 26% 77%;
+
+    --accent: 318 100% 72%;
+    /* #FF72E7 (Neon Pink) */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 232 14% 31%;
+    --input: 232 14% 31%;
+    --ring: 194 100% 65%;
+
+    --glass-bg: rgba(26, 28, 44, 0.66);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --glass-shadow: 0 10px 28px -6px rgba(0, 0, 0, 0.7);
+
+    /* Gradient definitions */
+    --gradient-purple-1: #342456;
+    --gradient-purple-2: #2B1E48;
+    --gradient-purple-3: #22183A;
+    --gradient-purple-4: #110C1D;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter text-lg antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-heading font-bold;
+  }
+
+  /* ... existing type scales ... */
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+}
+
+/* Typography */
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Section styling */
+.section-heading {
+  @apply text-4xl font-bold mb-6 text-center text-theme-text text-3xl md:text-4xl;
+  background: linear-gradient(90deg, theme('colors.neon.cyan'), theme('colors.neon.pink'));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-content {
+  @apply max-w-4xl mx-auto;
+}
+
+.section-padding {
+  @apply py-24 md:py-40 lg:py-56;
+}
+
+/* Navigation and links */
+.scroll-link {
+  @apply transition-all duration-200 hover:text-neon-cyan relative;
+}
+
+.scroll-link:after {
+  @apply content-[''] absolute left-0 bottom-[-5px] h-[2px] w-0 bg-neon-cyan transition-all duration-200;
+}
+
+.scroll-link:hover:after {
+  @apply w-full;
+}
+
+/* UI Components */
+.card-hover {
+  @apply transition-all duration-200 hover:bg-muted hover:scale-[1.01];
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, theme('colors.neon.cyan'), theme('colors.neon.pink'));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hero CTA buttons */
+.btn-hero {
+  height: auto;
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  border-width: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+/* Mobile: full width buttons with side margins */
+@media (max-width: 480px) {
+  .btn-hero {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* New neon-glass card styling */
+.neon-card {
+  @apply aspect-auto md:aspect-card rounded-3xl relative overflow-hidden transition-all duration-250 ease-out;
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.neon-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(45deg, theme('colors.neon.cyan'), theme('colors.neon.pink'));
+  opacity: 0.3;
+  border-radius: var(--radius-lg);
+  z-index: -1;
+  transition: opacity 0.25s ease-out;
+}
+
+.neon-card:hover {
+  transform: translateY(-6px);
+}
+
+.neon-card:hover::before {
+  opacity: 0.8;
+}
+
+.project-card {
+  @apply neon-card;
+}
+
+/* Glassmorphic cards styling - Previous version updated */
+.glass-card {
+  @apply rounded-3xl relative overflow-hidden;
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(45deg, theme('colors.neon.cyan'), theme('colors.neon.pink'));
+  opacity: 0.3;
+  border-radius: var(--radius-lg);
+  z-index: -1;
+}
+
+.glass-card-glow {
+  position: relative;
+}
+
+.glass-card-glow:hover::before {
+  opacity: 0.8;
+  transition: opacity 0.25s ease-out;
+}
+
+/* Frosted Card styling */
+.frosted-card {
+  @apply rounded-xl relative overflow-visible transition-all duration-200 ease-out;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.frosted-card::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  background: linear-gradient(135deg, rgba(78, 214, 255, 0.4) 0%, rgba(78, 214, 255, 0.1) 25%, rgba(107, 33, 168, 0.1) 75%, rgba(145, 70, 255, 0.4) 100%);
+  opacity: 0.4;
+  border-radius: inherit;
+  z-index: -1;
+  pointer-events: none;
+}
+
+
+
+.frosted-card:hover::before {
+  opacity: 0.6;
+  transition: opacity 0.3s ease-out;
+}
+
+/* Neon elements */
+.neon-cyan-glow {
+  filter: drop-shadow(0 0 8px rgba(78, 214, 255, 0.7));
+}
+
+.neon-pink-glow {
+  filter: drop-shadow(0 0 8px rgba(255, 114, 231, 0.7));
+}
+
+.neon-text {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Progress circles */
+.progress-circle {
+  stroke-linecap: round;
+}
+
+.progress-circle-bg {
+  stroke: rgba(255, 255, 255, 0.1);
+}
+
+.progress-circle-cyan {
+  stroke: theme('colors.neon.cyan');
+}
+
+.progress-circle-gradient {
+  stroke: url(#neon-gradient);
+}
+
+/* Progress bar */
+.progress-container {
+  @apply fixed top-0 left-0 w-full h-1 z-50;
+}
+
+.progress-bar {
+  @apply h-full bg-gradient-to-r from-neon-cyan to-neon-pink w-0 transition-all duration-200;
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+  opacity: 0;
+  animation-delay: 60ms;
+}
+
+.animate-subtle-parallax {
+  transition: transform 0.2s ease-out;
+}
+
+.hover-lift {
+  @apply transition-transform duration-250 ease-out hover:translate-y-[-6px];
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 3D perspective utility */
+.perspective-1000 {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* Ripple effect for mobile touch */
+.ripple-effect {
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(78, 214, 255, 0.7) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: ripple 500ms ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.8;
+  }
+
+  100% {
+    width: 160px;
+    height: 160px;
+    opacity: 0;
+  }
+}
+
+/* Data visualization styling */
+.data-bar {
+  @apply bg-neon-cyan animate-pulse-slow;
+}
+
+.data-line {
+  @apply stroke-neon-cyan animate-pulse-slow;
+}
+
+.data-ring-gradient {
+  @apply animate-pulse-slow;
+  background: linear-gradient(90deg, theme('colors.neon.cyan'), theme('colors.neon.pink'));
+}
+
+/* Accessibility - reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  .animate-fade-in,
+  .animate-subtle-parallax,
+  .hover-lift,
+  .scroll-link:after,
+  .ripple-effect,
+  .shimmer-mask,
+  .connector-line,
+  .animate-pulse-slow,
+  .data-bar,
+  .data-line,
+  .data-ring-gradient {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .neon-card:hover {
+    transform: none !important;
+  }
+}
+
+/* Grid layout for cards */
+.neon-grid {
+  @apply grid gap-6 md:gap-12;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.neon-container {
+  @apply max-w-7xl mx-auto px-6;
+}
+
+/* Standardized Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  /* space for icons/arrows */
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  /* identical type & weight */
+  font-size: clamp(.95rem, .9rem + .15vw, 1rem);
+  line-height: 1.2;
+  padding: .9rem 2.5rem;
+  /* keeps shape ratio site-wide */
+  border-radius: 48px;
+  /* pill, not extreme */
+  border: 2px solid transparent;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+.btn--primary {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.btn--primary:hover,
+.btn--primary:focus {
+  background: #1bc8ef;
+  transform: translateY(-2px);
+}
+
+.btn--secondary {
+  background: transparent;
+  border-color: hsl(var(--primary));
+  color: hsl(var(--primary));
+}
+
+.btn--secondary:hover,
+.btn--secondary:focus {
+  background: #2ED8FF;
+  color: #0E0F1A;
+}
+
+/* Accessibility */
+.btn:focus-visible {
+  outline: 4px solid #A5F3FF;
+  outline-offset: 2px;
+}
+
+/* Enhanced button hover states - REMOVED to avoid conflicts with new .btn classes */
+/* .btn-primary and .btn-secondary classes are replaced by .btn--primary and .btn--secondary */
+
+/* Animation classes to the end */
+
+/* ───  Badge styles  ─────────────────────────────────────────────── */
+.badge-available {
+  --bg: linear-gradient(135deg, #1bd27c, #16a34a);
+  --bg-hover: linear-gradient(135deg, #16a34a, #1bd27c);
+  --txt: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.9rem;
+  font: 500 0.875rem/1 "Inter", sans-serif;
+  color: var(--txt);
+  background: var(--bg);
+  border-radius: 9999px;
+  /* fully rounded pill */
+  border: none;
+  cursor: default;
+  /* feels like a tag, not a link */
+  transition: background .3s ease, box-shadow .3s ease;
+  box-shadow: 0 0 0 2px #0f172a inset, 0 0 12px rgba(27, 210, 124, 0.5);
+  /* subtle inner ring plus glow */
+}
+
+.badge-available:hover,
+.badge-available:focus-visible {
+  background: var(--bg-hover);
+  box-shadow: 0 0 0 2px #0f172a inset, 0 0 16px rgba(27, 210, 124, 0.8);
+  outline: none;
+}
+
+.badge-available .dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  background: #fff;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+/* gentle "online" pulse */
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.6);
+    opacity: .25;
+  }
+}
+
+@keyframes sparkleFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-20px) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* Mobile tweaks for About section and general responsive fixes */
+@media (max-width: 480px) {
+
+  /* main card in About Me section */
+  .about-card {
+    /* shrink outer whitespace */
+    margin-left: 15px;
+    margin-right: 15px;
+    /* allow card to grow to full width */
+    width: calc(100% - 30px);
+    border-radius: 12px;
+  }
+
+  /* make sure inner content still has room to breathe */
+  .about-card>* {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Adjust all section padding for better mobile spacing */
+  section {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  /* Improve card grid spacing on mobile */
+  .frosted-card {
+    padding: 16px;
+  }
+
+  /* Adjust text sizes for mobile */
+  .section-heading {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Adjust medium screen sizes */
+@media (min-width: 481px) and (max-width: 768px) {
+  section {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .about-card {
+    width: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
+/* Tighten top spacing below the section heading */
+.section-about h2 {
+  margin-bottom: 20px;
+}
+
+/* Hero CTA buttons mobile styling */
+@media (max-width: 480px) {
+  .btn-hero {
+    width: calc(100% - 32px);
+    /* 16px margin each side */
+    margin-bottom: 12px;
+  }
+}
+
+/* Letter-spacing utility for CTA buttons */
+.letter-spacing-tight {
+  letter-spacing: -0.5px;
+}
+
+/* Mobile sheet menu alignment */
+.sheet-menu-items {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Ensure navbar has enough height for the hamburger to float */
+@media (max-width: 1023px) {
+  nav {
+    min-height: 64px;
+  }
+}
+
+/* Enhanced contact buttons - accessibility improvements */
+.contact-button {
+  min-height: 44px;
+  min-width: 44px;
+  border-radius: 2rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.contact-button:focus-visible {
+  outline: 3px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Button hover effects */
+.contact-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom cursor for scroll down indicator - default light mode */
+.cursor-scroll-down {
+  cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='gradient' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234ED6FF;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23FF72E7;stop-opacity:1' /%3E%3C/linearGradient%3E%3Cfilter id='glow'%3E%3CfeGaussianBlur stdDeviation='2' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='14' fill='rgba(255,253,220,0.6)' stroke='url(%23gradient)' stroke-width='2' filter='url(%23glow)' /%3E%3Cpath d='M12 14l4 4 4-4' stroke='url(%23gradient)' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none' filter='url(%23glow)' /%3E%3C/svg%3E") 16 16, auto;
+}
+
+/* Dark mode version with dark circle */
+.dark .cursor-scroll-down,
+[data-theme='dark'] .cursor-scroll-down {
+  cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='gradient' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234ED6FF;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23FF72E7;stop-opacity:1' /%3E%3C/linearGradient%3E%3Cfilter id='glow'%3E%3CfeGaussianBlur stdDeviation='2' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='14' fill='rgba(0,0,0,0.4)' stroke='url(%23gradient)' stroke-width='2' filter='url(%23glow)' /%3E%3Cpath d='M12 14l4 4 4-4' stroke='url(%23gradient)' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none' filter='url(%23glow)' /%3E%3C/svg%3E") 16 16, auto;
+}
+
+/* Restore default cursor on interactive elements */
+.cursor-scroll-down button,
+.cursor-scroll-down a,
+.cursor-scroll-down [role="button"],
+.cursor-scroll-down input,
+.cursor-scroll-down textarea,
+.cursor-scroll-down select {
+  cursor: pointer;
+}
+
+.cursor-scroll-down input[type="text"],
+.cursor-scroll-down input[type="email"],
+.cursor-scroll-down textarea {
+  cursor: text;
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-scroll-down {
+    cursor: auto;
+  }
+}
+
+/* Electric border travel animation */
+@keyframes electric-glow {
+  0% {
+    box-shadow:
+      -4px -4px 20px 2px hsl(var(--primary) / 0.6),
+      4px 4px 20px 2px transparent;
+  }
+
+  25% {
+    box-shadow:
+      4px -4px 20px 2px hsl(var(--primary) / 0.6),
+      -4px 4px 20px 2px transparent;
+  }
+
+  50% {
+    box-shadow:
+      4px 4px 20px 2px hsl(var(--primary) / 0.6),
+      -4px -4px 20px 2px transparent;
+  }
+
+  75% {
+    box-shadow:
+      -4px 4px 20px 2px hsl(var(--primary) / 0.6),
+      4px -4px 20px 2px transparent;
+  }
+
+  100% {
+    box-shadow:
+      -4px -4px 20px 2px hsl(var(--primary) / 0.6),
+      4px 4px 20px 2px transparent;
+  }
+}
+
+@keyframes cta-pulse {
+
+  0%,
+  100% {
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+    transform: scale(1);
+  }
+
+  50% {
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.8);
+    transform: scale(1.02);
+  }
+}
+
+.animate-electric-glow {
+  animation: electric-glow 4s ease-in-out infinite;
+  will-change: box-shadow;
+}
+
+.animate-cta-pulse {
+  animation: cta-pulse 2s ease-in-out infinite;
+  will-change: transform, text-shadow;
+}
+
+/* GPU acceleration for parallax columns */
+.parallax-col {
+  /* Removed contain: paint to allow shadows to overflow */
+  will-change: transform;
+}
+
+/* Optimize video rendering */
+video {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* GPU layer for gallery container */
+.neon-card {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Optimized hover effect */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px) translateZ(0);
+}
+
+/* Contain paint for performance */
+.section-container {
+  /* contain: layout style; - Removed to prevent clipping */
+}
