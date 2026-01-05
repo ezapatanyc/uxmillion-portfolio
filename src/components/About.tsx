@@ -91,7 +91,7 @@ const About = () => {
         <div>
           <h3 className="text-xl font-semibold mb-4 text-gradient md:text-3xl">About</h3>
           <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
-            <span className="text-neon-cyan font-semibold">10+ years across startups, agencies, and tech.</span> I turn complex problems into simple digital experiences. Outside of design, I’m often staying active, finding new spots around the city, trying new food, and experimenting with new creative tech.
+            <span className="text-neon-cyan font-semibold">10+ years delivering revenue-ready digital products.</span> I specialize in rapid prototyping, design systems, and AI-accelerated workflows that bridge the gap between design and development. Outside of design, I’m constantly experimenting with new creative tech.
           </p>
 
         </div>

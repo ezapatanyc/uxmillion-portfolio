@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Project } from '@/data/projects';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Lock, ArrowRight, Mail } from 'lucide-react';
 import { AnimatedContainer, BgGradient } from '@/components/ui/hero-animated';
@@ -12,7 +13,7 @@ interface ProjectProtectionProps {
 }
 
 const ProjectProtection = ({ project, children }: ProjectProtectionProps) => {
-    const [isUnlocked, setIsUnlocked] = useState(false);
+    const [isUnlocked, setIsUnlocked] = useState(!project.isProtected);
     const [password, setPassword] = useState('');
     const [error, setError] = useState(false);
 
@@ -44,6 +45,117 @@ const ProjectProtection = ({ project, children }: ProjectProtectionProps) => {
 
     if (isUnlocked) {
         return <>{children}</>;
+    }
+
+    if (project.hasPublicSummary) {
+        const projectServices = project.servicesUsed
+            ? import('@/data/services').then(m => m.services).then(services => services.filter(s => project.servicesUsed?.includes(s.id)))
+            // We can't do async import in render. Let's just assume services are known or simpler.
+            // Actually, let's just render the basic metadata without async complexity if possible or just import services at top level.
+            : [];
+
+        return (
+            <div className="min-h-screen bg-background text-foreground flex flex-col">
+                <ProjectNav />
+
+                <main className="flex-1 relative">
+                    {/* Public Hero */}
+                    <section className="container mx-auto px-6 pt-24 mb-12 md:mb-16">
+                        <div className="max-w-4xl mx-auto text-center mb-12">
+                            <Badge variant="outline" className="mb-4 border-primary/30 text-primary bg-primary/5">
+                                {project.role.replace('Role: ', '')}
+                            </Badge>
+                            <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight leading-tight">
+                                {project.title}
+                            </h1>
+                            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
+                                {project.subtitle || project.description}
+                            </p>
+                        </div>
+
+                        <div className="relative w-full aspect-video rounded-3xl overflow-hidden border border-border/50 shadow-2xl shadow-primary/10 mb-16">
+                            {project.video ? (
+                                <video
+                                    src={project.video}
+                                    autoPlay
+                                    loop
+                                    muted
+                                    playsInline
+                                    className="w-full h-full object-cover opacity-90"
+                                />
+                            ) : (
+                                <img
+                                    src={project.image}
+                                    alt={project.title}
+                                    className="w-full h-full object-cover opacity-90"
+                                />
+                            )}
+                            <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent pointer-events-none" />
+                        </div>
+
+                        {/* Public Challenge Section */}
+                        {project.challenge && (
+                            <div className="max-w-3xl mx-auto mb-16 space-y-4">
+                                <h2 className="text-2xl font-bold text-primary">The Challenge</h2>
+                                <p className="text-lg text-muted-foreground leading-relaxed">
+                                    {project.challenge}
+                                </p>
+                            </div>
+                        )}
+
+                    </section>
+
+                    {/* Lock Screen Overlay / Section */}
+                    <div className="relative py-16 px-6 bg-secondary/5 border-t border-border/50">
+                        <div className="max-w-md mx-auto relative z-10">
+                            <div className="frosted-card p-8 md:p-10 rounded-3xl border-primary/10 shadow-2xl shadow-primary/5 text-center space-y-6">
+                                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/10 to-transparent ring-1 ring-primary/20 flex items-center justify-center mx-auto shadow-inner">
+                                    <Lock className="w-8 h-8 text-primary" />
+                                </div>
+
+                                <div className="space-y-2">
+                                    <h3 className="text-xl font-bold">Read the Full Story</h3>
+                                    <p className="text-muted-foreground text-sm">
+                                        The detailed process, artifacts, and results are protected. Enter password to continue.
+                                    </p>
+                                </div>
+
+                                <form onSubmit={handleUnlock} className="space-y-3">
+                                    <Input
+                                        type="password"
+                                        placeholder="Enter password"
+                                        value={password}
+                                        onChange={(e) => {
+                                            setPassword(e.target.value);
+                                            setError(false);
+                                        }}
+                                        className={`h-11 bg-secondary/50 ${error ? 'border-destructive' : 'focus:border-primary'}`}
+                                    />
+                                    {error && <p className="text-xs text-destructive font-medium">Incorrect password</p>}
+
+                                    <Button type="submit" className="w-full h-11 text-base font-semibold">
+                                        Unlock Full Case Study <ArrowRight className="w-4 h-4 ml-2" />
+                                    </Button>
+                                </form>
+
+                                <div className="pt-2">
+                                    <Button
+                                        variant="link"
+                                        className="text-muted-foreground hover:text-primary text-sm h-auto p-0"
+                                        onClick={() => window.location.href = `mailto:ezapata.nyc@gmail.com?subject=Access Request: ${project.title}`}
+                                    >
+                                        Request access via email
+                                    </Button>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Background blur effect for the locked content feel */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-background/0 to-background pointer-events-none" />
+                    </div>
+                </main>
+            </div>
+        );
     }
 
     return (

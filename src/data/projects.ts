@@ -18,6 +18,7 @@ export interface Project {
     solution?: string;
     results?: string;
     servicesUsed?: string[]; // IDs from services.ts
+    hasPublicSummary?: boolean;
 }
 
 export const projects: Project[] = [
@@ -60,7 +61,8 @@ export const projects: Project[] = [
         role: "Role: Product Designer",
         description: "Redesigned financial services site → improved credibility, increased lead generation by 35%",
         caseStudyUrl: "/projects/fidemdd-website-redesign",
-        isProtected: true,
+        isProtected: false,
+        hasPublicSummary: true,
         subtitle: "Trust in Financial Services",
         timeline: "3 Weeks",
         challenge: "FidemDD's digital presence did not reflect their position as a premium financial consultancy. The site was outdated, difficult to navigate on mobile, and failed to convert visitors into consultations.",
@@ -70,12 +72,13 @@ export const projects: Project[] = [
     },
     {
         id: "citypups",
-        image: "/lovable-uploads/11d85155-61ef-4560-a93a-95db49084dc3.png",
+        image: "/assets/projects/citypups/hero.png",
         title: "CityPups Dog Adoption Tool",
         role: "Role: UX Designer",
         description: "Redesigned adoption flow → improved match success rate by 40% and reduced abandonment by 25%",
         caseStudyUrl: "/projects/citypups-dog-adoption",
-        isProtected: true,
+        isProtected: false,
+        hasPublicSummary: true,
         subtitle: "Matching Pups with People",
         timeline: "2 Weeks",
         challenge: "The adoption process was overly clinical and often resulted in poor matches between dogs and urban dwellers. CityPups needed a way to guide potential owners based on lifestyle, not just breed.",
@@ -86,16 +89,17 @@ export const projects: Project[] = [
     {
         id: "birder",
         image: "/lovable-uploads/6366f2b9-ed19-4d2e-8cdb-c898f220edda.png",
-        title: "Birder Mobile App Design",
+        title: "Birder",
         role: "Role: UX Designer",
-        description: "Designed community features → boosted user engagement by 60% and daily active users by 45%",
+        description: "An app to identify and explore birds all around the world.",
         caseStudyUrl: "/projects/birder-mobile-app",
-        isProtected: true,
-        subtitle: "Building a Community for Birdwatchers",
-        timeline: "4 Weeks",
-        challenge: "Birder's initial launch had good downloads but low retention. Users were logging sightings but weren't interacting with each other, leading to a stale experience.",
-        solution: "We introduced 'Social Sightings', a feature that allows users to tag others, comment on rare finds, and participate in local 'Bird Challenges'. We also redesigned the notification system to be less intrusive and more relevant.",
-        results: "Engagement metrics jumped by 60%, and daily active users increased by 45% as the app became a daily destination for the birding community.",
+        isProtected: false,
+        hasPublicSummary: true,
+        subtitle: "A Capstone UX Case Study",
+        timeline: "7 months",
+        challenge: "Bird enthusiasts often rely on various tools to recognize and find information about birds, which include digital apps, printed guides, and other birders. Very few apps on the market do a fair job recognizing a bird, and they often fall short offering the functionality, reliability, and ease of use that most users are looking for.",
+        solution: "With the use of new technological implementations, user research, interviews, surveys and in-depth analysis of leading apps' strengths and weaknesses, Birder plans to provide an effective alternative solution. The purpose of the Birder app is to effectively identify any bird around the world while keeping the user engaged into exploring more about birds in one app while providing a seamless human–computer interaction.",
+        results: "The final design prioritizes a visually pleasing and user-centric experience with a simplified interface and color scheme optimized for various lighting conditions, resulting in increased user engagement and satisfaction.",
         servicesUsed: ["mvp-package"]
     },
     {
@@ -105,7 +109,8 @@ export const projects: Project[] = [
         role: "Role: UX/UI Designer",
         description: "Created data visualization system → increased user retention by 50% and daily check-ins by 70%",
         caseStudyUrl: "/projects/healthtrack",
-        isProtected: true,
+        isProtected: false,
+        hasPublicSummary: true,
         subtitle: "Actionable Insights for Daily Wellness",
         timeline: "8 Weeks",
         challenge: "Wearable technology provides mountains of data, but users often don't know what to do with it. HealthTrack needed to pivot from 'data tracker' to 'wellness coach'.",

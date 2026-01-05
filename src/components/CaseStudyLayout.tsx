@@ -9,12 +9,14 @@ import Footer from "@/components/Footer";
 import ProjectNav from "@/components/ProjectNav";
 import ProjectProtection from "@/components/ProjectProtection";
 
-interface CaseStudyLayoutProps {
+import { PropsWithChildren } from 'react';
+
+interface CaseStudyLayoutProps extends PropsWithChildren {
     project: Project;
     nextProject?: Project;
 }
 
-const CaseStudyLayout = ({ project, nextProject }: CaseStudyLayoutProps) => {
+const CaseStudyLayout = ({ project, nextProject, children }: CaseStudyLayoutProps) => {
     const navigate = useNavigate();
 
     // Scroll to top on mount
@@ -110,33 +112,39 @@ const CaseStudyLayout = ({ project, nextProject }: CaseStudyLayoutProps) => {
 
                     {/* Content Sections */}
                     <div className="container mx-auto px-6 max-w-3xl space-y-20">
-                        {project.challenge && (
-                            <section className="space-y-4">
-                                <h2 className="text-2xl font-bold text-primary">The Challenge</h2>
-                                <p className="text-lg text-muted-foreground leading-relaxed">
-                                    {project.challenge}
-                                </p>
-                            </section>
-                        )}
+                        {children ? (
+                            children
+                        ) : (
+                            <>
+                                {project.challenge && (
+                                    <section className="space-y-4">
+                                        <h2 className="text-2xl font-bold text-primary">The Challenge</h2>
+                                        <p className="text-lg text-muted-foreground leading-relaxed">
+                                            {project.challenge}
+                                        </p>
+                                    </section>
+                                )}
 
-                        {project.solution && (
-                            <section className="space-y-4">
-                                <h2 className="text-2xl font-bold text-primary">The Solution</h2>
-                                <p className="text-lg text-muted-foreground leading-relaxed">
-                                    {project.solution}
-                                </p>
-                            </section>
-                        )}
+                                {project.solution && (
+                                    <section className="space-y-4">
+                                        <h2 className="text-2xl font-bold text-primary">The Solution</h2>
+                                        <p className="text-lg text-muted-foreground leading-relaxed">
+                                            {project.solution}
+                                        </p>
+                                    </section>
+                                )}
 
-                        {project.results && (
-                            <section className="space-y-4">
-                                <h2 className="text-2xl font-bold text-primary">The Results</h2>
-                                <div className="p-6 rounded-2xl bg-primary/5 border border-primary/10">
-                                    <p className="text-lg font-medium leading-relaxed">
-                                        {project.results}
-                                    </p>
-                                </div>
-                            </section>
+                                {project.results && (
+                                    <section className="space-y-4">
+                                        <h2 className="text-2xl font-bold text-primary">The Results</h2>
+                                        <div className="p-6 rounded-2xl bg-primary/5 border border-primary/10">
+                                            <p className="text-lg font-medium leading-relaxed">
+                                                {project.results}
+                                            </p>
+                                        </div>
+                                    </section>
+                                )}
+                            </>
                         )}
                     </div>
 
