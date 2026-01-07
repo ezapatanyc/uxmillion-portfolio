@@ -8,7 +8,7 @@ const Birder = () => {
     if (!project) return <div>Project not found</div>;
 
     return (
-        <CaseStudyLayout project={project} nextProject={projects.find(p => p.id === "healthtrack")}>
+        <CaseStudyLayout project={project} nextProject={projects.find(p => p.id === "healthtrack")} hideDefaultMetadata={true}>
             <div className="container mx-auto px-4 md:px-6 max-w-4xl space-y-24 mt-12 pb-20">
 
 
@@ -93,6 +93,16 @@ const Birder = () => {
                         <p className="text-muted-foreground leading-relaxed">
                             I ran secondary research on various sources which included the U.S. Government Census of Wildlife surveys and major U.S. and European bird associations to find out how many birdwatchers are out there and what are some their behaviors.
                         </p>
+                        <div className="mt-4">
+                            <img
+                                src="/images/projects/birder/research-stats.png"
+                                alt="Bird Watchers Statistics Chart"
+                                className="w-full rounded-lg border border-primary/20 max-w-lg"
+                            />
+                            <p className="text-xs text-muted-foreground mt-2 italic">
+                                U.S. Department of the Interior FISH AND WILDLIFE SERVICE. Issued January 2018
+                            </p>
+                        </div>
                     </div>
 
                     <div className="space-y-4">
@@ -101,7 +111,7 @@ const Birder = () => {
                             Observing users on their natural environment. On this phase, I observed bird watchers interact with their phones while using a bird app on their natural environment setting. A notable trait on these users was a peculiar use of holding the phone with one hand while using the other hand's index finger to navigate the phone.
                         </p>
                         <img
-                            src="/assets/projects/birder/shadowing.png"
+                            src="/images/projects/birder/shadowing-collage.jpg"
                             alt="Bird watcher shadowing observation collage"
                             className="w-full rounded-xl border border-primary/20 mt-6"
                         />
@@ -308,6 +318,19 @@ const Birder = () => {
                             className="w-full rounded-xl border border-primary/20"
                         />
                     </div>
+
+                    {/* Sitemap Image */}
+                    <div className="space-y-4">
+                        <h3 className="text-xl font-semibold">Sitemap</h3>
+                        <p className="text-muted-foreground">
+                            I created a sitemap to organize the content and navigation structure, ensuring a logical flow for the user experience.
+                        </p>
+                        <img
+                            src="/images/projects/birder/sitemap.png"
+                            alt="Birder App Sitemap"
+                            className="w-full rounded-xl border border-primary/20"
+                        />
+                    </div>
                 </section>
 
                 {/* Design Section */}
@@ -425,15 +448,7 @@ const Birder = () => {
                     </div>
                 </section>
 
-                <div className="flex flex-col items-center gap-6 mt-16 pt-10 border-t border-border/40">
-                    <Button
-                        size="lg"
-                        onClick={() => window.open("mailto:ezapata.nyc@gmail.com")}
-                        className="text-lg px-8 py-6 rounded-full"
-                    >
-                        Contact to Work Together
-                    </Button>
-                </div>
+
             </div>
         </CaseStudyLayout>
     );

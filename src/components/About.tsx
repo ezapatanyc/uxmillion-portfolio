@@ -1,4 +1,5 @@
 import { Timeline } from "@/components/ui/timeline";
+import { CheckCircle2, Users, BarChart3, HeartHandshake } from "lucide-react";
 const About = () => {
   const timelineData = [{
     title: "Discover",
@@ -98,6 +99,8 @@ const About = () => {
       </div>
 
       <Timeline data={timelineData} />
+
+
 
     </div>
   </section>;

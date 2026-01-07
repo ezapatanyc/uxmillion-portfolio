@@ -7,6 +7,8 @@ import { projects } from '@/data/projects';
 import { useEffect } from 'react';
 import Footer from '@/components/Footer';
 import ProjectNav from '@/components/ProjectNav';
+import Contact from '@/components/Contact';
+
 
 const RailBuild = () => {
     const navigate = useNavigate();
@@ -434,6 +436,7 @@ const RailBuild = () => {
                 )}
             </main>
 
+            <Contact />
             <Footer />
         </div>
     );

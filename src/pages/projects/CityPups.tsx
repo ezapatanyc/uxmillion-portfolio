@@ -257,15 +257,7 @@ const CityPups = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col items-center gap-6 mt-16 pt-10 border-t border-border/40">
-                    <Button
-                        size="lg"
-                        onClick={() => window.open("mailto:ezapata.nyc@gmail.com")}
-                        className="text-lg px-8 py-6 rounded-full"
-                    >
-                        Contact to Work Together
-                    </Button>
-                </div>
+
             </div>
         </CaseStudyLayout >
     );

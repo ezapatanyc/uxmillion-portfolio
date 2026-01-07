@@ -89,7 +89,7 @@ export const ContainerSticky = ({
   return (
     <div
       className={cn(
-        "sticky left-0 top-0 min-h-[30rem] w-full overflow-visible",
+        "sticky left-0 top-0 min-h-[30rem] w-full overflow-visible z-30",
         className
       )}
       style={{
@@ -149,6 +149,7 @@ export const GalleryCol = ({
       className={cn("relative flex w-full flex-col gap-4 parallax-col overflow-visible", className)}
       style={{
         y,
+        transformStyle: "preserve-3d",
         ...style,
       }}
       {...props}

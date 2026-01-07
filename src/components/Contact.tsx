@@ -23,12 +23,9 @@ const Contact = () => {
   return (
     <section id="contact" className="section-padding px-6">
       <div className="container mx-auto max-w-4xl text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-8 text-theme-heading">
-          Ready to start?
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-theme-heading">
+          Contact to Work Together
         </h2>
-        <p className="text-2xl md:text-3xl text-theme-body mb-12">
-          Let's Connect
-        </p>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
           <Button asChild className="flex items-center gap-3 px-8 py-4 text-lg" variant="default">

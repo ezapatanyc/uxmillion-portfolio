@@ -24,7 +24,7 @@ const Index = () => {
   // Check if user has already seen the intro this session
   const [showIntro, setShowIntro] = useState(() => {
     if (typeof window !== 'undefined') {
-      return !sessionStorage.getItem('hasSeenIntro');
+      return !localStorage.getItem('hasSeenIntro');
     }
     return true;
   });
@@ -35,7 +35,7 @@ const Index = () => {
     setShowIntro(false);
     // Mark that user has seen the intro this session
     if (typeof window !== 'undefined') {
-      sessionStorage.setItem('hasSeenIntro', 'true');
+      localStorage.setItem('hasSeenIntro', 'true');
     }
   };
 

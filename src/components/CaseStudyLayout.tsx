@@ -8,15 +8,17 @@ import { useEffect } from 'react';
 import Footer from "@/components/Footer";
 import ProjectNav from "@/components/ProjectNav";
 import ProjectProtection from "@/components/ProjectProtection";
+import Contact from "@/components/Contact";
 
 import { PropsWithChildren } from 'react';
 
 interface CaseStudyLayoutProps extends PropsWithChildren {
     project: Project;
     nextProject?: Project;
+    hideDefaultMetadata?: boolean;
 }
 
-const CaseStudyLayout = ({ project, nextProject, children }: CaseStudyLayoutProps) => {
+const CaseStudyLayout = ({ project, nextProject, children, hideDefaultMetadata = false }: CaseStudyLayoutProps) => {
     const navigate = useNavigate();
 
     // Scroll to top on mount
@@ -70,45 +72,47 @@ const CaseStudyLayout = ({ project, nextProject, children }: CaseStudyLayoutProp
                     </section>
 
                     {/* Project Metadata */}
-                    <section className="container mx-auto px-6 mb-20">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-y border-border/50 max-w-5xl mx-auto">
-                            {project.timeline && (
-                                <div className="space-y-2">
-                                    <div className="flex items-center text-muted-foreground mb-1">
-                                        <Clock className="w-4 h-4 mr-2" />
-                                        <span className="text-sm font-medium uppercase tracking-wider">Timeline</span>
+                    {!hideDefaultMetadata && (
+                        <section className="container mx-auto px-6 mb-20">
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-y border-border/50 max-w-5xl mx-auto">
+                                {project.timeline && (
+                                    <div className="space-y-2">
+                                        <div className="flex items-center text-muted-foreground mb-1">
+                                            <Clock className="w-4 h-4 mr-2" />
+                                            <span className="text-sm font-medium uppercase tracking-wider">Timeline</span>
+                                        </div>
+                                        <p className="font-semibold">{project.timeline}</p>
                                     </div>
-                                    <p className="font-semibold">{project.timeline}</p>
-                                </div>
-                            )}
-                            {project.team && (
-                                <div className="space-y-2">
-                                    <div className="flex items-center text-muted-foreground mb-1">
-                                        <Users className="w-4 h-4 mr-2" />
-                                        <span className="text-sm font-medium uppercase tracking-wider">Team</span>
+                                )}
+                                {project.team && (
+                                    <div className="space-y-2">
+                                        <div className="flex items-center text-muted-foreground mb-1">
+                                            <Users className="w-4 h-4 mr-2" />
+                                            <span className="text-sm font-medium uppercase tracking-wider">Team</span>
+                                        </div>
+                                        <p className="font-semibold">{project.team}</p>
                                     </div>
-                                    <p className="font-semibold">{project.team}</p>
-                                </div>
-                            )}
-                            <div className="space-y-2 col-span-2">
-                                <div className="flex items-center text-muted-foreground mb-1">
-                                    <Wrench className="w-4 h-4 mr-2" />
-                                    <span className="text-sm font-medium uppercase tracking-wider">Services</span>
-                                </div>
-                                <div className="flex flex-wrap gap-2">
-                                    {projectServices.length > 0 ? (
-                                        projectServices.map(service => (
-                                            <Badge key={service.id} variant="secondary" className="hover:bg-secondary/80">
-                                                {service.title}
-                                            </Badge>
-                                        ))
-                                    ) : (
-                                        <span className="text-sm">UX Design</span>
-                                    )}
+                                )}
+                                <div className="space-y-2 col-span-2">
+                                    <div className="flex items-center text-muted-foreground mb-1">
+                                        <Wrench className="w-4 h-4 mr-2" />
+                                        <span className="text-sm font-medium uppercase tracking-wider">Services</span>
+                                    </div>
+                                    <div className="flex flex-wrap gap-2">
+                                        {projectServices.length > 0 ? (
+                                            projectServices.map(service => (
+                                                <Badge key={service.id} variant="secondary" className="hover:bg-secondary/80">
+                                                    {service.title}
+                                                </Badge>
+                                            ))
+                                        ) : (
+                                            <span className="text-sm">UX Design</span>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
+                        </section>
+                    )}
 
                     {/* Content Sections */}
                     <div className="container mx-auto px-6 max-w-3xl space-y-20">
@@ -183,6 +187,7 @@ const CaseStudyLayout = ({ project, nextProject, children }: CaseStudyLayoutProp
                     )}
                 </main>
 
+                <Contact />
                 <Footer />
             </div>
         </ProjectProtection>
