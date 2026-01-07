@@ -5,7 +5,7 @@ const About = () => {
     title: "Discover",
     content: <div className="frosted-card p-6 hover-lift">
       <div className="flex items-center mb-4">
-        <img src="/lovable-uploads/53a70808-c38d-4122-a7f5-d006e5746b32.png" alt="Discover" className="h-12 w-12 object-contain mr-4" />
+        <img src="/uxmillion-uploads/53a70808-c38d-4122-a7f5-d006e5746b32.png" alt="Discover" className="h-12 w-12 object-contain mr-4" />
         <h4 className="text-lg font-semibold text-gradient">Research & Insights</h4>
       </div>
       <p className="text-muted-foreground mb-4">Understand users & opportunities through research and analysis.</p>
@@ -19,7 +19,7 @@ const About = () => {
     title: "Define",
     content: <div className="frosted-card p-6 hover-lift">
       <div className="flex items-center mb-4">
-        <img src="/lovable-uploads/312d9efb-fc8b-4b3f-b082-202ac9625681.png" alt="Define" className="h-12 w-12 object-contain mr-4" />
+        <img src="/uxmillion-uploads/312d9efb-fc8b-4b3f-b082-202ac9625681.png" alt="Define" className="h-12 w-12 object-contain mr-4" />
         <h4 className="text-lg font-semibold text-gradient">Strategy & Planning</h4>
       </div>
       <p className="text-muted-foreground mb-4">Turn insights into clear direction.</p>
@@ -33,7 +33,7 @@ const About = () => {
     title: "Design",
     content: <div className="frosted-card p-6 hover-lift">
       <div className="flex items-center mb-4">
-        <img src="/lovable-uploads/aa567325-e3e5-4297-b6bf-ef8eda239279.png" alt="Design" className="h-12 w-12 object-contain mr-4" />
+        <img src="/uxmillion-uploads/aa567325-e3e5-4297-b6bf-ef8eda239279.png" alt="Design" className="h-12 w-12 object-contain mr-4" />
         <h4 className="text-lg font-semibold text-gradient">Prototyping & Iteration</h4>
       </div>
       <p className="text-muted-foreground mb-4">Bring ideas to life with user-friendly solutions.</p>
@@ -47,7 +47,7 @@ const About = () => {
     title: "Validate",
     content: <div className="frosted-card p-6 hover-lift">
       <div className="flex items-center mb-4">
-        <img src="/lovable-uploads/131a64b6-8edc-43b8-b053-5a45b8119f8c.png" alt="Validate" className="h-12 w-12 object-contain mr-4" />
+        <img src="/uxmillion-uploads/131a64b6-8edc-43b8-b053-5a45b8119f8c.png" alt="Validate" className="h-12 w-12 object-contain mr-4" />
         <h4 className="text-lg font-semibold text-gradient">Testing & Refinement</h4>
       </div>
       <p className="text-muted-foreground mb-4">Refine with real feedback.</p>
@@ -61,7 +61,7 @@ const About = () => {
     title: "Launch & Learn",
     content: <div className="frosted-card p-6 hover-lift">
       <div className="flex items-center mb-4">
-        <img src="/lovable-uploads/a15b747c-bda1-4973-acca-b09c14f85a1c.png" alt="Launch & Learn" className="h-12 w-12 object-contain mr-4" />
+        <img src="/uxmillion-uploads/a15b747c-bda1-4973-acca-b09c14f85a1c.png" alt="Launch & Learn" className="h-12 w-12 object-contain mr-4" />
         <h4 className="text-lg font-semibold text-gradient">Deploy & Optimize</h4>
       </div>
       <p className="text-muted-foreground mb-4">Ship and optimize continuously.</p>
@@ -85,7 +85,7 @@ const About = () => {
         <div className="mx-auto relative">
           <div className="w-40 h-40 md:w-54 md:h-54 lg:w-68 lg:h-68 rounded-full overflow-hidden border-4 border-primary/30 shadow-lg shadow-primary/20 relative hover-lift">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
-            <img src="/lovable-uploads/profile-pic-new.png" alt="Emiliano" className="w-full h-full object-cover" loading="lazy" />
+            <img src="/uxmillion-uploads/profile-pic-new.png" alt="Emiliano" className="w-full h-full object-cover" loading="lazy" />
           </div>
         </div>
 

@@ -46,7 +46,7 @@ const RailBuild = () => {
 
                     <div className="relative w-full aspect-video rounded-3xl overflow-hidden border border-border/50 shadow-2xl shadow-primary/10">
                         <img
-                            src="/lovable-uploads/railbuild-new-hero.png"
+                            src="/uxmillion-uploads/railbuild-new-hero.png"
                             alt="RailBuild Hero"
                             className="w-full h-full object-cover"
                         />
@@ -235,7 +235,7 @@ const RailBuild = () => {
                         </p>
                         <div className="rounded-3xl overflow-hidden border border-border/50 bg-secondary/5 shadow-lg">
                             <img
-                                src="/lovable-uploads/railbuild-personas.png"
+                                src="/uxmillion-uploads/railbuild-personas.png"
                                 alt="Railbuild User Personas"
                                 className="w-full h-auto"
                             />
@@ -252,7 +252,7 @@ const RailBuild = () => {
                             <div className="space-y-3">
                                 <div className="rounded-3xl overflow-hidden border border-border/50 bg-secondary/5 shadow-lg p-2">
                                     <img
-                                        src="/lovable-uploads/railbuild-sitemap.png"
+                                        src="/uxmillion-uploads/railbuild-sitemap.png"
                                         alt="Railbuild Product Structure"
                                         className="w-full h-auto rounded-2xl"
                                     />
@@ -262,7 +262,7 @@ const RailBuild = () => {
                             <div className="space-y-3">
                                 <div className="rounded-3xl overflow-hidden border border-border/50 bg-secondary/5 shadow-lg p-2">
                                     <img
-                                        src="/lovable-uploads/railbuild-marketing-sitemap.png"
+                                        src="/uxmillion-uploads/railbuild-marketing-sitemap.png"
                                         alt="Marketing Content Structure"
                                         className="w-full h-auto rounded-2xl"
                                     />
@@ -281,19 +281,19 @@ const RailBuild = () => {
                         <div className="grid md:grid-cols-3 gap-6">
                             <div className="space-y-3">
                                 <div className="rounded-2xl overflow-hidden border border-border/50 bg-secondary/5 shadow-md">
-                                    <img src="/lovable-uploads/railbuild-flow-homeowner.png" alt="Homeowner Flow" className="w-full h-auto" />
+                                    <img src="/uxmillion-uploads/railbuild-flow-homeowner.png" alt="Homeowner Flow" className="w-full h-auto" />
                                 </div>
                                 <p className="text-sm font-medium text-center">Homeowner Journey</p>
                             </div>
                             <div className="space-y-3">
                                 <div className="rounded-2xl overflow-hidden border border-border/50 bg-secondary/5 shadow-md">
-                                    <img src="/lovable-uploads/railbuild-flow-contractor.png" alt="Contractor Flow" className="w-full h-auto" />
+                                    <img src="/uxmillion-uploads/railbuild-flow-contractor.png" alt="Contractor Flow" className="w-full h-auto" />
                                 </div>
                                 <p className="text-sm font-medium text-center">Contractor Journey</p>
                             </div>
                             <div className="space-y-3">
                                 <div className="rounded-2xl overflow-hidden border border-border/50 bg-secondary/5 shadow-md">
-                                    <img src="/lovable-uploads/railbuild-flow-architect.png" alt="Architect Flow" className="w-full h-auto" />
+                                    <img src="/uxmillion-uploads/railbuild-flow-architect.png" alt="Architect Flow" className="w-full h-auto" />
                                 </div>
                                 <p className="text-sm font-medium text-center">Architect Journey</p>
                             </div>
@@ -312,7 +312,7 @@ const RailBuild = () => {
                                 </p>
                                 <div className="rounded-3xl overflow-hidden border border-border/50 shadow-xl">
                                     <img
-                                        src="/lovable-uploads/railbuild-product-detail.png"
+                                        src="/uxmillion-uploads/railbuild-product-detail.png"
                                         alt="Product Detail Page"
                                         className="w-full h-auto"
                                     />
@@ -326,7 +326,7 @@ const RailBuild = () => {
                                 </p>
                                 <div className="rounded-3xl overflow-hidden border border-border/50 shadow-xl">
                                     <img
-                                        src="/lovable-uploads/railbuild-configurator-ui.png"
+                                        src="/uxmillion-uploads/railbuild-configurator-ui.png"
                                         alt="Configurator UI Pattern"
                                         className="w-full h-auto"
                                     />
@@ -340,7 +340,7 @@ const RailBuild = () => {
                                 </p>
                                 <div className="rounded-3xl overflow-hidden border border-border/50 shadow-xl">
                                     <img
-                                        src="/lovable-uploads/railbuild-quote-form.png"
+                                        src="/uxmillion-uploads/railbuild-quote-form.png"
                                         alt="Quote Request Form"
                                         className="w-full h-auto"
                                     />

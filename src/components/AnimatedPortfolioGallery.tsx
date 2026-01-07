@@ -13,24 +13,24 @@ import {
 
 // Portfolio images organized by column - showcasing actual UX design work
 const WIREFRAME_IMAGES_1 = [
-  "/lovable-uploads/f57e4c74-507f-4395-a940-dfc4eaeb8af0.png", // Design system documentation
-  "/lovable-uploads/18adef2b-7d96-4e6c-8122-72755b355601.png", // Automation workflow diagram
-  "/lovable-uploads/b12f2a1c-d4f0-41f3-8a2b-9e5018c37282.png", // Location/Map search interface
-  "/lovable-uploads/4051f38a-cafa-4bba-842b-b10d718a1bb3.png", // UX illustration overview
+  "/uxmillion-uploads/f57e4c74-507f-4395-a940-dfc4eaeb8af0.png", // Design system documentation
+  "/uxmillion-uploads/18adef2b-7d96-4e6c-8122-72755b355601.png", // Automation workflow diagram
+  "/uxmillion-uploads/b12f2a1c-d4f0-41f3-8a2b-9e5018c37282.png", // Location/Map search interface
+  "/uxmillion-uploads/4051f38a-cafa-4bba-842b-b10d718a1bb3.png", // UX illustration overview
 ]
 
 const MOBILE_IMAGES_2 = [
-  "/lovable-uploads/c2865a28-a511-4fc5-b002-2f2859d61828.png", // Crypto wallet mobile app
-  "/lovable-uploads/fdcf9523-4b6a-498c-a19b-59db1d0a6663.png", // Health & medication tracker
-  "/lovable-uploads/44c7dbe5-d3a0-4d38-9687-390f103cdd96.png", // E-commerce mobile store
-  "/lovable-uploads/8b4ea584-9f50-48df-b14b-edb94900525d.png", // Banking app interface
+  "/uxmillion-uploads/c2865a28-a511-4fc5-b002-2f2859d61828.png", // Crypto wallet mobile app
+  "/uxmillion-uploads/fdcf9523-4b6a-498c-a19b-59db1d0a6663.png", // Health & medication tracker
+  "/uxmillion-uploads/44c7dbe5-d3a0-4d38-9687-390f103cdd96.png", // E-commerce mobile store
+  "/uxmillion-uploads/8b4ea584-9f50-48df-b14b-edb94900525d.png", // Banking app interface
 ]
 
 const DESIGN_IMAGES_3 = [
-  "/lovable-uploads/40be435d-63be-4e61-a62f-67f3176cd0b7.png", // Dashboard analytics
-  "/lovable-uploads/1c4e1830-e563-4e4d-b381-300ec9068853.png", // UX illustration with multiple interfaces
-  "/lovable-uploads/f57e4c74-507f-4395-a940-dfc4eaeb8af0.png", // Design system (repeated for balance)
-  "/lovable-uploads/40be435d-63be-4e61-a62f-67f3176cd0b7.png", // Dashboard (repeated for balance)
+  "/uxmillion-uploads/40be435d-63be-4e61-a62f-67f3176cd0b7.png", // Dashboard analytics
+  "/uxmillion-uploads/1c4e1830-e563-4e4d-b381-300ec9068853.png", // UX illustration with multiple interfaces
+  "/uxmillion-uploads/f57e4c74-507f-4395-a940-dfc4eaeb8af0.png", // Design system (repeated for balance)
+  "/uxmillion-uploads/40be435d-63be-4e61-a62f-67f3176cd0b7.png", // Dashboard (repeated for balance)
 ]
 
 export const AnimatedPortfolioGallery = () => {

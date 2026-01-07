@@ -24,7 +24,7 @@ export interface Project {
 export const projects: Project[] = [
     {
         id: "pergolade",
-        image: "/lovable-uploads/pergolade-hero.png",
+        image: "/uxmillion-uploads/pergolade-hero.png",
         title: "Pergolade Blade Pro",
         role: "Role: Lead UX Designer (end-to-end)",
         description: "Redefining a premium configurator-led buying journey across desktop + mobile",
@@ -88,7 +88,7 @@ export const projects: Project[] = [
     },
     {
         id: "birder",
-        image: "/lovable-uploads/6366f2b9-ed19-4d2e-8cdb-c898f220edda.png",
+        image: "/uxmillion-uploads/6366f2b9-ed19-4d2e-8cdb-c898f220edda.png",
         title: "Birder",
         role: "Role: UX Designer",
         description: "An app to identify and explore birds all around the world.",

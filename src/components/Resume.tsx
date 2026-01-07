@@ -114,7 +114,7 @@ const Resume = () => {
               <div>
                 <h4 className="text-sm font-semibold text-primary mb-3">AI & Automation</h4>
                 <div className="flex flex-wrap gap-2">
-                  {["ChatGPT", "Claude", "Google AI Studio", "Google Antigravity", "Midjourney", "Relume", "Lovable.ai"].map((tool) => (
+                  {["ChatGPT", "Claude", "Google AI Studio", "Google Antigravity", "Midjourney", "Relume", "uxmillion"].map((tool) => (
                     <span key={tool} className="px-3 py-1 bg-accent/10 border border-accent/20 rounded-full text-sm text-foreground">
                       {tool}
                     </span>

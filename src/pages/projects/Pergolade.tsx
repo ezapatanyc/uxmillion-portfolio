@@ -48,7 +48,7 @@ const Pergolade = () => {
 
                         <div className="relative w-full aspect-video rounded-3xl overflow-hidden border border-border/50 shadow-2xl shadow-primary/10">
                             <img
-                                src="/lovable-uploads/pergolade-sunset-hero.png"
+                                src="/uxmillion-uploads/pergolade-sunset-hero.png"
                                 alt="Pergolade Blade Pro Homepage"
                                 className="w-full h-full object-cover"
                             />
@@ -196,14 +196,14 @@ const Pergolade = () => {
                                         {...fadeIn}
                                         className="rounded-3xl overflow-hidden border border-border/50 bg-background p-2 shadow-xl"
                                     >
-                                        <img src="/lovable-uploads/pergolade-ia-flow-reorganized.png" alt="Page Sections Flow" className="w-full h-auto rounded-2xl" />
+                                        <img src="/uxmillion-uploads/pergolade-ia-flow-reorganized.png" alt="Page Sections Flow" className="w-full h-auto rounded-2xl" />
                                     </motion.div>
                                     <motion.div
                                         {...fadeIn}
                                         transition={{ delay: 0.2 }}
                                         className="rounded-3xl overflow-hidden border border-border/50 bg-background p-2 shadow-xl"
                                     >
-                                        <img src="/lovable-uploads/pergolade-lifestyle-flow.png" alt="Lifestyle Flow" className="w-full h-auto rounded-2xl" />
+                                        <img src="/uxmillion-uploads/pergolade-lifestyle-flow.png" alt="Lifestyle Flow" className="w-full h-auto rounded-2xl" />
                                     </motion.div>
                                 </div>
                             </div>
@@ -243,7 +243,7 @@ const Pergolade = () => {
                                 className="rounded-3xl overflow-hidden border border-border/50 shadow-xl bg-background p-2 mb-8"
                             >
                                 <div className="bg-muted/30 rounded-2xl overflow-hidden aspect-[16/10]">
-                                    <img src="/lovable-uploads/pergolade-config-desktop.png" alt="Desktop Configurator" className="w-full h-full object-cover" />
+                                    <img src="/uxmillion-uploads/pergolade-config-desktop.png" alt="Desktop Configurator" className="w-full h-full object-cover" />
                                 </div>
                                 <div className="p-4 flex items-center gap-2 text-sm text-muted-foreground">
                                     <Monitor className="w-4 h-4" /> Desktop Experience
@@ -257,7 +257,7 @@ const Pergolade = () => {
                                     className="rounded-3xl overflow-hidden border border-border/50 shadow-xl bg-background p-2"
                                 >
                                     <div className="bg-muted/30 rounded-2xl overflow-hidden aspect-[9/19]">
-                                        <img src="/lovable-uploads/pergolade-config-mobile.png" alt="Mobile Configurator - Selection" className="w-full h-full object-cover" />
+                                        <img src="/uxmillion-uploads/pergolade-config-mobile.png" alt="Mobile Configurator - Selection" className="w-full h-full object-cover" />
                                     </div>
                                     <div className="p-4 flex items-center gap-2 text-sm text-muted-foreground">
                                         <Smartphone className="w-4 h-4" /> Smart Formatting
@@ -269,7 +269,7 @@ const Pergolade = () => {
                                     className="rounded-3xl overflow-hidden border border-border/50 shadow-xl bg-background p-2"
                                 >
                                     <div className="bg-muted/30 rounded-2xl overflow-hidden aspect-[9/19]">
-                                        <img src="/lovable-uploads/pergolade-config-mobile-size.jpg" alt="Mobile Configurator - Sizing" className="w-full h-full object-cover" />
+                                        <img src="/uxmillion-uploads/pergolade-config-mobile-size.jpg" alt="Mobile Configurator - Sizing" className="w-full h-full object-cover" />
                                     </div>
                                     <div className="p-4 flex items-center gap-2 text-sm text-muted-foreground">
                                         <Smartphone className="w-4 h-4" /> Clear Decision Points
@@ -305,7 +305,7 @@ const Pergolade = () => {
                                     {...fadeIn}
                                     className="rounded-3xl overflow-hidden border border-border/50 bg-background p-2 shadow-xl"
                                 >
-                                    <img src="/lovable-uploads/pergolade-ar-qr-desktop.png" alt="Desktop QR Code Modal" className="w-full h-auto rounded-2xl" />
+                                    <img src="/uxmillion-uploads/pergolade-ar-qr-desktop.png" alt="Desktop QR Code Modal" className="w-full h-auto rounded-2xl" />
                                     <div className="p-4 flex items-center gap-2 text-sm text-muted-foreground justify-center">
                                         <Monitor className="w-4 h-4" /> 1. Scan to Switch
                                     </div>
@@ -317,7 +317,7 @@ const Pergolade = () => {
                                     transition={{ delay: 0.1 }}
                                     className="rounded-3xl overflow-hidden border border-border/50 bg-background p-2 shadow-xl"
                                 >
-                                    <img src="/lovable-uploads/pergolade-ar-view-button.jpg" alt="Mobile AR Launch" className="w-full h-auto rounded-2xl" />
+                                    <img src="/uxmillion-uploads/pergolade-ar-view-button.jpg" alt="Mobile AR Launch" className="w-full h-auto rounded-2xl" />
                                     <div className="p-4 flex items-center gap-2 text-sm text-muted-foreground justify-center">
                                         <Smartphone className="w-4 h-4" /> 2. One-Tap Launch
                                     </div>
@@ -329,7 +329,7 @@ const Pergolade = () => {
                                     transition={{ delay: 0.2 }}
                                     className="rounded-3xl overflow-hidden border border-border/50 bg-background p-2 shadow-xl"
                                 >
-                                    <img src="/lovable-uploads/pergolade-ar-mobile-start.jpg" alt="Mobile AR Calibration" className="w-full h-auto rounded-2xl" />
+                                    <img src="/uxmillion-uploads/pergolade-ar-mobile-start.jpg" alt="Mobile AR Calibration" className="w-full h-auto rounded-2xl" />
                                     <div className="p-4 flex items-center gap-2 text-sm text-muted-foreground justify-center">
                                         <Smartphone className="w-4 h-4" /> 3. Calibrate Space
                                     </div>
@@ -341,7 +341,7 @@ const Pergolade = () => {
                                     transition={{ delay: 0.3 }}
                                     className="rounded-3xl overflow-hidden border border-border/50 bg-background p-2 shadow-xl"
                                 >
-                                    <img src="/lovable-uploads/pergolade-ar-ui-frame.png" alt="Active AR Visualization" className="w-full h-auto rounded-2xl" />
+                                    <img src="/uxmillion-uploads/pergolade-ar-ui-frame.png" alt="Active AR Visualization" className="w-full h-auto rounded-2xl" />
                                     <div className="p-4 flex items-center gap-2 text-sm text-muted-foreground justify-center">
                                         <Smartphone className="w-4 h-4" /> 4. Visualize Live
                                     </div>
@@ -353,7 +353,7 @@ const Pergolade = () => {
                                 transition={{ delay: 0.4 }}
                                 className="rounded-3xl overflow-hidden border border-border/50 bg-background p-2 shadow-xl"
                             >
-                                <img src="/lovable-uploads/pergolade-ar-context.png" alt="AR Visualization in Context" className="w-full h-auto rounded-2xl" />
+                                <img src="/uxmillion-uploads/pergolade-ar-context.png" alt="AR Visualization in Context" className="w-full h-auto rounded-2xl" />
                                 <div className="p-4 flex items-center gap-2 text-sm text-muted-foreground justify-center">
                                     <span className="font-semibold text-primary">Result:</span> Confidence in the final purchase
                                 </div>
@@ -390,7 +390,7 @@ const Pergolade = () => {
                                 {...fadeIn}
                                 className="rounded-3xl overflow-hidden border border-border/50 bg-background p-2 shadow-xl"
                             >
-                                <img src="/lovable-uploads/pergolade-ui-board.png" alt="Figma Layouts - Desktop and Mobile" className="w-full h-auto rounded-2xl" />
+                                <img src="/uxmillion-uploads/pergolade-ui-board.png" alt="Figma Layouts - Desktop and Mobile" className="w-full h-auto rounded-2xl" />
                             </motion.div>
                         </div>
                     </section>
@@ -423,7 +423,7 @@ const Pergolade = () => {
                                     {...fadeIn}
                                     className="rounded-3xl overflow-hidden border border-border/50 bg-background p-2 shadow-xl"
                                 >
-                                    <img src="/lovable-uploads/pergolade-iteration-1.jpg" alt="Design Iteration - Exploration 1" className="w-full h-auto rounded-2xl" />
+                                    <img src="/uxmillion-uploads/pergolade-iteration-1.jpg" alt="Design Iteration - Exploration 1" className="w-full h-auto rounded-2xl" />
                                     <div className="p-4 text-center text-sm text-muted-foreground">
                                         <span className="font-semibold block mb-1">Exploration A</span>
                                         Testing a moodier, cinematic lighting approach
@@ -434,7 +434,7 @@ const Pergolade = () => {
                                     transition={{ delay: 0.2 }}
                                     className="rounded-3xl overflow-hidden border border-border/50 bg-background p-2 shadow-xl"
                                 >
-                                    <img src="/lovable-uploads/pergolade-iteration-2.jpg" alt="Design Iteration - Exploration 2" className="w-full h-auto rounded-2xl" />
+                                    <img src="/uxmillion-uploads/pergolade-iteration-2.jpg" alt="Design Iteration - Exploration 2" className="w-full h-auto rounded-2xl" />
                                     <div className="p-4 text-center text-sm text-muted-foreground">
                                         <span className="font-semibold block mb-1">Exploration B</span>
                                         Refining the connection between nature and structure
@@ -458,7 +458,7 @@ const Pergolade = () => {
                                 {...fadeIn}
                                 className="rounded-3xl overflow-hidden border border-border/50 bg-background p-2 shadow-xl"
                             >
-                                <img src="/lovable-uploads/pergolade-hero-render.png" alt="Blade Pro Product View" className="w-full h-auto rounded-2xl" />
+                                <img src="/uxmillion-uploads/pergolade-hero-render.png" alt="Blade Pro Product View" className="w-full h-auto rounded-2xl" />
                             </motion.div>
                         </div>
                     </section>

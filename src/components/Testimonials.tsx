@@ -4,21 +4,21 @@ const Testimonials = () => {
     author: {
       name: "Paola Palacios",
       handle: "Senior UX Designer",
-      avatar: "/lovable-uploads/06ef7374-cc62-460e-856f-c0eae6050873.png"
+      avatar: "/uxmillion-uploads/06ef7374-cc62-460e-856f-c0eae6050873.png"
     },
     text: "I've had the pleasure of working with Emiliano twice... He's scrappy, resourceful, and a true go-getter... Emiliano is entrepreneurial, adaptable, and always brings his best to the table."
   }, {
     author: {
       name: "Alex Johnson",
       handle: "UX Designer",
-      avatar: "/lovable-uploads/06ef7374-cc62-460e-856f-c0eae6050873.png"
+      avatar: "/uxmillion-uploads/06ef7374-cc62-460e-856f-c0eae6050873.png"
     },
     text: "Working with Emiliano was an inspiring experience... His ability to empathize with users and translate their needs into actionable insights makes him a standout UX designer..."
   }, {
     author: {
       name: "Samantha Lee",
       handle: "Product Designer",
-      avatar: "/lovable-uploads/06ef7374-cc62-460e-856f-c0eae6050873.png"
+      avatar: "/uxmillion-uploads/06ef7374-cc62-460e-856f-c0eae6050873.png"
     },
     text: "I had the opportunity to work alongside Emiliano on a digital product redesign... His creativity and problem-solving skills are invaluable assets..."
   }];
