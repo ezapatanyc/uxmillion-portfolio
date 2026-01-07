@@ -75,7 +75,7 @@ export const projects: Project[] = [
         image: "/assets/projects/citypups/hero.png",
         title: "CityPups Dog Adoption Tool",
         role: "Role: UX Designer",
-        description: "Redesigned adoption flow → improved match success rate by 40% and reduced abandonment by 25%",
+        description: "Applied Google Ventures Design Sprint to create a matching tool prototype in 5 days—demonstrating rapid ideation and user testing under tight constraints.",
         caseStudyUrl: "/projects/citypups-dog-adoption",
         isProtected: false,
         hasPublicSummary: true,

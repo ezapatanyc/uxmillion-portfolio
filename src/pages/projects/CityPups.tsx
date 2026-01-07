@@ -1,28 +1,38 @@
 import CaseStudyLayout from "@/components/CaseStudyLayout";
 import { projects } from "@/data/projects";
 import { Button } from "@/components/ui/button";
+import { Clock, User, Wrench } from 'lucide-react';
 
 const CityPups = () => {
     const project = projects.find(p => p.id === "citypups");
     if (!project) return <div>Project not found</div>;
 
     return (
-        <CaseStudyLayout project={project} nextProject={projects.find(p => p.id === "birder")}>
+        <CaseStudyLayout project={project} nextProject={projects.find(p => p.id === "birder")} hideDefaultMetadata={true}>
             <div className="container mx-auto px-4 md:px-6 max-w-4xl space-y-24 mt-12 pb-20">
 
-                {/* Metadata Grid - Placed at Top as per Birder Layout */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 p-8 frosted-card rounded-2xl">
-                    <div>
-                        <h3 className="text-sm font-semibold text-primary mb-2">My Role</h3>
-                        <p className="text-foreground">UX Designer</p>
+                {/* Metadata Grid - Pergolade-style */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-y border-border/50 max-w-5xl mx-auto">
+                    <div className="space-y-2">
+                        <div className="flex items-center text-muted-foreground mb-1">
+                            <User className="w-4 h-4 mr-2" />
+                            <span className="text-sm font-medium uppercase tracking-wider">My Role</span>
+                        </div>
+                        <p className="font-semibold text-lg">UX Designer</p>
                     </div>
-                    <div>
-                        <h3 className="text-sm font-semibold text-primary mb-2">Timeline</h3>
-                        <p className="text-foreground">1 Week (GV Sprint)</p>
+                    <div className="space-y-2">
+                        <div className="flex items-center text-muted-foreground mb-1">
+                            <Clock className="w-4 h-4 mr-2" />
+                            <span className="text-sm font-medium uppercase tracking-wider">Timeline</span>
+                        </div>
+                        <p className="font-semibold text-lg">1 Week (GV Sprint)</p>
                     </div>
-                    <div className="col-span-2">
-                        <h3 className="text-sm font-semibold text-primary mb-2">Tools</h3>
-                        <p className="text-foreground">Figma, Pen & Paper, Google Ventures Sprint framework</p>
+                    <div className="space-y-2 col-span-2">
+                        <div className="flex items-center text-muted-foreground mb-1">
+                            <Wrench className="w-4 h-4 mr-2" />
+                            <span className="text-sm font-medium uppercase tracking-wider">Tools</span>
+                        </div>
+                        <p className="font-semibold text-lg">Figma, Pen & Paper, Google Ventures Sprint framework</p>
                     </div>
                 </div>
 

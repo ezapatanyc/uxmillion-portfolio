@@ -26,7 +26,7 @@ const Pergolade = () => {
     };
 
     return (
-        <CaseStudyLayout project={project} nextProject={nextProject} hideDefaultMetadata={true}>
+        <CaseStudyLayout project={project} nextProject={nextProject} hideDefaultMetadata={true} hideDefaultHero={true} fullWidthContent={true}>
             <div className="bg-background text-foreground selection:bg-neon-cyan/30">
                 <main className="">
 
@@ -46,19 +46,14 @@ const Pergolade = () => {
                             </motion.div>
                         </div>
 
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.8 }}
-                            className="relative w-full aspect-[16/10] rounded-[2rem] overflow-hidden border border-border/50 shadow-2xl shadow-primary/10 mb-20"
-                        >
+                        <div className="relative w-full aspect-video rounded-3xl overflow-hidden border border-border/50 shadow-2xl shadow-primary/10">
                             <img
                                 src="/lovable-uploads/pergolade-sunset-hero.png"
                                 alt="Pergolade Blade Pro Homepage"
-                                className="w-full h-full object-cover object-top scale-[1.01]"
+                                className="w-full h-full object-cover"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
-                        </motion.div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none" />
+                        </div>
 
                         {/* Snapshot */}
                         <motion.div
