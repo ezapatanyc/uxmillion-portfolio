@@ -26,6 +26,20 @@ const CityPups = () => {
                     </div>
                 </div>
 
+                {/* Project Context Section */}
+                <section className="frosted-card p-8 rounded-2xl border-l-4 border-primary space-y-4">
+                    <h2 className="text-2xl font-bold text-gradient">Project Context</h2>
+                    <p className="text-muted-foreground leading-relaxed">
+                        This was a practice project completed as part of my UX training to apply the Google Ventures Design Sprint framework under a compressed 1-week timeline. The startup scenario and initial user research were provided as part of the exercise.
+                    </p>
+                    <div className="bg-background/50 p-4 rounded-lg border border-primary/20">
+                        <p className="text-foreground font-medium mb-2">Why I'm including it:</p>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                            This project demonstrates my ability to move quickly through structured ideation, translate research insights into design decisions, and facilitate effective user testing—all within a 5-day constraint. While not a shipped product, the framework discipline I developed here has directly informed how I approach early-stage discovery and rapid prototyping in client projects like RailBuild (3-week delivery) and Pergolade Blade Pro (8-week end-to-end).
+                        </p>
+                    </div>
+                </section>
+
                 {/* Intro Section */}
                 <section className="space-y-6">
                     <h2 className="text-3xl font-bold text-gradient">Intro</h2>
@@ -245,14 +259,43 @@ const CityPups = () => {
                     </div>
                 </section>
 
-                <div className="border-t border-border/50 pt-12 mt-12">
-                    <h2 className="text-3xl font-bold text-gradient mb-6">Takeaways & Learnings</h2>
-                    <div className="prose prose-invert max-w-none text-muted-foreground">
-                        <p>
-                            The GV Sprint process is great to answer critical questions fast and making a project move! It also assist on defining priorities fast. This project also taught me that taking great notes and going back on them carefully can make or break your project by clarifying insightful information between the lines. Having a good memory to recall information can only go so far, the notes related to a project can make a big difference on making a product usable instead of just easy on the eyes.
-                        </p>
-                        <p className="mt-4 italic border-l-4 border-primary pl-4">
-                            "I was praised by the users on my interview skills after each of the interviews. They said they had previously been in other user test and none was as complete as I was while digging for product irregularities."
+                <div className="border-t border-border/50 pt-12 mt-12 space-y-8">
+                    <h2 className="text-3xl font-bold text-gradient">What I Learned (And Still Apply Today)</h2>
+
+                    <div className="space-y-6">
+                        <div className="space-y-2">
+                            <h3 className="text-lg font-semibold text-primary">Framework discipline under pressure</h3>
+                            <p className="text-muted-foreground leading-relaxed">
+                                The 5-day constraint forced ruthless scope prioritization—focusing only on the critical path to validation. I've since applied this "essential features only" mindset when stakeholders request expansive features with limited timelines.
+                            </p>
+                        </div>
+
+                        <div className="space-y-2">
+                            <h3 className="text-lg font-semibold text-primary">Research synthesis at speed</h3>
+                            <p className="text-muted-foreground leading-relaxed">
+                                I learned to distill interview insights into actionable "How Might We" statements within hours, not days. This rapid synthesis skill now helps me present research findings to non-UX stakeholders in client meetings without overwhelming them with raw data.
+                            </p>
+                        </div>
+
+                        <div className="space-y-2">
+                            <h3 className="text-lg font-semibold text-primary">Testing assumptions, not aesthetics</h3>
+                            <p className="text-muted-foreground leading-relaxed">
+                                The sprint taught me to prototype the riskiest assumption first—in this case, whether users would trust an algorithmic match over browsing freely. In later client work (RailBuild), this mindset prevented me from designing an entire information architecture before validating whether users understood the persona-based navigation.
+                            </p>
+                        </div>
+
+                        <div className="space-y-2">
+                            <h3 className="text-lg font-semibold text-primary">What I'd change if I ran this today</h3>
+                            <p className="text-muted-foreground leading-relaxed">
+                                I'd conduct 2-3 quick interviews with actual shelter staff before ideation. The provided research notes focused on adopter needs but missed operational constraints (approval timelines, capacity limits) that would've shifted the solution design.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="bg-primary/5 p-6 rounded-xl border border-primary/20">
+                        <p className="text-foreground font-medium mb-2">User feedback during testing:</p>
+                        <p className="text-muted-foreground italic leading-relaxed">
+                            Participants specifically noted the completeness of my interview approach, mentioning it was more thorough than other usability tests they'd participated in—a reminder that investing time in proper task framing and follow-up questions yields richer insights.
                         </p>
                     </div>
                 </div>

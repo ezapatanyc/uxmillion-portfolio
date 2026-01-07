@@ -95,27 +95,11 @@ export const projects: Project[] = [
         caseStudyUrl: "/projects/birder-mobile-app",
         isProtected: false,
         hasPublicSummary: true,
-        subtitle: "A Capstone UX Case Study",
+        subtitle: "A Passion Project",
         timeline: "7 months",
         challenge: "Bird enthusiasts often rely on various tools to recognize and find information about birds, which include digital apps, printed guides, and other birders. Very few apps on the market do a fair job recognizing a bird, and they often fall short offering the functionality, reliability, and ease of use that most users are looking for.",
         solution: "With the use of new technological implementations, user research, interviews, surveys and in-depth analysis of leading apps' strengths and weaknesses, Birder plans to provide an effective alternative solution. The purpose of the Birder app is to effectively identify any bird around the world while keeping the user engaged into exploring more about birds in one app while providing a seamless human–computer interaction.",
         results: "The final design prioritizes a visually pleasing and user-centric experience with a simplified interface and color scheme optimized for various lighting conditions, resulting in increased user engagement and satisfaction.",
-        servicesUsed: ["mvp-package"]
-    },
-    {
-        id: "healthtrack",
-        image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-        title: "HealthTrack Wearable App",
-        role: "Role: UX/UI Designer",
-        description: "Created data visualization system → increased user retention by 50% and daily check-ins by 70%",
-        caseStudyUrl: "/projects/healthtrack",
-        isProtected: false,
-        hasPublicSummary: true,
-        subtitle: "Actionable Insights for Daily Wellness",
-        timeline: "8 Weeks",
-        challenge: "Wearable technology provides mountains of data, but users often don't know what to do with it. HealthTrack needed to pivot from 'data tracker' to 'wellness coach'.",
-        solution: "We designed a new 'Daily Story' dashboard that summarizes key trends using plain language (e.g., 'You walked more but slept less than average this week') and provides one clear recommendation per day.",
-        results: "User retention at the 30-day mark increased by 50%, and the number of users checking the app at least once a day rose by 70%.",
         servicesUsed: ["mvp-package"]
     }
 ];

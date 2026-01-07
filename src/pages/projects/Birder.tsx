@@ -8,7 +8,7 @@ const Birder = () => {
     if (!project) return <div>Project not found</div>;
 
     return (
-        <CaseStudyLayout project={project} nextProject={projects.find(p => p.id === "healthtrack")} hideDefaultMetadata={true}>
+        <CaseStudyLayout project={project} nextProject={projects.find(p => p.id === "pergolade")} hideDefaultMetadata={true}>
             <div className="container mx-auto px-4 md:px-6 max-w-4xl space-y-24 mt-12 pb-20">
 
 
