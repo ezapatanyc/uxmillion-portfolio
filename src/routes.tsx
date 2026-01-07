@@ -7,6 +7,7 @@ import RailBuild from './pages/projects/RailBuild';
 import CityPups from './pages/projects/CityPups';
 import FidemDD from './pages/projects/FidemDD';
 import Birder from './pages/projects/Birder';
+import LegalGeneral from './pages/projects/LegalGeneral';
 import NotFound from './pages/NotFound';
 
 export const routes: RouteRecord[] = [
@@ -44,6 +45,10 @@ export const routes: RouteRecord[] = [
       {
         path: 'projects/birder-mobile-app',
         element: <Birder />,
+      },
+      {
+        path: 'projects/legal-general-quote-engine',
+        element: <LegalGeneral />,
       },
       {
         path: '*',

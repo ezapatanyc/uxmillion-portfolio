@@ -101,5 +101,21 @@ export const projects: Project[] = [
         solution: "With the use of new technological implementations, user research, interviews, surveys and in-depth analysis of leading apps' strengths and weaknesses, Birder plans to provide an effective alternative solution. The purpose of the Birder app is to effectively identify any bird around the world while keeping the user engaged into exploring more about birds in one app while providing a seamless human–computer interaction.",
         results: "The final design prioritizes a visually pleasing and user-centric experience with a simplified interface and color scheme optimized for various lighting conditions, resulting in increased user engagement and satisfaction.",
         servicesUsed: ["mvp-package"]
+    },
+    {
+        id: "legal-general",
+        image: "/uxmillion-uploads/legal-general-hero.png",
+        title: "Modernizing the Life Insurance Quote Engine",
+        role: "Role: Senior UX Designer",
+        description: "Redesigning a legacy quote engine to improve conversion rates and user trust through progressive disclosure.",
+        caseStudyUrl: "/projects/legal-general-quote-engine",
+        isProtected: false,
+        subtitle: "Conversion Rate Optimization & Design System Integration",
+        timeline: "8 Weeks",
+        team: "Me (Lead UX), Senior UX Architect, UX Director, 2 Front-End Developers",
+        challenge: "Legal & General's legacy quote engine was a single-page form that acted as a significant barrier to lead generation due to information overload, technical failures on mobile, and high cognitive load.",
+        solution: "We reimagined the IA by shifting to a 4-stage progressive disclosure model, translated clinical labels into natural language, and established trust by providing quotes before lead capture.",
+        results: "Eliminated mobile keyboard overlap, reduced cognitive load, increased user confidence, and achieved enterprise-wide adoption of new Canopy-compliant components.",
+        servicesUsed: ["full-overhaul"]
     }
 ];
