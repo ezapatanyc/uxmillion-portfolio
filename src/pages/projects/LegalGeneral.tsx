@@ -339,6 +339,14 @@ const LegalGeneral = () => {
                                             />
                                             <p className="text-sm text-center text-muted-foreground mt-2">Canopy Design System: Standardizing components for consistency</p>
                                         </div>
+                                        <div className="rounded-3xl overflow-hidden border border-border/50 shadow-xl bg-background p-2">
+                                            <img
+                                                src="/uxmillion-uploads/legal-general-form-controls.png"
+                                                alt="New Form Controls System"
+                                                className="w-full h-auto rounded-2xl"
+                                            />
+                                            <p className="text-sm text-center text-muted-foreground mt-2">Updated Form Controls: Defining interaction states for accessibility and clarity.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </motion.div>
@@ -355,6 +363,18 @@ const LegalGeneral = () => {
                                     <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
                                         We developed two distinct prototyping directions. After stakeholder review and internal testing, we moved forward with v2 (interactive-driven) as it better balanced efficiency with user confidence.
                                     </p>
+
+                                    <div className="flex justify-center mb-12">
+                                        <a
+                                            href="https://www.figma.com/proto/VxUwGI4cS8ePDMZBP8cPSI/LGA-audit?page-id=0%3A1&node-id=418-854&p=f&viewport=-2413%2C-482%2C0.07&t=B1CJ1Hlcaqt80cCR-1&scaling=contain&content-scaling=fixed&starting-point-node-id=418%3A854&show-proto-sidebar=1"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-full hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
+                                        >
+                                            <MousePointer className="w-5 h-5" />
+                                            View Interactive Prototype on Figma
+                                        </a>
+                                    </div>
 
                                     <div className="mb-12">
                                         <div className="rounded-3xl overflow-hidden border border-border/50 shadow-xl bg-background p-2">
