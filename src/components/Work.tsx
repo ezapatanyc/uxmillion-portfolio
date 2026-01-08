@@ -101,7 +101,7 @@ const Work = () => {
 
         {/* Mobile: Simple vertical stack - only first 3 cards */}
         <div className="md:hidden space-y-6 px-4 pt-8 max-w-5xl mx-auto">
-          {projects.slice(0, 3).map((project, index) => (
+          {projects.map((project, index) => (
             <ProjectCard
               key={`mobile-${index}`}
               {...project}
