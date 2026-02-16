@@ -14,6 +14,15 @@ export default defineConfig(({ mode }) => ({
     react(),
 
   ].filter(Boolean),
+  build: {
+    target: 'esnext',
+    minify: 'esbuild',
+    rollupOptions: {
+      output: {
+
+      },
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -54,9 +54,25 @@
     --gradient-purple-2: #D8B4FE;
     --gradient-purple-3: #C084FC;
     --gradient-purple-4: #A855F7;
+
+    /* Background Gradient (Light Mode) */
+    --bg-gradient: linear-gradient(135deg, #e8f4f8 0%, #f0f7fa 50%, #fafcfe 100%);
+    --star-color: #0099cc;
+    --star-opacity: 0.15;
+
+    /* Button Glow Theme Variables (Light Mode) */
+    --btn-primary-bg: linear-gradient(135deg, #0099cc, #0077aa);
+    --btn-primary-shadow: rgba(0, 153, 204, 0.3);
+    --btn-secondary-border: rgba(136, 68, 204, 0.4);
+    --btn-secondary-bg: rgba(136, 68, 204, 0.05);
+    --gradient-purple-btn: #8844cc;
   }
 
   .dark {
+    /* Background Gradient (Dark Mode) */
+    --bg-gradient: linear-gradient(135deg, #0f0c29 0%, #1a1a2e 50%, #16213e 100%);
+    --star-color: white;
+    --star-opacity: 0.3;
     /* Homepage Design System Spec */
     --background: 235 30% 8%;
     /* #0e0f1a */
@@ -99,7 +115,15 @@
     --gradient-purple-1: #342456;
     --gradient-purple-2: #2B1E48;
     --gradient-purple-3: #22183A;
+    --gradient-purple-3: #22183A;
     --gradient-purple-4: #110C1D;
+
+    /* Button Glow Theme Variables (Dark Mode) */
+    --btn-primary-bg: linear-gradient(135deg, #00d4ff, #0099cc);
+    --btn-primary-shadow: rgba(0, 212, 255, 0.3);
+    --btn-secondary-border: rgba(179, 102, 255, 0.6);
+    --btn-secondary-bg: rgba(179, 102, 255, 0.1);
+    --gradient-purple-btn: #b366ff;
   }
 }
 
@@ -109,7 +133,9 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter text-lg antialiased;
+    background: var(--bg-gradient);
+    @apply text-foreground font-inter text-lg antialiased;
+    transition: background 0.3s ease, color 0.3s ease;
   }
 
   h1,
@@ -118,7 +144,8 @@
   h4,
   h5,
   h6 {
-    @apply text-heading font-bold;
+    @apply text-heading font-black;
+    letter-spacing: -0.02em;
   }
 
   /* ... existing type scales ... */
@@ -176,10 +203,84 @@
 }
 
 .text-gradient {
-  background: linear-gradient(90deg, theme('colors.neon.cyan'), theme('colors.neon.pink'));
+  background: linear-gradient(135deg, theme('colors.neon.cyan'), hsl(200, 100%, 60%), theme('colors.neon.pink'));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+.interactive-phrase {
+  @apply relative inline-block cursor-pointer transition-all duration-300;
+  background: linear-gradient(135deg, theme('colors.neon.cyan'), theme('colors.neon.pink'));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.interactive-phrase::after {
+  content: '';
+  @apply absolute -bottom-1 left-0 w-full h-[3px] scale-x-0 origin-left transition-transform duration-300 ease-out;
+  background: linear-gradient(90deg, theme('colors.neon.cyan'), theme('colors.neon.pink'));
+}
+
+.interactive-phrase:hover::after {
+  @apply scale-x-100;
+}
+
+.interactive-phrase:hover {
+  filter: drop-shadow(0 0 20px theme('colors.neon.cyan'));
+}
+
+/* Exact gradient from demo file */
+.exact-hero-gradient {
+  background: linear-gradient(135deg, #e8f4f8 0%, #f0f7fa 50%, #fafcfe 100%);
+}
+
+.dark .exact-hero-gradient {
+  background: linear-gradient(135deg, #0f0c29 0%, #1a1a2e 50%, #16213e 100%);
+}
+
+/* Starfield Background */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.stars::before,
+.stars::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--star-color);
+  box-shadow:
+    100px 100px var(--star-color), 200px 150px var(--star-color), 350px 80px var(--star-color),
+    450px 200px var(--star-color), 120px 300px var(--star-color), 280px 250px var(--star-color),
+    520px 120px var(--star-color), 90px 450px var(--star-color), 380px 380px var(--star-color),
+    600px 280px var(--star-color), 150px 520px var(--star-color), 480px 440px var(--star-color);
+  animation: twinkle 3s infinite;
+}
+
+.stars::after {
+  animation-delay: 1.5s;
+}
+
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: var(--star-opacity);
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 /* Hero CTA buttons */
@@ -208,7 +309,7 @@
 
 /* New neon-glass card styling */
 .neon-card {
-  @apply aspect-auto md:aspect-card rounded-3xl relative overflow-hidden transition-all duration-250 ease-out;
+  @apply h-full rounded-3xl relative overflow-hidden transition-all duration-250 ease-out;
   background: var(--glass-bg);
   backdrop-filter: blur(24px) saturate(150%);
   border: 1px solid var(--glass-border);
@@ -487,6 +588,35 @@
   outline-offset: 2px;
 }
 
+/* Button Glow Styles */
+.btn-glow {
+  background: var(--btn-primary-bg) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: 0 10px 30px var(--btn-primary-shadow);
+  transition: all 0.3s ease;
+}
+
+.btn-glow:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px var(--btn-primary-shadow);
+  opacity: 0.95;
+}
+
+.btn-glow-outline {
+  background: transparent !important;
+  color: var(--foreground) !important;
+  border: 2px solid var(--btn-secondary-border) !important;
+  transition: all 0.3s ease;
+}
+
+.btn-glow-outline:hover {
+  background: var(--btn-secondary-bg) !important;
+  border-color: var(--gradient-purple-btn) !important;
+  box-shadow: 0 10px 30px var(--btn-primary-shadow);
+  transform: translateY(-3px);
+}
+
 /* Enhanced button hover states - REMOVED to avoid conflicts with new .btn classes */
 /* .btn-primary and .btn-secondary classes are replaced by .btn--primary and .btn--secondary */
 
@@ -731,12 +861,12 @@
 
   0%,
   100% {
-    text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+    text-shadow: 0 0 4px hsl(var(--primary) / 0.2);
     transform: scale(1);
   }
 
   50% {
-    text-shadow: 0 0 20px hsl(var(--primary) / 0.8);
+    text-shadow: 0 0 8px hsl(var(--primary) / 0.4);
     transform: scale(1.02);
   }
 }

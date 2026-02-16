@@ -33,18 +33,18 @@ const CalendlyBooking = () => {
     <section id="booking" className="section-padding px-6">
       <div className="container mx-auto max-w-5xl">
         <div className="text-center mb-12">
-          <h2 className="section-heading text-4xl mb-6">
+          <h2 className="text-4xl md:text-5xl font-black text-gradient mb-6">
             Book a Discovery Call
           </h2>
-          <p className="text-lg text-theme-body max-w-2xl mx-auto mb-8">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
             Ready to transform your product's user experience? Let's discuss your project and explore how we can work together to create something amazing.
           </p>
         </div>
 
-        <div className="frosted-card hover-lift p-8 md:p-12 text-center">
+        <div className="frosted-card hover-lift p-8 md:p-16 text-center border border-white/5">
           <Button
             onClick={openCalendlyPopup}
-            className="flex items-center gap-3 px-8 py-4 text-lg"
+            className="flex items-center gap-3 px-10 py-6 text-xl btn-glow rounded-full font-bold transition-all"
           >
             Book a Discovery Call
           </Button>

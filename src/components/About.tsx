@@ -85,7 +85,7 @@ const About = () => {
         <div className="mx-auto relative">
           <div className="w-40 h-40 md:w-54 md:h-54 lg:w-68 lg:h-68 rounded-full overflow-hidden border-4 border-primary/30 shadow-lg shadow-primary/20 relative hover-lift">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
-            <img src="/uxmillion-uploads/profile-pic-new.png" alt="Emiliano" className="w-full h-full object-cover" loading="lazy" />
+            <img src="/uxmillion-uploads/profile-pic-2026.jpg" alt="Emiliano" className="w-full h-full object-cover" loading="lazy" />
           </div>
         </div>
 

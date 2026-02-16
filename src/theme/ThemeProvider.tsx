@@ -30,9 +30,9 @@ function applyTheme(theme: Theme) {
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const [theme, setTheme] = useState<Theme>(() => {
-        if (typeof window === "undefined") return "system"; // SSG default
+        if (typeof window === "undefined") return "dark"; // SSG default
         const stored = localStorage.getItem("theme") as Theme | null;
-        return stored ?? "system";
+        return stored ?? "dark";
     });
 
     const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">(() =>

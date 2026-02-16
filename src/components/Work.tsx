@@ -53,7 +53,7 @@ const ProjectCard = ({
             alt={title}
             className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
             loading={isPriority ? undefined : "lazy"}
-            fetchPriority={isPriority ? "high" : undefined}
+            fetchpriority={isPriority ? "high" : undefined}
             decoding="async"
           />
         )}

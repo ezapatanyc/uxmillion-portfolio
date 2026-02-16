@@ -7,11 +7,13 @@ import { Button } from "@/components/ui/button";
 
 // Lazy load ParticleSystem to avoid SSG issues
 const ParticleSystem = lazy(() => import('./ParticleSystem'));
+import ShipsScalesIllustration from './ShipsScalesIllustration';
 const Hero = () => {
   const {
     toast
   } = useToast();
   const heroRef = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const phoneRef = useRef<HTMLImageElement>(null);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -24,6 +26,8 @@ const Hero = () => {
     x: 0,
     y: 0
   });
+  const [showShipsScalesPopup, setShowShipsScalesPopup] = useState(false);
+  const spanRef = useRef<HTMLSpanElement>(null);
   const handleCopyEmail = async () => {
     try {
       await navigator.clipboard.writeText('ezapata.nyc@gmail.com');
@@ -127,12 +131,12 @@ const Hero = () => {
         setTimeout(() => {
           // Remove scroll indicator
           scrollIndicator.remove();
-          
+
           // Add glow effect to contact section
           contactSection.style.transition = 'all 0.6s ease';
           contactSection.style.boxShadow = '0 0 40px hsl(var(--primary) / 0.3)';
           contactSection.style.transform = 'scale(1.02)';
-          
+
           setTimeout(() => {
             contactSection.style.boxShadow = '';
             contactSection.style.transform = '';
@@ -151,13 +155,23 @@ const Hero = () => {
     mediaQuery.addEventListener('change', handleMediaChange);
     return () => mediaQuery.removeEventListener('change', handleMediaChange);
   }, []);
+
   useEffect(() => {
     // Handle scroll parallax effect with RAF throttling
     let ticking = false;
-    
+
     const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
+          // Fade out background gradient on scroll
+          if (bgRef.current) {
+            const scrollPosition = window.scrollY;
+            const viewportHeight = window.innerHeight;
+            // Fade out completely by the time we scroll 100% of the viewport height
+            const opacity = Math.max(0, 1 - (scrollPosition / viewportHeight));
+            bgRef.current.style.opacity = opacity.toString();
+          }
+
           if (!prefersReducedMotion && heroRef.current && imageRef.current && phoneRef.current) {
             const scrollPosition = window.scrollY;
             // Only apply parallax if within first 600px of scroll
@@ -178,7 +192,7 @@ const Hero = () => {
         ticking = true;
       }
     };
-    
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [coords, prefersReducedMotion]);
@@ -229,73 +243,158 @@ const Hero = () => {
       }), 500);
     }
   };
+
+  // Handler for "ships and scales" hover
+  const handleShipsScalesHover = () => {
+    console.log('Hover triggered!');
+    setShowShipsScalesPopup(true);
+  };
+
+  const handleShipsScalesLeave = () => {
+    console.log('Hover leave triggered');
+    setShowShipsScalesPopup(false);
+  };
+
+  // Handler for mobile tap
+  const handleShipsScalesTap = () => {
+    setShowShipsScalesPopup(!showShipsScalesPopup);
+  };
+
+  // Close panel on outside click (mobile)
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (showShipsScalesPopup && spanRef.current && !spanRef.current.contains(event.target as Node)) {
+        setShowShipsScalesPopup(false);
+      }
+    };
+
+    if (showShipsScalesPopup) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [showShipsScalesPopup]);
+
   return <section id="home" ref={heroRef} className="min-h-screen flex items-center px-6 pt-20 pb-16 md:pb-0 overflow-hidden relative cursor-scroll-down" onMouseMove={handleMouseMove} onTouchStart={handleTouch}>
-      {/* P5.js Particle System - positioned absolute with z-index to sit behind content */}
-      <ClientOnly fallback={<div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/10 to-accent/10" />}>
-        <Suspense fallback={<div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/10 to-accent/10" />}>
-          <ParticleSystem className="absolute inset-0 z-0" />
-        </Suspense>
-      </ClientOnly>
-      
-      <div className="max-w-6xl mx-auto relative w-full flex justify-center items-center z-10">
-        {/* Background gradient elements */}
-        <div ref={imageRef} className="absolute inset-0 -z-10 opacity-40">
-          <div className="w-full h-full bg-gradient-to-br from-primary/40 to-accent/40 rounded-full blur-3xl animate-pulse-slow"></div>
-        </div>
-        
-        
-        {/* Hero Content */}
-        <div className="relative z-20 text-center px-6">
-          <div className="animate-fade-in">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-              UX that{" "}
-              <span className="text-gradient bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                ships and scales
-              </span>
-            </h1>
-          </div>
-          
-          <div className="animate-fade-in animation-delay-200">
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-6">
-              I'm <strong className="text-foreground">Emiliano Zapata</strong>, NYC‑based UX designer (remote‑friendly). 
-              I turn complex ideas into intuitive products that users love—and businesses grow with.
-            </p>
-          </div>
+    {/* Dynamic Background Gradient that fades on scroll */}
+    <div ref={bgRef} className="exact-hero-gradient absolute inset-0 -z-20 pointer-events-none"></div>
 
-          {/* Micro-proof */}
-          <div className="animate-fade-in animation-delay-400 mb-8">
-            <div className="text-sm text-muted-foreground">
-              <span className="flex items-center justify-center gap-2">
-                <span className="w-2 h-2 bg-primary rounded-full"></span>
-                15+ projects delivered • Healthcare · Fintech · E‑commerce
+    {/* Starfield Background */}
+    <div className="stars"></div>
+
+    {/* P5.js Particle System - positioned absolute with z-index to sit behind content */}
+    <ClientOnly fallback={<div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/10 to-accent/10" />}>
+      <Suspense fallback={<div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/10 to-accent/10" />}>
+        <ParticleSystem className="absolute inset-0 z-0" />
+      </Suspense>
+    </ClientOnly>
+
+    <div className="max-w-6xl mx-auto relative w-full flex justify-center items-center z-10">
+      {/* Background gradient elements */}
+
+
+
+      {/* Hero Content */}
+      <div className="relative z-20 text-center px-6">
+        {/* Illustration Container - Shows SVG on hover, positioned ABOVE headline */}
+        <div
+          className="relative mb-12 md:mb-20 h-48 md:h-60 flex items-center justify-center cursor-pointer"
+          onMouseEnter={handleShipsScalesHover}
+          onMouseLeave={handleShipsScalesLeave}
+          onClick={handleShipsScalesTap}
+        >
+          <div
+            style={{
+              opacity: showShipsScalesPopup ? 1 : 0,
+              transform: showShipsScalesPopup
+                ? 'translateY(0) scale(1)'
+                : 'translateY(-30px) scale(0.95)',
+              transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+            }}
+          >
+            <ShipsScalesIllustration
+              className="w-full max-w-xl h-auto mx-auto"
+              style={{
+                filter: 'drop-shadow(0 10px 40px rgba(0, 212, 255, 0.3))',
+              }}
+            />
+          </div>
+        </div>
+
+        <div className="animate-fade-in">
+          <h1 className="mb-6 font-black tracking-tight" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', lineHeight: '1.2' }}>
+            UX that{" "}
+            <span
+              ref={spanRef}
+              className="interactive-phrase"
+              onMouseEnter={handleShipsScalesHover}
+              onMouseLeave={handleShipsScalesLeave}
+              onClick={handleShipsScalesTap}
+            >
+              ships and scales
+            </span>
+          </h1>
+        </div>
+
+        <div className="animate-fade-in animation-delay-200">
+          <p className="text-muted-foreground max-w-2xl mx-auto mb-6 font-normal tracking-normal" style={{ fontSize: 'clamp(1rem, 2vw, 1.2rem)', lineHeight: '1.8' }}>
+            I'm <strong className="text-foreground font-semibold">Emiliano Zapata</strong>, NYC‑based UX designer (remote‑friendly).
+            I turn complex ideas into intuitive products that users love—and businesses grow with.
+          </p>
+        </div>
+
+        {/* Micro-proof */}
+        <div className="animate-fade-in animation-delay-400 mb-8">
+          <div style={{ fontSize: '0.9rem' }}>
+            <div className="flex flex-wrap items-center justify-center gap-4 text-slate-700 dark:text-[#00d4ff] font-normal tracking-wide">
+              <span className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-purple-800 dark:bg-[#b366ff]"></span>
+                15+ projects delivered
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-purple-800 dark:bg-[#b366ff]"></span>
+                Healthcare
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-purple-800 dark:bg-[#b366ff]"></span>
+                Fintech
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-purple-800 dark:bg-[#b366ff]"></span>
+                E-commerce
               </span>
             </div>
           </div>
+        </div>
 
-          {/* CTA Buttons */}
-          <div className="animate-fade-in animation-delay-600">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
-              <Button onClick={handleFancyScroll} variant="default" className="flex items-center gap-3 px-8 py-4 text-lg">
-                Get in touch
-              </Button>
-              
-              <Button onClick={() => document.getElementById('work')?.scrollIntoView({
+        {/* CTA Buttons */}
+        <div className="animate-fade-in animation-delay-600">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+            <Button onClick={handleFancyScroll} variant="default" className="flex items-center gap-3 px-8 py-4 text-lg font-semibold btn-glow rounded-full">
+              Get in touch
+            </Button>
+
+            <Button onClick={() => document.getElementById('work')?.scrollIntoView({
               behavior: prefersReducedMotion ? 'auto' : 'smooth'
-            })} variant="outline" className="flex items-center gap-3 px-8 py-4 text-lg">
-                View portfolio
-              </Button>
-            </div>
-            
-            {/* Copy email fallback */}
-            
+            })} variant="outline" className="flex items-center gap-3 px-8 py-4 text-lg font-semibold btn-glow-outline rounded-full">
+              View portfolio
+            </Button>
           </div>
+
+          {/* Copy email fallback */}
+
         </div>
       </div>
-      
-      {/* Scroll down arrow indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-        
-      </div>
-    </section>;
+    </div>
+
+    {/* Scroll down arrow indicator */}
+    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+
+    </div>
+  </section>;
 };
 export default Hero;
