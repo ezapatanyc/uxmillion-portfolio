@@ -1,6 +1,18 @@
 import { Timeline } from "@/components/ui/timeline";
 import { CheckCircle2, Users, BarChart3, HeartHandshake } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 const About = () => {
+  const [showBubble, setShowBubble] = useState(false);
+
+  useEffect(() => {
+    if (showBubble) {
+      const timer = setTimeout(() => setShowBubble(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showBubble]);
+
   const timelineData = [{
     title: "Discover",
     content: <div className="frosted-card p-6 hover-lift">
@@ -83,10 +95,40 @@ const About = () => {
 
       <div className="grid md:grid-cols-[1fr_1.5fr] gap-6 md:gap-10 items-center frosted-card p-6 md:p-8 py-8 md:py-12 rounded-xl about-card mx-[15px] md:mx-0">
         <div className="mx-auto relative">
-          <div className="w-40 h-40 md:w-54 md:h-54 lg:w-68 lg:h-68 rounded-full overflow-hidden border-4 border-primary/30 shadow-lg shadow-primary/20 relative hover-lift">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
-            <img src="/uxmillion-uploads/profile-pic-2026.jpg" alt="Emiliano" className="w-full h-full object-cover" loading="lazy" />
-          </div>
+          <AnimatePresence>
+            {showBubble && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, y: 10, x: "-50%" }}
+                animate={{ opacity: 1, scale: 1, y: 0, x: "-50%" }}
+                exit={{ opacity: 0, scale: 0.8, y: 10, x: "-50%" }}
+                className="absolute -top-16 md:-top-20 left-1/2 z-[60] pointer-events-none"
+                style={{ filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.3))' }}
+              >
+                <div className="relative px-5 py-2.5 rounded-2xl bg-slate-900/95 backdrop-blur-xl border-2 border-primary/50 shadow-[0_0_15px_rgba(78,214,255,0.3)]">
+                  <span className="text-primary font-black text-xs md:text-sm whitespace-nowrap tracking-tight uppercase">
+                    Check out my case studies above! ☝️
+                  </span>
+                  {/* Speech Bubble Arrow */}
+                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-slate-900/95 border-r-2 border-b-2 border-primary/50 rotate-45"></div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setShowBubble(true)}
+            className="w-40 h-40 md:w-54 md:h-54 lg:w-68 lg:h-68 rounded-full overflow-hidden border-4 border-primary/30 shadow-lg shadow-primary/20 relative cursor-pointer z-10"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10 pointer-events-none"></div>
+            <img
+              src="/uxmillion-uploads/profile-pic-2026.jpg"
+              alt="Emiliano"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </motion.div>
         </div>
 
         <div>
