@@ -37,14 +37,14 @@ const ServiceCard = ({
 
   return (
     <Card
-      className="frosted-card group h-full flex flex-col relative overflow-visible transition-all duration-300 border border-white/5 hover-lift bg-transparent"
+      className="frosted-card group h-full flex flex-col items-start text-left relative overflow-visible transition-all duration-300 border border-border/10 hover-lift bg-transparent"
       role="region"
       aria-labelledby={titleId}
     >
-      <CardHeader className="pb-4 pt-8 px-6 relative z-10">
-        <div className="flex flex-col gap-6">
-          <div className="flex items-center justify-between">
-            <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shadow-lg backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:border-primary/30" aria-hidden="true">
+      <CardHeader className="w-full pb-4 pt-8 px-6 relative z-10">
+        <div className="flex flex-col gap-6 text-left items-start">
+          <div className="flex items-center justify-between w-full">
+            <div className="w-14 h-14 rounded-2xl bg-foreground/5 border border-border/10 flex items-center justify-center shadow-lg backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:border-primary/30" aria-hidden="true">
               <span className="text-3xl">{icon}</span>
             </div>
             {badge && (
@@ -58,40 +58,42 @@ const ServiceCard = ({
             <CardTitle id={titleId} className="text-2xl font-black text-gradient">
               {title}
             </CardTitle>
-            <p className="text-lg leading-snug font-bold text-white/90">
+            <p className="text-lg leading-snug font-bold text-foreground/90">
               {tagline}
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-white/5 border border-white/5 text-sm leading-relaxed">
-            <span className="font-black text-[11px] text-neon-cyan uppercase tracking-[0.1em] mr-2">BEST FOR</span>
+          <div className="p-4 rounded-xl bg-foreground/5 border border-border/5 text-sm leading-relaxed">
+            <span className="font-black text-[11px] text-primary uppercase tracking-[0.1em] mr-2">BEST FOR</span>
             <span className="text-muted-foreground font-medium">{bestFor}</span>
           </div>
         </div>
       </CardHeader>
 
-      <CardContent className="flex-1 flex flex-col px-6 pb-8 relative z-10">
-        <div className="my-4 border-t border-white/5" />
+      <CardContent className="w-full flex-1 flex flex-col items-start text-left px-6 pb-8 relative z-10">
+        <div className="w-full my-4 border-t border-border/5" />
 
-        <ul className="space-y-4 mb-8 flex-1">
+        <ul className="w-full space-y-4 mb-8 flex-1">
           {bullets.map((bullet, idx) => (
             <li key={idx} className="flex items-start gap-3 text-sm font-medium leading-relaxed text-muted-foreground group-hover:text-foreground/90 transition-colors">
-              <Check className="w-4 h-4 mt-0.5 text-neon-cyan shrink-0" strokeWidth={3} />
+              <Check className="w-4 h-4 mt-0.5 text-primary shrink-0" strokeWidth={3} />
               <span>{bullet}</span>
             </li>
           ))}
         </ul>
 
         {/* Investment & Timeline */}
-        <div className="mb-8 p-4 rounded-xl bg-white/5 border border-white/5">
-          <div className="text-[10px] font-black text-neon-cyan uppercase tracking-[0.15em] mb-1">Timeline & Investment</div>
-          <div className="text-sm font-bold text-white/80">{timelinePrice}</div>
+        <div className="w-full mb-8 p-4 rounded-xl bg-foreground/5 border border-border/5">
+          <div className="text-[10px] font-black text-primary uppercase tracking-[0.15em] mb-1">Timeline & Investment</div>
+          <div className="text-sm font-bold text-foreground/80">{timelinePrice}</div>
         </div>
 
         <div className="mt-auto space-y-4">
           <Button
             onClick={ctaAction}
-            className="w-full h-12 btn-glow text-white font-bold rounded-full active:scale-[0.98] transition-all"
+            variant="default"
+            size="lg"
+            className="w-full font-bold rounded-full active:scale-[0.98] transition-all"
           >
             {ctaText}
           </Button>
@@ -212,7 +214,7 @@ const Services = () => {
 
           <nav className="hidden md:flex items-center gap-6">
             <a href="#packages" className="text-muted-foreground hover:text-foreground transition-colors">Packages</a>
-            <Button onClick={openCalendlyPopup} variant="default" className="flex items-center gap-3 px-6 py-2 btn-glow rounded-full font-bold">
+            <Button onClick={openCalendlyPopup} variant="default" size="lg" className="flex items-center gap-3 font-bold rounded-full">
               Book a Call
             </Button>
           </nav>
@@ -220,7 +222,7 @@ const Services = () => {
       </header>
 
       {/* Hero Section */}
-      <Hero className="pt-16 pb-12 px-6 text-center space-y-4 relative z-10 min-h-0">
+      <Hero className="pt-8 pb-12 px-6 text-center space-y-4 relative z-10 min-h-0">
         <BgGradient
           gradientColors="purple"
           gradientSize="lg"
@@ -228,10 +230,28 @@ const Services = () => {
         />
         <div className="max-w-7xl mx-auto">
           <div className="mb-8">
-            <h1 className="animate-fade-in mb-4 font-black tracking-tight" style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', lineHeight: '1.2' }}>
-              Flexible UX packages for{" "}
-              <span className="interactive-phrase">
-                growing startups
+            <h1 className="mb-4 font-black tracking-tight" style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', lineHeight: '1.2' }}>
+              <TextStagger
+                text="Flexible UX packages for "
+                as="span"
+                direction="domino"
+                stagger={0.02}
+                className="inline-block text-primary"
+              />
+              <span className="inline-block">
+                <TextStagger
+                  text="growing startups"
+                  as="span"
+                  direction="jump"
+                  stagger={0.03}
+                  className="inline-block text-primary"
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 15,
+                    delay: 0.8
+                  }}
+                />
               </span>
             </h1>
             <div className="animate-fade-in animation-delay-200">
@@ -241,7 +261,7 @@ const Services = () => {
             </div>
           </div>
 
-          <AnimatedContainer transition={{ delay: 0.4 }}>
+          <AnimatedContainer transition={{ delay: 0 }}>
             <div className="grid md:grid-cols-3 gap-8 mb-4">
               {services.map((service, index) => (
                 <ServiceCard key={index} {...service} index={index} />
@@ -272,12 +292,12 @@ const Services = () => {
               {fastChooser.map((item, index) => (
                 <div
                   key={index}
-                  className="group relative p-8 rounded-xl frosted-card border border-white/5 hover-lift cursor-default overflow-hidden bg-transparent"
+                  className="group relative p-8 rounded-xl frosted-card border border-border/10 hover-lift cursor-default overflow-hidden bg-transparent"
                 >
                   <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   <div className="relative z-10 flex flex-col items-center text-center gap-6">
-                    <p className="text-white/80 font-bold text-lg leading-tight">
+                    <p className="text-foreground/80 font-bold text-lg leading-tight">
                       {item.condition}
                     </p>
 
@@ -294,7 +314,7 @@ const Services = () => {
             </div>
           </div>
 
-          <div className="text-center frosted-card border border-white/5 p-12 rounded-xl backdrop-blur-sm bg-transparent">
+          <div className="text-center frosted-card border border-border/10 p-12 rounded-xl backdrop-blur-sm bg-transparent">
             <h3 className="text-2xl font-black mb-8 text-gradient">Add-on Services</h3>
             <div className="flex flex-wrap justify-center gap-3">
               {addOnServices.map((addon, index) => (

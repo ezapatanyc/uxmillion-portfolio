@@ -6,7 +6,7 @@ import { HTMLMotionProps, Transition, motion, stagger } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
-export type TransformDirectionType = "top" | "bottom" | "left" | "right" | "z"
+export type TransformDirectionType = "top" | "bottom" | "left" | "right" | "z" | "domino" | "jump" | "pop"
 export interface BgGradientProps extends React.HTMLAttributes<HTMLDivElement> {
   gradientSize?: keyof typeof GRADIENT_SIZES | { width: string; height: string }
   gradientPosition?: keyof typeof GRADIENT_POSITIONS | { x: string; y: string }
@@ -39,14 +39,16 @@ export interface AnimatedContainerProps extends HTMLMotionProps<"p"> {
 export const transformVariants = (direction?: TransformDirectionType) => ({
   hidden: {
     x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,
-    y: direction === "top" ? "-100%" : direction === "bottom" ? "100%" : 0,
-    scale: direction === "z" ? 0 : 1,
+    y: direction === "top" || direction === "jump" ? -40 : direction === "bottom" ? 40 : 0,
+    scale: direction === "z" || direction === "pop" ? 0 : 1,
+    rotateX: direction === "domino" ? 90 : 0,
     opacity: 0,
   },
   visible: {
     x: 0,
     y: 0,
     scale: 1,
+    rotateX: 0,
     opacity: 1,
   },
 })
@@ -140,8 +142,8 @@ export function BgGradient({
       .join(", ")
 
   const gradientStyle = `radial-gradient(${typeof gradientSize === "string"
-      ? `${GRADIENT_SIZES[gradientSize].width} ${GRADIENT_SIZES[gradientSize].height}`
-      : `${gradientSize.width} ${gradientSize.height}`
+    ? `${GRADIENT_SIZES[gradientSize].width} ${GRADIENT_SIZES[gradientSize].height}`
+    : `${gradientSize.width} ${gradientSize.height}`
     } at ${typeof gradientPosition === "string"
       ? `${GRADIENT_POSITIONS[gradientPosition].x} ${GRADIENT_POSITIONS[gradientPosition].y}`
       : `${gradientPosition.x} ${gradientPosition.y}`
@@ -241,7 +243,7 @@ export const AnimatedContainer = React.forwardRef<
       transition={{
         duration: props.transition?.duration ?? 0.4,
         ease: props.transition?.ease ?? "easeIn",
-        delay: props.transition?.delay ?? 0.4,
+        delay: props.transition?.delay ?? 0.1,
         ...props.transition,
       }}
       {...props}

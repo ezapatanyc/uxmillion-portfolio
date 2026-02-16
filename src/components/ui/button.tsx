@@ -10,10 +10,10 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "btn--primary", // Updated to use new btn--primary class
+        default: "btn--primary btn-glow", // Updated to use hero glow style by default
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "btn--secondary", // Updated to use new btn--secondary class
+        outline: "btn--secondary btn-glow-outline", // Updated to use hero outline glow style by default
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
@@ -21,8 +21,8 @@ const buttonVariants = cva(
       },
       size: {
         default: "", // Removed default size since it's handled by .btn class
-        sm: "text-sm",
-        lg: "text-lg",
+        sm: "text-sm py-2 px-4 h-9", // Adjusted for smaller buttons
+        lg: "text-lg px-8 py-4", // Match hero button dimensions
         icon: "h-10 w-10 !p-0",
       },
     },

@@ -67,7 +67,7 @@ const Resume = () => {
               <Button
                 variant="outline"
                 onClick={scrollToContact}
-                className="flex items-center gap-2 group border-primary/20 hover:bg-primary/5"
+                className="flex items-center gap-2 group"
               >
                 <Mail className="w-4 h-4 group-hover:rotate-12 transition-transform" />
                 Let’s Connect

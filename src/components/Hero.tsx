@@ -374,13 +374,13 @@ const Hero = () => {
         {/* CTA Buttons */}
         <div className="animate-fade-in animation-delay-600">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
-            <Button onClick={handleFancyScroll} variant="default" className="flex items-center gap-3 px-8 py-4 text-lg font-semibold btn-glow rounded-full">
+            <Button onClick={handleFancyScroll} variant="default" size="lg" className="flex items-center gap-3 font-semibold rounded-full">
               Get in touch
             </Button>
 
             <Button onClick={() => document.getElementById('work')?.scrollIntoView({
               behavior: prefersReducedMotion ? 'auto' : 'smooth'
-            })} variant="outline" className="flex items-center gap-3 px-8 py-4 text-lg font-semibold btn-glow-outline rounded-full">
+            })} variant="outline" size="lg" className="flex items-center gap-3 font-semibold rounded-full">
               View portfolio
             </Button>
           </div>

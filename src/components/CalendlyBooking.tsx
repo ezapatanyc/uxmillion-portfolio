@@ -44,7 +44,9 @@ const CalendlyBooking = () => {
         <div className="frosted-card hover-lift p-8 md:p-16 text-center border border-white/5">
           <Button
             onClick={openCalendlyPopup}
-            className="flex items-center gap-3 px-10 py-6 text-xl btn-glow rounded-full font-bold transition-all"
+            variant="default"
+            size="lg"
+            className="flex items-center gap-3 font-bold transition-all rounded-full"
           >
             Book a Discovery Call
           </Button>

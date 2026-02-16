@@ -395,7 +395,7 @@ const Birder = () => {
                             <div className="flex justify-center">
                                 <div className="relative max-w-[280px] mx-auto border-8 border-gray-900 rounded-[3rem] overflow-hidden shadow-2xl">
                                     <img
-                                        src="/assets/projects/birder/app-demo.gif"
+                                        src="/assets/projects/birder/birder_animation.gif"
                                         alt="Birder App Interaction Demo"
                                         className="w-full h-auto block"
                                     />

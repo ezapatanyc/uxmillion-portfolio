@@ -133,7 +133,7 @@ const ProjectProtection = ({ project, children }: ProjectProtectionProps) => {
                                     />
                                     {error && <p className="text-xs text-destructive font-medium">Incorrect password</p>}
 
-                                    <Button type="submit" className="w-full h-11 text-base font-semibold">
+                                    <Button type="submit" variant="default" size="lg" className="w-full font-semibold">
                                         Unlock Full Case Study <ArrowRight className="w-4 h-4 ml-2" />
                                     </Button>
                                 </form>
@@ -198,7 +198,7 @@ const ProjectProtection = ({ project, children }: ProjectProtectionProps) => {
                                 {error && <p className="text-sm text-destructive font-medium px-1">Incorrect password</p>}
                             </div>
 
-                            <Button type="submit" className="w-full h-12 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground">
+                            <Button type="submit" variant="default" size="lg" className="w-full font-semibold">
                                 Unlock Case Study <ArrowRight className="w-4 h-4 ml-2" />
                             </Button>
                         </form>
@@ -214,10 +214,11 @@ const ProjectProtection = ({ project, children }: ProjectProtectionProps) => {
 
                         <Button
                             variant="outline"
-                            className="w-full h-11 border-primary/20 hover:bg-primary/5 hover:text-primary hover:border-primary/50"
+                            size="lg"
+                            className="w-full gap-2"
                             onClick={() => window.location.href = `mailto:ezapata.nyc@gmail.com?subject=Access Request: ${project.title}`}
                         >
-                            <Mail className="w-4 h-4 mr-2" />
+                            <Mail className="w-4 h-4" />
                             Request Access
                         </Button>
                     </div>

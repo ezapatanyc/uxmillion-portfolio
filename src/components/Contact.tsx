@@ -28,7 +28,7 @@ const Contact = () => {
         </h2>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <Button asChild className="flex items-center gap-3 px-8 py-4 text-lg" variant="default">
+          <Button asChild size="lg" className="flex items-center gap-3" variant="default">
             <a href="mailto:ezapata.nyc@gmail.com?subject=Let's work together&body=Hi Emiliano,%0D%0A%0D%0AI'd like to discuss a project with you.">
               <Mail className="w-5 h-5" />
               Send Email
@@ -36,7 +36,7 @@ const Contact = () => {
             </a>
           </Button>
 
-          <Button asChild className="flex items-center gap-3 px-8 py-4 text-lg" variant="outline">
+          <Button asChild size="lg" className="flex items-center gap-3" variant="outline">
             <a href="https://www.linkedin.com/in/ezapata00/" target="_blank" rel="noopener noreferrer">
               <Linkedin className="w-5 h-5" />
               LinkedIn

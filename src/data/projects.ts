@@ -88,7 +88,7 @@ export const projects: Project[] = [
     },
     {
         id: "birder",
-        image: "/uxmillion-uploads/6366f2b9-ed19-4d2e-8cdb-c898f220edda.png",
+        image: "/assets/projects/birder/birder-hero-update.png", // NOTE: Please save your new image to this location: public/assets/projects/birder/birder-hero-update.png
         title: "Birder",
         role: "Role: UX Designer",
         description: "An app to identify and explore birds all around the world.",
