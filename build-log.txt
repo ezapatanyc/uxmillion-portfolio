@@ -1,0 +1,171 @@
+
+> vite_react_shadcn_ts@0.0.0 build
+> vite-react-ssg build
+
+
+[vite-react-ssg] Build for client...
+vite v5.4.10 building for production...
+transforming...
+Browserslist: browsers data (caniuse-lite) is 17 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 1641 modules transformed.
+x Build failed in 4.19s
+
+[vite-react-ssg] An internal error occurred.
+[vite-react-ssg] Please report an issue, if none already exists: https://github.com/daydreamer-riri/vite-react-ssg/issues
+node:internal/process/promises:289
+            triggerUncaughtException(err, true /* fromPromise */);
+            ^
+
+[vite:esbuild] Transform failed with 1 error:
+/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/hero-animated.tsx:41:5: ERROR: Expected ";" but found ":"
+file: /Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/hero-animated.tsx:41:5
+
+Expected ";" but found ":"
+39 |  hidden: {
+40 |    x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,
+41 |      y: direction === "top" ? -40 : direction === "bottom" ? 40 : 0,
+   |       ^
+42 |        scale: direction === "z" ? 0 : 1,
+43 |          rotateX: direction === "domino" ? 90 : 0,
+
+    at failureErrorWithLog (/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/esbuild/lib/main.js:1472:15)
+    at /Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/esbuild/lib/main.js:755:50
+    at responseCallbacks.<computed> (/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/esbuild/lib/main.js:622:9)
+    at handleIncomingPacket (/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/esbuild/lib/main.js:677:12)
+    at Socket.readFromStdout (/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/esbuild/lib/main.js:600:7)
+    at Socket.emit (node:events:519:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:191:23) {
+  errors: [Getter/Setter],
+  warnings: [Getter/Setter],
+  frame: '\n' +
+    'Expected ";" but found ":"\n' +
+    '39 |  hidden: {\n' +
+    '40 |    x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,\n' +
+    '41 |      y: direction === "top" ? -40 : direction === "bottom" ? 40 : 0,\n' +
+    '   |       ^\n' +
+    '42 |        scale: direction === "z" ? 0 : 1,\n' +
+    '43 |          rotateX: direction === "domino" ? 90 : 0,\n',
+  loc: {
+    column: 5,
+    file: '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/hero-animated.tsx',
+    length: 1,
+    line: 41,
+    lineText: '    y: direction === "top" ? -40 : direction === "bottom" ? 40 : 0,',
+    namespace: '',
+    suggestion: ';'
+  },
+  code: 'PLUGIN_ERROR',
+  plugin: 'vite:esbuild',
+  hook: 'transform',
+  id: '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/hero-animated.tsx',
+  watchFiles: [
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/index.html',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/main.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/package.json',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/routes.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/lib/analytics.ts',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/index.css',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/vite-react-ssg/dist/index.mjs',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/react/jsx-runtime.js',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/pages/Index.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/App.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/pages/projects/Pergolade.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/pages/projects/CityPups.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/pages/projects/FidemDD.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/pages/projects/Birder.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/pages/projects/LegalGeneral.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/pages/projects/RailBuild.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/pages/NotFound.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/react/index.js',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/pages/Services.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/react-dom/index.js',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/vite-react-ssg/dist/shared/vite-react-ssg.C0y5wbxl.mjs',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/vite-react-ssg/dist/shared/vite-react-ssg.CjIppNIS.mjs',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/vite-react-ssg/dist/shared/vite-react-ssg.C6pK7rvr.mjs',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/react-router-dom/dist/index.js',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/vite-react-ssg/dist/shared/vite-react-ssg.BxjO14Et.mjs',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/vite-react-ssg/node_modules/react-helmet-async/lib/index.module.js',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/mixpanel-browser/dist/mixpanel.module.js',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/react/cjs/react.production.min.js',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/prop-types/index.js',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/shallowequal/index.js',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/react-fast-compare/index.js',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/react-dom/cjs/react-dom.production.min.js',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/react/cjs/react-jsx-runtime.production.min.js',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/invariant/browser.js',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/sonner.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/toaster.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/tooltip.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/theme/ThemeProvider.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/button.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ThemeToggle.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/@tanstack/react-query/build/modern/index.js',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/react-helmet-async/lib/index.esm.js',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/lucide-react/dist/esm/lucide-react.js',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ClientOnly.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/Navbar.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/SEOHead.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/Hero.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/lib/jsonLd.ts',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/About.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/Testimonials.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/Work.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/Resume.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ClosingCTA.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/Footer.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/Contact.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/node_modules/scheduler/index.js',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/VideoIntro.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/card.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/CalendlyBooking.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/hero-animated.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/badge.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ParticleSystem.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/vite-env.d.ts',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/data/projects.ts',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/data/services.ts',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/hooks/use-toast.ts',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/hooks/useAccessibleMotion.ts',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/lib/siteConfig.ts',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/lib/utils.ts',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/use-toast.ts',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/AnimatedPortfolioGallery.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/CaseStudyLayout.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/CaseStudyPasswordDialog.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/FPOPlaceholder.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/P5Canvas.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ProjectNav.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ProjectProtection.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ShipsScalesIllustration.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/UXSystemsPanel.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/hooks/use-mobile.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/accordion.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/alert-dialog.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/alert.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/animated-gallery.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/aspect-ratio.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/avatar.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/breadcrumb.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/calendar.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/carousel.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/chart.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/checkbox.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/collapsible.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/command.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/context-menu.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/dialog.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/drawer.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/dropdown-menu.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/form.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/hover-card.tsx',
+    '/Users/ez/Desktop/cozy-purple-canvas-51-main/src/components/ui/input-otp.tsx',
+    ... 1613 more items
+  ]
+}
+
+Node.js v20.14.0
