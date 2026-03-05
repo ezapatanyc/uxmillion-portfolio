@@ -16,9 +16,12 @@ const ParticleSystem = ({ className }: ParticleSystemProps) => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    // ── Reduce particle count for better perf on all devices ──
+    const particleCount = 50; // was 80 — fewer particles = dramatically less work
+    const connectionDistance = 120; // tighter threshold = fewer connections drawn
+    const connectionDistanceSq = connectionDistance * connectionDistance; // avoid sqrt
+
     let particles: { x: number; y: number; vx: number; vy: number; radius: number; opacity: number }[] = [];
-    const particleCount = 80;
-    const connectionDistance = 150;
 
     // Cache colors to avoid recalculation per frame
     let connectionRgb = '0, 153, 204';
@@ -33,10 +36,10 @@ const ParticleSystem = ({ className }: ParticleSystemProps) => {
       particleRgb = isLight ? '0, 153, 204' : '0, 255, 255';
     };
 
-    // Initial color set
     updateColors();
 
     let animationFrameId: number;
+    let resizeTimeout: ReturnType<typeof setTimeout> | null = null;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -52,28 +55,30 @@ const ParticleSystem = ({ className }: ParticleSystemProps) => {
           vx: (Math.random() - 0.5) * 0.5,
           vy: (Math.random() - 0.5) * 0.5,
           radius: Math.random() * 2 + 1,
-          opacity: Math.random() * 0.5 + 0.3
+          opacity: Math.random() * 0.5 + 0.3,
         });
       }
     };
 
     const update = () => {
-      particles.forEach(particle => {
-        particle.x += particle.vx;
-        particle.y += particle.vy;
+      const w = canvas.width;
+      const h = canvas.height;
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
 
-        // Wrap around edges
-        if (particle.x < 0) particle.x = canvas.width;
-        if (particle.x > canvas.width) particle.x = 0;
-        if (particle.y < 0) particle.y = canvas.height;
-        if (particle.y > canvas.height) particle.y = 0;
-      });
+        if (p.x < 0) p.x = w;
+        else if (p.x > w) p.x = 0;
+        if (p.y < 0) p.y = h;
+        else if (p.y > h) p.y = 0;
+      }
     };
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw connections
+      // ── Draw connections — use squared distance to avoid Math.sqrt ──
       ctx.lineWidth = 0.5;
       for (let i = 0; i < particles.length; i++) {
         const p1 = particles[i];
@@ -81,11 +86,12 @@ const ParticleSystem = ({ className }: ParticleSystemProps) => {
           const p2 = particles[j];
           const dx = p1.x - p2.x;
           const dy = p1.y - p2.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+          const distSq = dx * dx + dy * dy;
 
-          if (distance < connectionDistance) {
+          if (distSq < connectionDistanceSq) {
+            // Only compute sqrt when we actually need opacity
+            const distance = Math.sqrt(distSq);
             const opacity = (1 - distance / connectionDistance) * 0.3;
-            // Use cached colors
             ctx.strokeStyle = `rgba(${connectionRgb}, ${opacity})`;
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
@@ -95,26 +101,23 @@ const ParticleSystem = ({ className }: ParticleSystemProps) => {
         }
       }
 
-      // Draw particles
-      particles.forEach(particle => {
-        ctx.fillStyle = `rgba(${particleRgb}, ${particle.opacity})`;
+      // ── Draw particles — skip per-particle radial gradient (major perf win) ──
+      // Instead, draw a slightly larger, semi-transparent circle for the glow
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+
+        // Glow — simple filled circle instead of radialGradient
+        ctx.fillStyle = `rgba(${particleRgb}, ${p.opacity * 0.15})`;
         ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, p.radius * 3, 0, Math.PI * 2);
         ctx.fill();
 
-        // Add glow effect
-        const gradient = ctx.createRadialGradient(
-          particle.x, particle.y, 0,
-          particle.x, particle.y, particle.radius * 3
-        );
-        gradient.addColorStop(0, `rgba(${connectionRgb}, ${particle.opacity * 0.5})`);
-        gradient.addColorStop(1, `rgba(${connectionRgb}, 0)`);
-
-        ctx.fillStyle = gradient;
+        // Core dot
+        ctx.fillStyle = `rgba(${particleRgb}, ${p.opacity})`;
         ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.radius * 3, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fill();
-      });
+      }
     };
 
     const animate = () => {
@@ -128,10 +131,14 @@ const ParticleSystem = ({ className }: ParticleSystemProps) => {
     init();
     animate();
 
-    const handleResize = () => resize();
+    // Debounced resize — avoids expensive re-layout on every pixel of drag
+    const handleResize = () => {
+      if (resizeTimeout) clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(resize, 150);
+    };
     window.addEventListener('resize', handleResize);
 
-    // Listen for system theme changes if needed
+    // Listen for system theme changes
     const mediaQuery = window.matchMedia('(prefers-color-scheme: light)');
     const handleThemeChange = () => {
       if (theme === 'system') updateColors();
@@ -141,25 +148,9 @@ const ParticleSystem = ({ className }: ParticleSystemProps) => {
     return () => {
       window.removeEventListener('resize', handleResize);
       mediaQuery.removeEventListener('change', handleThemeChange);
+      if (resizeTimeout) clearTimeout(resizeTimeout);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [theme]);
-
-  // Handle system theme change specifically if theme is 'system'
-  useEffect(() => {
-    if (theme === 'system') {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: light)');
-      const handleChange = () => {
-        // Force re-render/logic update by toggling context if needed, 
-        // but the main effect dependency on `theme` might not catch system changes directly without this
-        // Actually, easiest way is to re-trigger the main effect logic, but since that one depends on `theme` string...
-        // We can just rely on the component re-rendering if `useTheme` handles system changes? 
-        // Usually `useTheme` from libraries handles this.
-        // If not, we might need a separate state or force update. 
-      };
-      mediaQuery.addEventListener('change', handleChange);
-      return () => mediaQuery.removeEventListener('change', handleChange);
-    }
   }, [theme]);
 
   return <canvas ref={canvasRef} className={className} />;

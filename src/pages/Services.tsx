@@ -17,12 +17,105 @@ import {
   X,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useCallback, lazy, Suspense } from "react";
 import CalendlyBooking from "@/components/CalendlyBooking";
 import { AnimatedContainer, BgGradient, Hero, TextStagger } from "@/components/ui/hero-animated";
 import SEOHead from "@/components/SEOHead";
 import ThemeToggle from "@/components/ThemeToggle";
-import ParticleSystem from "@/components/ParticleSystem";
+
+// Lazy-load the heavy canvas particle system — not needed for first paint
+const ParticleSystem = lazy(() => import("@/components/ParticleSystem"));
+
+/* ───────────────────────────────────────────────
+   Static data — hoisted outside the component
+   so arrays are NOT recreated on every render
+   ─────────────────────────────────────────────── */
+
+const ENGAGEMENTS_DATA = [
+  {
+    icon: "🔍",
+    title: "UX Audit Sprint",
+    subtitle: "fast clarity",
+    bestFor: "Teams with an existing product that needs clear, prioritized fixes.",
+    timeline: "5–7 days",
+    deliverables: [
+      "Annotated findings (screenshots + notes)",
+      "Prioritized fix list (high / med / low impact)",
+      "UX recommendations + quick wireframe concepts (1–2 key areas)",
+      'A "next 2 weeks" action plan for design + dev',
+    ],
+    investment: "Starts at $1,500",
+    investmentNote: "Most audits land $2,500–$3,500 depending on scope.",
+    ctaText: "Book a 15-min fit call",
+  },
+  {
+    icon: "🎨",
+    title: "MVP Design Sprint",
+    subtitle: "launch what matters",
+    bestFor: "Founders building an MVP or teams validating a new workflow.",
+    timeline: "2–4 weeks",
+    deliverables: [
+      "User flow(s) + key screens mapped",
+      "Wireframes → high-fidelity UI for core journey",
+      "Clickable prototype for review / testing",
+      "Handoff-ready specs (states, behaviors, responsive notes)",
+    ],
+    investment: "Typically $5K–$10K",
+    investmentNote: "Depends on # of flows / screens.",
+    ctaText: "Start your MVP",
+    badge: "Most Popular",
+  },
+  {
+    icon: "🔄",
+    title: "Product UX Overhaul",
+    subtitle: "scale the system",
+    bestFor: "Growing products that need stronger foundations and cleaner workflows.",
+    timeline: "4–8 weeks",
+    deliverables: [
+      "Discovery + workflow diagnosis",
+      "Redesign of key journeys (navigation, onboarding, core tasks)",
+      "Component / pattern foundation (design system starter)",
+      "Iteration plan + rollout guidance",
+    ],
+    investment: "Starts at $15K+",
+    investmentNote: "Scope-based.",
+    ctaText: "Plan your overhaul",
+  },
+] as const;
+
+const PROBLEMS_SOLVED = [
+  { text: "Simplify complex workflows", detail: "reduce steps, confusion, and drop-offs" },
+  { text: "Improve usability + conversion", detail: "clearer paths, fewer dead ends" },
+  { text: "Create scalable UX systems", detail: "patterns, components, consistent behavior" },
+  { text: "Validate direction before building", detail: "so you don't ship guesswork" },
+] as const;
+
+const ADD_ONS = [
+  { name: "Dev-ready handoff pack", price: "+$500", detail: "interaction notes, component states, redlines, acceptance checklist" },
+  { name: "User testing lite", price: "+$750", detail: "3–5 sessions + findings summary" },
+  { name: "Copy polish", price: "+$300", detail: "improve clarity + scannability for key screens" },
+  { name: "Analytics / metrics setup guidance", price: "+$300", detail: "what to track + how to interpret" },
+] as const;
+
+const PROCESS_STEPS = [
+  { icon: Search, title: "Discover", description: "Align on goals, users, constraints." },
+  { icon: Target, title: "Define", description: "Pick the highest-impact problems to solve first." },
+  { icon: PenTool, title: "Design", description: "Workflows + UI built for clarity and speed." },
+  { icon: TestTube, title: "Test", description: "Validate quickly, reduce risk." },
+  { icon: Rocket, title: "Ship", description: "Specs that devs can actually implement." },
+] as const;
+
+const STARTER_DELIVERABLES = [
+  "Quick audit + prioritized improvements",
+  "Revised wireframe or layout concept",
+  "Lightweight implementation notes",
+] as const;
+
+const NOT_A_FIT = [
+  "You want unlimited revisions without scope control",
+  "You need full brand strategy or logo design as the main deliverable",
+  'You\'re looking for "pretty UI" without addressing product clarity / workflows',
+] as const;
 
 /* ───────────────────────────────────────────────
    Engagement Card
@@ -45,7 +138,7 @@ const EngagementCard = ({
   subtitle: string;
   bestFor: string;
   timeline: string;
-  deliverables: string[];
+  deliverables: readonly string[];
   investment: string;
   investmentNote?: string;
   ctaText: string;
@@ -181,6 +274,8 @@ const ProcessStep = ({
 const Services = () => {
   const navigate = useNavigate();
 
+  // Load Calendly assets once — CalendlyBooking also checks,
+  // but this ensures buttons higher on the page work immediately.
   useEffect(() => {
     if (!document.querySelector('link[href*="calendly.com"]')) {
       const link = document.createElement("link");
@@ -197,7 +292,8 @@ const Services = () => {
     }
   }, []);
 
-  const openCalendlyPopup = () => {
+  // Stable callback — avoids re-creating child card props on every render
+  const openCalendlyPopup = useCallback(() => {
     if (window.Calendly) {
       window.Calendly.initPopupWidget({
         url: "https://calendly.com/ezapata-nyc/call-meeting?hide_event_type_details=1&hide_gdpr_banner=1",
@@ -205,92 +301,7 @@ const Services = () => {
     } else {
       window.open("mailto:ezapata.nyc@gmail.com?subject=Discovery Call Request", "_blank");
     }
-  };
-
-  /* ── Data ── */
-
-  const engagements = [
-    {
-      icon: "🔍",
-      title: "UX Audit Sprint",
-      subtitle: "fast clarity",
-      bestFor: "Teams with an existing product that needs clear, prioritized fixes.",
-      timeline: "5–7 days",
-      deliverables: [
-        "Annotated findings (screenshots + notes)",
-        "Prioritized fix list (high / med / low impact)",
-        "UX recommendations + quick wireframe concepts (1–2 key areas)",
-        'A "next 2 weeks" action plan for design + dev',
-      ],
-      investment: "Starts at $1,500",
-      investmentNote: "Most audits land $2,500–$3,500 depending on scope.",
-      ctaText: "Book a 15-min fit call",
-      ctaAction: openCalendlyPopup,
-    },
-    {
-      icon: "🎨",
-      title: "MVP Design Sprint",
-      subtitle: "launch what matters",
-      bestFor: "Founders building an MVP or teams validating a new workflow.",
-      timeline: "2–4 weeks",
-      deliverables: [
-        "User flow(s) + key screens mapped",
-        "Wireframes → high-fidelity UI for core journey",
-        "Clickable prototype for review / testing",
-        "Handoff-ready specs (states, behaviors, responsive notes)",
-      ],
-      investment: "Typically $5K–$10K",
-      investmentNote: "Depends on # of flows / screens.",
-      ctaText: "Start your MVP",
-      ctaAction: openCalendlyPopup,
-      badge: "Most Popular",
-    },
-    {
-      icon: "🔄",
-      title: "Product UX Overhaul",
-      subtitle: "scale the system",
-      bestFor: "Growing products that need stronger foundations and cleaner workflows.",
-      timeline: "4–8 weeks",
-      deliverables: [
-        "Discovery + workflow diagnosis",
-        "Redesign of key journeys (navigation, onboarding, core tasks)",
-        "Component / pattern foundation (design system starter)",
-        "Iteration plan + rollout guidance",
-      ],
-      investment: "Starts at $15K+",
-      investmentNote: "Scope-based.",
-      ctaText: "Plan your overhaul",
-      ctaAction: openCalendlyPopup,
-    },
-  ];
-
-  const problemsSolved = [
-    { text: "Simplify complex workflows", detail: "reduce steps, confusion, and drop-offs" },
-    { text: "Improve usability + conversion", detail: "clearer paths, fewer dead ends" },
-    { text: "Create scalable UX systems", detail: "patterns, components, consistent behavior" },
-    { text: "Validate direction before building", detail: "so you don't ship guesswork" },
-  ];
-
-  const addOns = [
-    { name: "Dev-ready handoff pack", price: "+$500", detail: "interaction notes, component states, redlines, acceptance checklist" },
-    { name: "User testing lite", price: "+$750", detail: "3–5 sessions + findings summary" },
-    { name: "Copy polish", price: "+$300", detail: "improve clarity + scannability for key screens" },
-    { name: "Analytics / metrics setup guidance", price: "+$300", detail: "what to track + how to interpret" },
-  ];
-
-  const processSteps = [
-    { icon: Search, title: "Discover", description: "Align on goals, users, constraints." },
-    { icon: Target, title: "Define", description: "Pick the highest-impact problems to solve first." },
-    { icon: PenTool, title: "Design", description: "Workflows + UI built for clarity and speed." },
-    { icon: TestTube, title: "Test", description: "Validate quickly, reduce risk." },
-    { icon: Rocket, title: "Ship", description: "Specs that devs can actually implement." },
-  ];
-
-  const notAFit = [
-    "You want unlimited revisions without scope control",
-    "You need full brand strategy or logo design as the main deliverable",
-    'You\'re looking for "pretty UI" without addressing product clarity / workflows',
-  ];
+  }, []);
 
   return (
     <>
@@ -301,7 +312,10 @@ const Services = () => {
       />
       <div className="min-h-screen bg-theme-bg900 text-theme-body font-inter exact-hero-gradient relative">
         <div className="stars"></div>
-        <ParticleSystem className="absolute inset-0 z-0 pointer-events-none" />
+        {/* Lazy-loaded particle canvas — won't block first paint */}
+        <Suspense fallback={null}>
+          <ParticleSystem className="absolute inset-0 z-0 pointer-events-none" />
+        </Suspense>
 
         {/* ── Header ── */}
         <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border/40">
@@ -406,7 +420,7 @@ const Services = () => {
                 </p>
                 <p className="text-foreground/80 font-semibold mb-5">I help teams:</p>
                 <ul className="space-y-4 mb-8">
-                  {problemsSolved.map((item, idx) => (
+                  {PROBLEMS_SOLVED.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-foreground/80">
                       <Sparkles className="w-4 h-4 mt-1 text-primary shrink-0" />
                       <span>
@@ -440,8 +454,8 @@ const Services = () => {
 
             <AnimatedContainer transition={{ delay: 0.15 }}>
               <div className="grid md:grid-cols-3 gap-8">
-                {engagements.map((engagement, index) => (
-                  <EngagementCard key={index} {...engagement} />
+                {ENGAGEMENTS_DATA.map((engagement, index) => (
+                  <EngagementCard key={index} {...engagement} ctaAction={openCalendlyPopup} />
                 ))}
               </div>
             </AnimatedContainer>
@@ -478,11 +492,7 @@ const Services = () => {
                     </div>
 
                     <ul className="space-y-3 mb-6">
-                      {[
-                        "Quick audit + prioritized improvements",
-                        "Revised wireframe or layout concept",
-                        "Lightweight implementation notes",
-                      ].map((item, idx) => (
+                      {STARTER_DELIVERABLES.map((item, idx) => (
                         <li key={idx} className="flex items-start gap-3 text-sm font-medium text-muted-foreground">
                           <Check className="w-4 h-4 mt-0.5 text-primary shrink-0" strokeWidth={3} />
                           <span>{item}</span>
@@ -529,7 +539,7 @@ const Services = () => {
                   <p className="text-sm text-muted-foreground">Optional extras for any engagement.</p>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-4">
-                  {addOns.map((addon, index) => (
+                  {ADD_ONS.map((addon, index) => (
                     <div
                       key={index}
                       className="group p-5 rounded-xl bg-foreground/5 border border-border/5 hover:border-primary/20 transition-all duration-300"
@@ -565,7 +575,7 @@ const Services = () => {
 
             <AnimatedContainer transition={{ delay: 0.25 }}>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-                {processSteps.map((step, index) => (
+                {PROCESS_STEPS.map((step, index) => (
                   <ProcessStep key={index} {...step} step={index + 1} />
                 ))}
               </div>
@@ -629,7 +639,7 @@ const Services = () => {
               <div className="frosted-card border border-border/10 p-8 md:p-10 rounded-2xl bg-transparent">
                 <h3 className="text-xl font-black text-foreground/70 mb-5">Not a fit if…</h3>
                 <ul className="space-y-3">
-                  {notAFit.map((item, idx) => (
+                  {NOT_A_FIT.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed">
                       <X className="w-4 h-4 mt-0.5 text-red-400/60 shrink-0" strokeWidth={3} />
                       <span>{item}</span>
