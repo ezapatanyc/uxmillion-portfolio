@@ -4,6 +4,7 @@ import { ChevronDown } from 'lucide-react';
 import { ClientOnly } from './ClientOnly';
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from 'react-router-dom';
 
 // Lazy load ParticleSystem to avoid SSG issues
 const ParticleSystem = lazy(() => import('./ParticleSystem'));
@@ -12,6 +13,7 @@ const Hero = () => {
   const {
     toast
   } = useToast();
+  const navigate = useNavigate();
   const heroRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
@@ -326,7 +328,7 @@ const Hero = () => {
         </div>
 
         <div className="animate-fade-in">
-          <h1 className="mb-6 font-black tracking-tight" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', lineHeight: '1.2' }}>
+          <h1 className="mb-4 font-black tracking-tight" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', lineHeight: '1.2' }}>
             UX that{" "}
             <span
               ref={spanRef}
@@ -340,53 +342,35 @@ const Hero = () => {
           </h1>
         </div>
 
-        <div className="animate-fade-in animation-delay-200">
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-6 font-normal tracking-normal" style={{ fontSize: 'clamp(1rem, 2vw, 1.2rem)', lineHeight: '1.8' }}>
-            I'm <strong className="text-foreground font-semibold">Emiliano Zapata</strong>, NYC‑based UX designer (remote‑friendly).
-            I turn complex ideas into intuitive products that users love—and businesses grow with.
+        {/* Positioning headline */}
+        <div className="animate-fade-in animation-delay-100">
+          <p className="text-foreground/90 max-w-2xl mx-auto mb-6 font-bold tracking-tight" style={{ fontSize: 'clamp(1.1rem, 2.2vw, 1.5rem)', lineHeight: '1.5' }}>
+            I design clear product experiences for high-impact workflows
           </p>
         </div>
 
-        {/* Micro-proof */}
-        <div className="animate-fade-in animation-delay-400 mb-8">
-          <div style={{ fontSize: '0.9rem' }}>
-            <div className="flex flex-wrap items-center justify-center gap-4 text-slate-700 dark:text-[#00d4ff] font-normal tracking-wide">
-              <span className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-purple-800 dark:bg-[#b366ff]"></span>
-                15+ projects delivered
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-purple-800 dark:bg-[#b366ff]"></span>
-                Healthcare
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-purple-800 dark:bg-[#b366ff]"></span>
-                Fintech
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-purple-800 dark:bg-[#b366ff]"></span>
-                E-commerce
-              </span>
-            </div>
-          </div>
+        <div className="animate-fade-in animation-delay-200">
+          <p className="text-muted-foreground max-w-2xl mx-auto mb-3 font-normal tracking-normal" style={{ fontSize: 'clamp(0.95rem, 1.8vw, 1.1rem)', lineHeight: '1.8' }}>
+            I'm <strong className="text-foreground font-semibold">Emiliano Zapata</strong>, a NYC-based Product Designer helping startups and product teams simplify onboarding, dashboards, quote flows, configuration journeys, and other workflow-heavy moments that need more clarity.
+          </p>
+          <p className="text-muted-foreground/80 max-w-xl mx-auto mb-6 font-normal tracking-normal" style={{ fontSize: 'clamp(0.9rem, 1.6vw, 1rem)', lineHeight: '1.8' }}>
+            I combine systems thinking, rapid prototyping, and focused design sprints to help teams move from ambiguity to momentum.
+          </p>
         </div>
 
         {/* CTA Buttons */}
-        <div className="animate-fade-in animation-delay-600">
+        <div className="animate-fade-in animation-delay-400">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
-            <Button onClick={handleFancyScroll} variant="default" size="lg" className="flex items-center gap-3 font-semibold rounded-full">
-              Get in touch
-            </Button>
-
             <Button onClick={() => document.getElementById('work')?.scrollIntoView({
               behavior: prefersReducedMotion ? 'auto' : 'smooth'
-            })} variant="outline" size="lg" className="flex items-center gap-3 font-semibold rounded-full">
-              View portfolio
+            })} variant="default" size="lg" className="flex items-center gap-3 font-semibold rounded-full">
+              View selected work
+            </Button>
+
+            <Button onClick={() => navigate('/services')} variant="outline" size="lg" className="flex items-center gap-3 font-semibold rounded-full">
+              Explore services
             </Button>
           </div>
-
-          {/* Copy email fallback */}
-
         </div>
       </div>
     </div>

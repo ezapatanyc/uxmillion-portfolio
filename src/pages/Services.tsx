@@ -6,15 +6,12 @@ import {
   Check,
   Clock,
   DollarSign,
-  Search,
-  PenTool,
-  TestTube,
-  Rocket,
-  Target,
-  Sparkles,
-  Play,
   ExternalLink,
+  Play,
+  Sparkles,
   X,
+  Users,
+  Mail,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useCallback, lazy, Suspense } from "react";
@@ -34,87 +31,92 @@ const ParticleSystem = lazy(() => import("@/components/ParticleSystem"));
 const ENGAGEMENTS_DATA = [
   {
     icon: "🔍",
-    title: "UX Audit Sprint",
-    subtitle: "fast clarity",
-    bestFor: "Teams with an existing product that needs clear, prioritized fixes.",
-    timeline: "5–7 days",
+    title: "Product Clarity Sprint",
+    subtitle: "diagnose what's not working",
+    bestFor:
+      "Existing products with friction, drop-off, confusing flows, or too many competing ideas in one important area.",
     deliverables: [
-      "Annotated findings (screenshots + notes)",
-      "Prioritized fix list (high / med / low impact)",
-      "UX recommendations + quick wireframe concepts (1–2 key areas)",
-      'A "next 2 weeks" action plan for design + dev',
+      "UX review of one selected product area or workflow",
+      "Annotated findings and friction points",
+      "Prioritized recommendations",
+      "Redesign direction for one key moment",
+      "A practical next-step plan",
     ],
-    investment: "Starts at $1,500",
-    investmentNote: "Most audits land $2,500–$3,500 depending on scope.",
-    ctaText: "Book a 15-min fit call",
+    timeline: "1 week",
+    collaborationStyle: "Mostly async, with 1 kickoff and 1 review call",
+    investment: "Starting at $2,500",
+    ctaText: "Book a 15-minute Fit Call",
   },
   {
-    icon: "🎨",
-    title: "MVP Design Sprint",
-    subtitle: "launch what matters",
-    bestFor: "Founders building an MVP or teams validating a new workflow.",
-    timeline: "2–4 weeks",
+    icon: "🚀",
+    title: "Core Flow Design Sprint",
+    subtitle: "design one high-impact journey",
+    bestFor:
+      "Founders or teams who need one high-impact flow designed clearly enough to test, present, or hand off for development.",
+    examples:
+      "Onboarding, quote requests, sign-up, booking, dashboard entry, or another conversion-critical journey.",
     deliverables: [
-      "User flow(s) + key screens mapped",
-      "Wireframes → high-fidelity UI for core journey",
-      "Clickable prototype for review / testing",
-      "Handoff-ready specs (states, behaviors, responsive notes)",
+      "User flow for the selected journey",
+      "Wireframes for key screens",
+      "Polished high-fidelity UI",
+      "Clickable prototype",
+      "Handoff-ready design notes",
     ],
-    investment: "Typically $5K–$10K",
-    investmentNote: "Depends on # of flows / screens.",
-    ctaText: "Start your MVP",
+    timeline: "2–3 weeks",
+    collaborationStyle: "1 kickoff, async check-ins, 1 final review",
+    investment: "Starting at $5,000",
+    ctaText: "Book a 15-minute Fit Call",
     badge: "Most Popular",
   },
   {
-    icon: "🔄",
-    title: "Product UX Overhaul",
-    subtitle: "scale the system",
-    bestFor: "Growing products that need stronger foundations and cleaner workflows.",
-    timeline: "4–8 weeks",
+    icon: "🧭",
+    title: "Strategic UX Sprint",
+    subtitle: "product direction + selected redesign",
+    bestFor:
+      "Products with growing complexity that need stronger workflow structure, clearer prioritization, and improvement in a few high-impact moments.",
     deliverables: [
-      "Discovery + workflow diagnosis",
-      "Redesign of key journeys (navigation, onboarding, core tasks)",
-      "Component / pattern foundation (design system starter)",
-      "Iteration plan + rollout guidance",
+      "Workflow diagnosis and priority mapping",
+      "Redesign of selected high-impact moments",
+      "UX structure recommendations",
+      "Pattern or component guidance",
+      "Implementation direction for next steps",
     ],
-    investment: "Starts at $15K+",
-    investmentNote: "Scope-based.",
-    ctaText: "Plan your overhaul",
+    timeline: "3–4 weeks",
+    collaborationStyle:
+      "Limited, structured touchpoints with async collaboration between reviews",
+    investment: "Starting at $7,500",
+    ctaText: "Book a 15-minute Fit Call",
   },
 ] as const;
 
-const PROBLEMS_SOLVED = [
-  { text: "Simplify complex workflows", detail: "reduce steps, confusion, and drop-offs" },
-  { text: "Improve usability + conversion", detail: "clearer paths, fewer dead ends" },
-  { text: "Create scalable UX systems", detail: "patterns, components, consistent behavior" },
-  { text: "Validate direction before building", detail: "so you don't ship guesswork" },
+const WHAT_I_HELP_WITH = [
+  { text: "Simplifying a confusing onboarding flow" },
+  { text: "Improving a quote or request journey" },
+  { text: "Making a dashboard easier to understand" },
+  { text: "Shaping an MVP around the core experience" },
+  { text: "Creating clearer structure before a product grows further" },
 ] as const;
 
-const ADD_ONS = [
-  { name: "Dev-ready handoff pack", price: "+$500", detail: "interaction notes, component states, redlines, acceptance checklist" },
-  { name: "User testing lite", price: "+$750", detail: "3–5 sessions + findings summary" },
-  { name: "Copy polish", price: "+$300", detail: "improve clarity + scannability for key screens" },
-  { name: "Analytics / metrics setup guidance", price: "+$300", detail: "what to track + how to interpret" },
+const MINI_REVIEW_DELIVERABLES = [
+  "Quick diagnostic review",
+  "Top recommendations",
+  "One revised direction or layout suggestion",
 ] as const;
 
-const PROCESS_STEPS = [
-  { icon: Search, title: "Discover", description: "Align on goals, users, constraints." },
-  { icon: Target, title: "Define", description: "Pick the highest-impact problems to solve first." },
-  { icon: PenTool, title: "Design", description: "Workflows + UI built for clarity and speed." },
-  { icon: TestTube, title: "Test", description: "Validate quickly, reduce risk." },
-  { icon: Rocket, title: "Ship", description: "Specs that devs can actually implement." },
-] as const;
-
-const STARTER_DELIVERABLES = [
-  "Quick audit + prioritized improvements",
-  "Revised wireframe or layout concept",
-  "Lightweight implementation notes",
+const BEST_FIT_SIGNALS = [
+  "Founders who need clarity fast",
+  "Teams with one high-impact flow to improve",
+  "Products with workflow-heavy moments that need simplification",
+  "Teams comfortable with focused, async collaboration",
+  "Startups that want thoughtful design without a bloated process",
 ] as const;
 
 const NOT_A_FIT = [
-  "You want unlimited revisions without scope control",
-  "You need full brand strategy or logo design as the main deliverable",
-  'You\'re looking for "pretty UI" without addressing product clarity / workflows',
+  "You need daily design support",
+  "You want an open-ended retainer",
+  "You expect unlimited revisions",
+  "You need a full product redesign all at once",
+  "Your project requires an agency-sized delivery model",
 ] as const;
 
 /* ───────────────────────────────────────────────
@@ -125,10 +127,11 @@ const EngagementCard = ({
   title,
   subtitle,
   bestFor,
+  examples,
   timeline,
+  collaborationStyle,
   deliverables,
   investment,
-  investmentNote,
   ctaText,
   ctaAction,
   badge,
@@ -137,10 +140,11 @@ const EngagementCard = ({
   title: string;
   subtitle: string;
   bestFor: string;
+  examples?: string;
   timeline: string;
+  collaborationStyle: string;
   deliverables: readonly string[];
   investment: string;
-  investmentNote?: string;
   ctaText: string;
   ctaAction: () => void;
   badge?: string;
@@ -182,6 +186,11 @@ const EngagementCard = ({
               Best for
             </span>
             <span className="text-muted-foreground font-medium">{bestFor}</span>
+            {examples && (
+              <p className="text-muted-foreground/70 text-xs mt-2 leading-relaxed italic">
+                {examples}
+              </p>
+            )}
           </div>
         </div>
       </CardHeader>
@@ -189,10 +198,16 @@ const EngagementCard = ({
       <CardContent className="w-full flex-1 flex flex-col items-start text-left px-6 pb-8 relative z-10">
         <div className="w-full my-3 border-t border-border/5" />
 
-        {/* Timeline */}
-        <div className="flex items-center gap-2 mb-5 text-sm text-muted-foreground">
-          <Clock className="w-4 h-4 text-primary/60" />
-          <span className="font-semibold">{timeline}</span>
+        {/* Timeline + Collaboration */}
+        <div className="space-y-2 mb-5">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Clock className="w-4 h-4 text-primary/60" />
+            <span className="font-semibold">{timeline}</span>
+          </div>
+          <div className="flex items-start gap-2 text-sm text-muted-foreground">
+            <Users className="w-4 h-4 text-primary/60 mt-0.5 shrink-0" />
+            <span className="font-medium text-xs leading-relaxed">{collaborationStyle}</span>
+          </div>
         </div>
 
         {/* Deliverables */}
@@ -220,11 +235,6 @@ const EngagementCard = ({
             Investment
           </div>
           <div className="text-sm font-bold text-foreground/80">{investment}</div>
-          {investmentNote && (
-            <div className="text-xs text-muted-foreground mt-1.5 leading-relaxed">
-              {investmentNote}
-            </div>
-          )}
         </div>
 
         <div className="mt-auto w-full">
@@ -243,39 +253,12 @@ const EngagementCard = ({
 };
 
 /* ───────────────────────────────────────────────
-   Process Step
-   ─────────────────────────────────────────────── */
-const ProcessStep = ({
-  icon: Icon,
-  title,
-  description,
-  step,
-}: {
-  icon: React.ElementType;
-  title: string;
-  description: string;
-  step: number;
-}) => (
-  <div className="group relative flex flex-col items-center text-center p-6 rounded-2xl frosted-card border border-border/10 hover-lift bg-transparent transition-all duration-300">
-    <div className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-xs font-black text-primary">
-      {step}
-    </div>
-    <div className="w-14 h-14 rounded-2xl bg-foreground/5 border border-border/10 flex items-center justify-center mb-4 group-hover:border-primary/30 group-hover:scale-110 transition-all duration-300">
-      <Icon className="w-6 h-6 text-primary" />
-    </div>
-    <h3 className="text-lg font-black text-gradient mb-2">{title}</h3>
-    <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
-  </div>
-);
-
-/* ───────────────────────────────────────────────
    Main Page
    ─────────────────────────────────────────────── */
 const Services = () => {
   const navigate = useNavigate();
 
-  // Load Calendly assets once — CalendlyBooking also checks,
-  // but this ensures buttons higher on the page work immediately.
+  // Load Calendly assets once
   useEffect(() => {
     if (!document.querySelector('link[href*="calendly.com"]')) {
       const link = document.createElement("link");
@@ -292,22 +275,22 @@ const Services = () => {
     }
   }, []);
 
-  // Stable callback — avoids re-creating child card props on every render
+  // Stable callback
   const openCalendlyPopup = useCallback(() => {
     if (window.Calendly) {
       window.Calendly.initPopupWidget({
         url: "https://calendly.com/ezapata-nyc/call-meeting?hide_event_type_details=1&hide_gdpr_banner=1",
       });
     } else {
-      window.open("mailto:ezapata.nyc@gmail.com?subject=Discovery Call Request", "_blank");
+      window.open("mailto:ezapata.nyc@gmail.com?subject=Fit Call Request", "_blank");
     }
   }, []);
 
   return (
     <>
       <SEOHead
-        title="UX Design Services"
-        description="I help startups and product teams turn complex ideas into clear, usable products. Systems-focused product design for complex workflows, MVPs, and product overhauls."
+        title="Focused Product Design Sprints for High-Impact Workflows"
+        description="I help startups and product teams improve important parts of the product experience through focused, well-scoped design sprints. Sprint-based UX consulting for onboarding flows, dashboards, quote flows, and workflow-heavy products."
         path="/services"
       />
       <div className="min-h-screen bg-theme-bg900 text-theme-body font-inter exact-hero-gradient relative">
@@ -336,7 +319,7 @@ const Services = () => {
 
             <nav className="hidden md:flex items-center gap-6">
               <a href="#engagements" className="text-muted-foreground hover:text-foreground transition-colors">Engagements</a>
-              <a href="#process" className="text-muted-foreground hover:text-foreground transition-colors">Process</a>
+              <a href="#how-i-work" className="text-muted-foreground hover:text-foreground transition-colors">How I Work</a>
               <Button
                 onClick={openCalendlyPopup}
                 variant="default"
@@ -356,15 +339,15 @@ const Services = () => {
           <BgGradient gradientColors="purple" gradientSize="lg" className="opacity-20" />
           <div className="max-w-3xl mx-auto">
             <Badge className="mb-6 bg-primary/20 text-primary border-primary/30 px-4 py-1.5 text-xs font-black uppercase tracking-widest">
-              Services
+              Sprint-Based Product Design
             </Badge>
 
             <h1
               className="mb-6 font-black tracking-tight"
-              style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)", lineHeight: "1.15" }}
+              style={{ fontSize: "clamp(2.25rem, 5vw, 3.25rem)", lineHeight: "1.15" }}
             >
               <TextStagger
-                text="UX Design Services"
+                text="Focused Product Design Sprints for High-Impact Workflows"
                 as="span"
                 direction="domino"
                 stagger={0.02}
@@ -374,19 +357,14 @@ const Services = () => {
 
             <div className="animate-fade-in animation-delay-200 space-y-5 max-w-2xl mx-auto">
               <p className="text-foreground/80 font-normal leading-relaxed" style={{ fontSize: "clamp(1rem, 1.5vw, 1.15rem)" }}>
-                I help startups and product teams turn complex ideas into clear, usable products.
+                I help startups and product teams improve important parts of the product experience through focused, well-scoped design sprints.
               </p>
               <p className="text-muted-foreground font-normal leading-relaxed" style={{ fontSize: "clamp(0.95rem, 1.4vw, 1.05rem)" }}>
-                I'm a systems-focused Product Designer. I specialize in simplifying multi-step workflows — configuration, quoting, onboarding, dashboards — and shipping design that's ready for development, fast.
+                My work is best suited for onboarding, dashboards, quote flows, configuration journeys, request flows, internal tools, and other workflow-heavy moments that need more clarity.
               </p>
-
-              {/* Best-fit + CTA chips */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-                <div className="px-5 py-2.5 rounded-full bg-foreground/5 border border-border/10 text-sm font-medium text-foreground/70">
-                  <span className="font-black text-primary mr-1.5">Best fit:</span>
-                  complex products · fast iteration · clarity + momentum
-                </div>
-              </div>
+              <p className="text-muted-foreground/80 font-medium leading-relaxed text-sm">
+                I work in a focused, sprint-based model and take on a limited number of engagements at a time.
+              </p>
 
               <div className="pt-4">
                 <Button
@@ -395,7 +373,7 @@ const Services = () => {
                   size="lg"
                   className="font-bold rounded-full px-10 active:scale-[0.98] transition-all text-base"
                 >
-                  Book a 15-min Fit Call
+                  Book a 15-minute Fit Call
                 </Button>
               </div>
             </div>
@@ -410,26 +388,53 @@ const Services = () => {
             <AnimatedContainer transition={{ delay: 0.1 }}>
               <div className="frosted-card border border-border/10 p-8 md:p-12 rounded-2xl bg-transparent">
                 <h2 className="text-3xl md:text-4xl font-black tracking-tight text-gradient mb-6">
-                  What I Help Teams Solve
+                  What I Help With
                 </h2>
-                <p className="text-foreground/70 mb-2 leading-relaxed">
-                  Most teams don't struggle because of bad ideas.
-                </p>
                 <p className="text-foreground/70 mb-8 leading-relaxed">
-                  They struggle because the product experience gets harder to understand as features grow.
+                  I work best when a team needs to improve one important product area, clarify a key user journey, or reduce friction in a workflow that is slowing momentum.
                 </p>
-                <p className="text-foreground/80 font-semibold mb-5">I help teams:</p>
-                <ul className="space-y-4 mb-8">
-                  {PROBLEMS_SOLVED.map((item, idx) => (
+                <p className="text-foreground/80 font-semibold mb-5">That might mean:</p>
+                <ul className="space-y-4 mb-6">
+                  {WHAT_I_HELP_WITH.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-foreground/80">
                       <Sparkles className="w-4 h-4 mt-1 text-primary shrink-0" />
-                      <span>
-                        <span className="font-bold">{item.text}</span>
-                        <span className="text-muted-foreground font-normal"> — {item.detail}</span>
-                      </span>
+                      <span className="font-medium">{item.text}</span>
                     </li>
                   ))}
                 </ul>
+                <p className="text-foreground/70 leading-relaxed border-t border-border/10 pt-6 mt-2">
+                  The goal is not just better-looking screens.{" "}
+                  <span className="font-bold text-foreground/90">The goal is a product that makes more sense where it matters most.</span>
+                </p>
+              </div>
+            </AnimatedContainer>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════════
+            HOW I WORK
+           ══════════════════════════════════════════════ */}
+        <section id="how-i-work" className="py-16 px-6 relative z-10">
+          <div className="max-w-3xl mx-auto">
+            <AnimatedContainer transition={{ delay: 0.13 }}>
+              <div className="frosted-card border border-border/10 p-8 md:p-12 rounded-2xl bg-transparent">
+                <h2 className="text-3xl md:text-4xl font-black tracking-tight text-gradient mb-6">
+                  How I Work
+                </h2>
+                <p className="text-foreground/70 mb-6 leading-relaxed">
+                  I work best with teams that value:
+                </p>
+                <ul className="space-y-3 mb-6">
+                  {["Clear scope", "Focused feedback", "Async collaboration", "Fast decision-making"].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-sm text-foreground/80 leading-relaxed">
+                      <Check className="w-4 h-4 mt-0.5 text-primary shrink-0" strokeWidth={3} />
+                      <span className="font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-foreground/70 leading-relaxed">
+                  Most engagements are intentionally structured to minimize meeting time and maximize progress.
+                </p>
               </div>
             </AnimatedContainer>
           </div>
@@ -448,7 +453,7 @@ const Services = () => {
                 Choose how we work together
               </h2>
               <p className="text-lg text-foreground/70 max-w-xl mx-auto font-medium">
-                Each engagement is tailored to your product stage and goals.
+                Each engagement is intentionally scoped to your product stage and goals.
               </p>
             </div>
 
@@ -463,7 +468,7 @@ const Services = () => {
         </section>
 
         {/* ══════════════════════════════════════════════
-            LOW-FRICTION OPTION — UX STARTER PACK
+            MINI UX REVIEW — Smaller Entry Point
            ══════════════════════════════════════════════ */}
         <section className="py-16 px-6 relative z-10">
           <div className="max-w-3xl mx-auto">
@@ -476,23 +481,22 @@ const Services = () => {
                   {/* Left — Info */}
                   <div className="flex-1">
                     <Badge className="mb-4 bg-foreground/5 text-foreground/60 border-border/10 px-3 py-1 text-[10px] uppercase tracking-widest rounded-full font-black">
-                      Low-Friction Option
+                      Smaller Entry Point
                     </Badge>
-                    <h3 className="text-2xl font-black text-gradient mb-1">UX Starter Pack</h3>
-                    <p className="text-sm italic text-foreground/50 mb-4">one page, quick wins</p>
+                    <h3 className="text-2xl font-black text-gradient mb-1">Mini UX Review</h3>
+                    <p className="text-sm italic text-foreground/50 mb-4">one screen, fast improvement</p>
 
-                    <div className="p-3 rounded-xl bg-foreground/5 border border-border/5 text-sm leading-relaxed mb-5">
-                      <span className="font-black text-[11px] text-primary uppercase tracking-[0.1em] mr-2">Best for</span>
-                      <span className="text-muted-foreground font-medium">Landing pages or one critical screen that needs immediate improvement.</span>
-                    </div>
+                    <p className="text-sm text-foreground/70 leading-relaxed mb-5">
+                      A lightweight review for one important page or screen. This works well for landing pages, sign-up screens, quote steps, or one conversion-critical moment that needs fast improvement.
+                    </p>
 
                     <div className="flex items-center gap-2 mb-4 text-sm text-muted-foreground">
                       <Clock className="w-4 h-4 text-primary/60" />
-                      <span className="font-semibold">3 days</span>
+                      <span className="font-semibold">2–3 business days</span>
                     </div>
 
                     <ul className="space-y-3 mb-6">
-                      {STARTER_DELIVERABLES.map((item, idx) => (
+                      {MINI_REVIEW_DELIVERABLES.map((item, idx) => (
                         <li key={idx} className="flex items-start gap-3 text-sm font-medium text-muted-foreground">
                           <Check className="w-4 h-4 mt-0.5 text-primary shrink-0" strokeWidth={3} />
                           <span>{item}</span>
@@ -507,10 +511,10 @@ const Services = () => {
                       <div className="text-[10px] font-black text-primary uppercase tracking-[0.15em] mb-1 flex items-center gap-1.5 justify-center md:justify-start">
                         <DollarSign className="w-3 h-3" /> Investment
                       </div>
-                      <div className="text-2xl font-black text-foreground/90">$345</div>
+                      <div className="text-2xl font-black text-foreground/90">Starting at $500</div>
                     </div>
                     <p className="text-xs text-muted-foreground leading-relaxed text-center md:text-left">
-                      Upgrade to a larger engagement within 14 days and I'll credit this cost toward your next package.
+                      If we continue into a larger sprint, this can be credited toward the next engagement.
                     </p>
                     <Button
                       onClick={openCalendlyPopup}
@@ -518,7 +522,7 @@ const Services = () => {
                       size="lg"
                       className="w-full font-bold rounded-full active:scale-[0.98] transition-all"
                     >
-                      Get started
+                      Book a 15-minute Fit Call
                     </Button>
                   </div>
                 </div>
@@ -528,31 +532,31 @@ const Services = () => {
         </section>
 
         {/* ══════════════════════════════════════════════
-            ADD-ONS
+            BEST FIT + NOT A FIT
            ══════════════════════════════════════════════ */}
         <section className="py-16 px-6 relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <AnimatedContainer transition={{ delay: 0.22 }}>
-              <div className="frosted-card border border-border/10 p-8 md:p-12 rounded-2xl bg-transparent">
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-black text-gradient mb-2">Add-ons</h3>
-                  <p className="text-sm text-muted-foreground">Optional extras for any engagement.</p>
-                </div>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {ADD_ONS.map((addon, index) => (
-                    <div
-                      key={index}
-                      className="group p-5 rounded-xl bg-foreground/5 border border-border/5 hover:border-primary/20 transition-all duration-300"
-                    >
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="font-bold text-foreground/90 text-sm">{addon.name}</span>
-                        <Badge className="bg-primary/10 text-primary border-primary/20 font-black text-xs px-2.5 py-0.5 rounded-full">
-                          {addon.price}
-                        </Badge>
-                      </div>
-                      <p className="text-xs text-muted-foreground leading-relaxed">{addon.detail}</p>
-                    </div>
+          <div className="max-w-3xl mx-auto">
+            <AnimatedContainer transition={{ delay: 0.25 }}>
+              <div className="frosted-card border border-border/10 p-8 md:p-10 rounded-2xl bg-transparent">
+                <h3 className="text-xl font-black text-gradient mb-5">I'm usually a strong fit for…</h3>
+                <ul className="space-y-3 mb-8">
+                  {BEST_FIT_SIGNALS.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-sm text-foreground/80 leading-relaxed">
+                      <Check className="w-4 h-4 mt-0.5 text-primary shrink-0" strokeWidth={3} />
+                      <span>{item}</span>
+                    </li>
                   ))}
+                </ul>
+                <div className="border-t border-border/10 pt-6">
+                  <h3 className="text-xl font-black text-foreground/70 mb-5">Not a fit if…</h3>
+                  <ul className="space-y-3">
+                    {NOT_A_FIT.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed">
+                        <X className="w-4 h-4 mt-0.5 text-red-400/60 shrink-0" strokeWidth={3} />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </AnimatedContainer>
@@ -560,30 +564,23 @@ const Services = () => {
         </section>
 
         {/* ══════════════════════════════════════════════
-            HOW I WORK (PROCESS)
+            WHAT TO EXPECT
            ══════════════════════════════════════════════ */}
-        <section id="process" className="py-20 px-6 relative z-10">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-14">
-              <Badge className="mb-4 bg-primary/20 text-primary border-primary/30 px-4 py-1.5 text-xs font-black uppercase tracking-widest">
-                Process
-              </Badge>
-              <h2 className="text-3xl md:text-5xl font-black tracking-tight text-gradient mb-4">
-                How I Work
-              </h2>
-            </div>
-
-            <AnimatedContainer transition={{ delay: 0.25 }}>
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-                {PROCESS_STEPS.map((step, index) => (
-                  <ProcessStep key={index} {...step} step={index + 1} />
-                ))}
-              </div>
-
-              {/* Availability note */}
-              <div className="text-center mt-10">
-                <p className="text-foreground/60 text-sm">
-                  I typically work with <span className="font-bold text-foreground/80">1–2 clients at a time</span> to keep turnaround fast and collaboration tight.
+        <section className="py-16 px-6 relative z-10">
+          <div className="max-w-3xl mx-auto">
+            <AnimatedContainer transition={{ delay: 0.27 }}>
+              <div className="frosted-card border border-border/10 p-8 md:p-12 rounded-2xl bg-transparent">
+                <h2 className="text-3xl md:text-4xl font-black tracking-tight text-gradient mb-6">
+                  What to Expect
+                </h2>
+                <p className="text-foreground/70 mb-4 leading-relaxed">
+                  Every engagement is intentionally scoped.
+                </p>
+                <p className="text-foreground/70 mb-4 leading-relaxed">
+                  That means clear goals, clear boundaries, and a realistic path to progress. I do my best work when I can focus on a meaningful product problem, solve it thoughtfully, and give teams something they can actually move forward with.
+                </p>
+                <p className="text-foreground/80 font-medium leading-relaxed">
+                  Because of that, I take on a limited number of projects at a time.
                 </p>
               </div>
             </AnimatedContainer>
@@ -591,13 +588,16 @@ const Services = () => {
         </section>
 
         {/* ══════════════════════════════════════════════
-            PROOF — SOCIAL PROOF / LINKS
+            PROOF
            ══════════════════════════════════════════════ */}
         <section className="py-16 px-6 relative z-10">
           <div className="max-w-3xl mx-auto">
             <AnimatedContainer transition={{ delay: 0.28 }}>
               <div className="frosted-card border border-border/10 p-8 md:p-12 rounded-2xl bg-transparent">
-                <h3 className="text-2xl font-black text-gradient mb-6 text-center">See the Work</h3>
+                <h3 className="text-2xl font-black text-gradient mb-3 text-center">Proof</h3>
+                <p className="text-sm text-muted-foreground text-center mb-6 leading-relaxed">
+                  Recent work includes workflow-heavy product experiences, configuration and quote-request flows, responsive product design, and systems-focused UX thinking across startup environments.
+                </p>
                 <div className="space-y-4">
                   <a
                     href="/projects/railbuild"
@@ -607,8 +607,8 @@ const Services = () => {
                       <ExternalLink className="w-5 h-5 text-primary" />
                     </div>
                     <div className="flex-1">
-                      <span className="font-bold text-foreground/90 text-sm">Complex workflow case study — RailBuild</span>
-                      <p className="text-xs text-muted-foreground mt-0.5">Construction procurement designed for clarity</p>
+                      <span className="font-bold text-foreground/90 text-sm">View selected work</span>
+                      <p className="text-xs text-muted-foreground mt-0.5">Case study: RailBuild</p>
                     </div>
                   </a>
 
@@ -620,7 +620,7 @@ const Services = () => {
                       <Play className="w-5 h-5 text-primary" />
                     </div>
                     <div className="flex-1">
-                      <span className="font-bold text-foreground/90 text-sm">Browse the full portfolio</span>
+                      <span className="font-bold text-foreground/90 text-sm">Explore case studies</span>
                       <p className="text-xs text-muted-foreground mt-0.5">uxmillion.com/projects</p>
                     </div>
                   </a>
@@ -631,28 +631,7 @@ const Services = () => {
         </section>
 
         {/* ══════════════════════════════════════════════
-            NOT A FIT
-           ══════════════════════════════════════════════ */}
-        <section className="py-16 px-6 relative z-10">
-          <div className="max-w-3xl mx-auto">
-            <AnimatedContainer transition={{ delay: 0.3 }}>
-              <div className="frosted-card border border-border/10 p-8 md:p-10 rounded-2xl bg-transparent">
-                <h3 className="text-xl font-black text-foreground/70 mb-5">Not a fit if…</h3>
-                <ul className="space-y-3">
-                  {NOT_A_FIT.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed">
-                      <X className="w-4 h-4 mt-0.5 text-red-400/60 shrink-0" strokeWidth={3} />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </AnimatedContainer>
-          </div>
-        </section>
-
-        {/* ══════════════════════════════════════════════
-            FINAL CTA
+            FINAL CTA — LET'S TALK
            ══════════════════════════════════════════════ */}
         <section className="py-20 px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
@@ -662,16 +641,25 @@ const Services = () => {
                   Let's Talk
                 </h2>
                 <p className="text-foreground/70 mb-8 leading-relaxed max-w-lg mx-auto">
-                  Book a quick 15-minute call to see if we're a good fit. No pitch, no pressure — just a conversation about your product.
+                  If you have a product area that feels confusing, overloaded, or harder to use than it should be, send me the link or a few screenshots. I can usually tell pretty quickly where the friction is and whether there's a good sprint fit.
                 </p>
-                <Button
-                  onClick={openCalendlyPopup}
-                  variant="default"
-                  size="lg"
-                  className="font-bold rounded-full px-10 active:scale-[0.98] transition-all text-base"
-                >
-                  Book a 15-min Fit Call
-                </Button>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <Button
+                    onClick={openCalendlyPopup}
+                    variant="default"
+                    size="lg"
+                    className="font-bold rounded-full px-10 active:scale-[0.98] transition-all text-base"
+                  >
+                    Book a 15-minute Fit Call
+                  </Button>
+                  <a
+                    href="mailto:ezapata.nyc@gmail.com"
+                    className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
+                  >
+                    <Mail className="w-4 h-4" />
+                    ezapata.nyc@gmail.com
+                  </a>
+                </div>
               </div>
             </AnimatedContainer>
           </div>

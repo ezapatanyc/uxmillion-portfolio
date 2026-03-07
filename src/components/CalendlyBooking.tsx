@@ -34,10 +34,10 @@ const CalendlyBooking = () => {
       <div className="container mx-auto max-w-5xl">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-black text-gradient mb-6">
-            Book a Discovery Call
+            Book a Fit Call
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            Ready to transform your product's user experience? Let's discuss your project and explore how we can work together to create something amazing.
+            Let's discuss your product and see if we're a good fit. No pitch, no pressure — just a conversation about where you are and what you need.
           </p>
         </div>
 
@@ -48,7 +48,7 @@ const CalendlyBooking = () => {
             size="lg"
             className="flex items-center gap-3 font-bold transition-all rounded-full"
           >
-            Book a Discovery Call
+            Book a Fit Call
           </Button>
         </div>
 

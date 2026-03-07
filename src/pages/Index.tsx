@@ -14,6 +14,7 @@ import ClosingCTA from '@/components/ClosingCTA';
 import Contact from '@/components/Contact';
 import CalendlyBooking from '@/components/CalendlyBooking';
 import Footer from '@/components/Footer';
+import ValueProp from '@/components/ValueProp';
 
 // Lazy load heavy components
 const VideoIntro = lazy(() => import('@/components/VideoIntro'));
@@ -124,8 +125,8 @@ const Index = () => {
   return (
     <>
       <SEOHead
-        title="UX Designer"
-        description="UX designer crafting intuitive digital experiences powered by empathy and data. 15+ projects delivered in Healthcare, Fintech, and E-commerce."
+        title="Product Designer | High-Impact Workflows"
+        description="I design clear product experiences for high-impact workflows. NYC-based Product Designer helping startups simplify onboarding, dashboards, quote flows, and workflow-heavy moments through focused design sprints."
         path="/"
         jsonLd={[generateWebSiteSchema(), generatePersonSchema()]}
       />
@@ -137,6 +138,7 @@ const Index = () => {
         <Navbar />
 
         <Hero />
+        <ValueProp />
         <Work />
         <About />
         <Testimonials />

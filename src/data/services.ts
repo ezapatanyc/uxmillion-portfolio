@@ -1,104 +1,114 @@
 
-export interface Service {
-    id: string;
-    icon: string;
-    title: string;
-    subtitle: string;
-    bestFor: string;
-    timeline: string;
-    deliverables: string[];
-    investment: string;
-    investmentNote?: string;
-    ctaText: string;
-    badge?: string;
+export interface Engagement {
+  id: string;
+  icon: string;
+  title: string;
+  subtitle: string;
+  bestFor: string;
+  deliverables: string[];
+  timeline: string;
+  collaborationStyle: string;
+  investment: string;
+  badge?: string;
 }
 
-export const services: Service[] = [
-    {
-        id: "ux-audit-sprint",
-        icon: "🔍",
-        title: "UX Audit Sprint",
-        subtitle: "fast clarity",
-        bestFor: "Teams with an existing product that needs clear, prioritized fixes.",
-        timeline: "5–7 days",
-        deliverables: [
-            "Annotated findings (screenshots + notes)",
-            "Prioritized fix list (high / med / low impact)",
-            "UX recommendations + quick wireframe concepts (1–2 key areas)",
-            "A \"next 2 weeks\" action plan for design + dev"
-        ],
-        investment: "Starts at $1,500",
-        investmentNote: "Most audits land $2,500–$3,500 depending on scope.",
-        ctaText: "Book a 15-min fit call"
-    },
-    {
-        id: "mvp-design-sprint",
-        icon: "🎨",
-        title: "MVP Design Sprint",
-        subtitle: "launch what matters",
-        bestFor: "Founders building an MVP or teams validating a new workflow.",
-        timeline: "2–4 weeks",
-        deliverables: [
-            "User flow(s) + key screens mapped",
-            "Wireframes → high-fidelity UI for core journey",
-            "Clickable prototype for review / testing",
-            "Handoff-ready specs (states, behaviors, responsive notes)"
-        ],
-        investment: "Typically $5K–$10K",
-        investmentNote: "Depends on # of flows / screens.",
-        ctaText: "Start your MVP",
-        badge: "Most Popular"
-    },
-    {
-        id: "product-ux-overhaul",
-        icon: "🔄",
-        title: "Product UX Overhaul",
-        subtitle: "scale the system",
-        bestFor: "Growing products that need stronger foundations and cleaner workflows.",
-        timeline: "4–8 weeks",
-        deliverables: [
-            "Discovery + workflow diagnosis",
-            "Redesign of key journeys (navigation, onboarding, core tasks)",
-            "Component / pattern foundation (design system starter)",
-            "Iteration plan + rollout guidance"
-        ],
-        investment: "Starts at $15K+",
-        investmentNote: "Scope-based.",
-        ctaText: "Plan your overhaul"
-    }
+export const engagements: Engagement[] = [
+  {
+    id: "product-clarity-sprint",
+    icon: "🔍",
+    title: "Product Clarity Sprint",
+    subtitle: "diagnose what's not working",
+    bestFor:
+      "Existing products with friction, drop-off, confusing flows, or too many competing ideas.",
+    deliverables: [
+      "UX review of one selected product area or workflow",
+      "Annotated findings and friction points",
+      "Prioritized recommendations",
+      "Redesign direction for one key moment",
+      "A practical next-step plan",
+    ],
+    timeline: "1 week",
+    collaborationStyle: "Mostly async, with 1 kickoff and 1 review call",
+    investment: "Starting at $2,500",
+  },
+  {
+    id: "core-flow-design-sprint",
+    icon: "🚀",
+    title: "Core Flow Design Sprint",
+    subtitle: "design one high-impact journey",
+    bestFor:
+      "Teams that need one important flow designed clearly enough to test, present, or hand off for development.",
+    deliverables: [
+      "User flow for the selected journey",
+      "Wireframes for key screens",
+      "Polished high-fidelity UI",
+      "Clickable prototype",
+      "Handoff-ready design notes",
+    ],
+    timeline: "2–3 weeks",
+    collaborationStyle: "1 kickoff, async check-ins, 1 final review",
+    investment: "Starting at $5,000",
+    badge: "Most Popular",
+  },
+  {
+    id: "strategic-ux-sprint",
+    icon: "🧭",
+    title: "Strategic UX Sprint",
+    subtitle: "product direction + selected redesign",
+    bestFor:
+      "Products with growing complexity that need stronger workflow structure, clearer prioritization, and a more coherent user experience.",
+    deliverables: [
+      "Workflow diagnosis and priority mapping",
+      "Redesign of selected high-impact moments",
+      "UX structure recommendations",
+      "Pattern or component guidance",
+      "Implementation direction for next steps",
+    ],
+    timeline: "3–4 weeks",
+    collaborationStyle:
+      "Limited, structured touchpoints with async collaboration between reviews",
+    investment: "Starting at $7,500",
+  },
 ];
 
-export interface StarterPack {
-    title: string;
-    bestFor: string;
-    timeline: string;
-    deliverables: string[];
-    investment: string;
-    upgradeNote: string;
+export interface MiniReview {
+  title: string;
+  subtitle: string;
+  bestFor: string;
+  deliverables: string[];
+  timeline: string;
+  investment: string;
+  creditNote: string;
 }
 
-export const starterPack: StarterPack = {
-    title: "UX Starter Pack",
-    bestFor: "Landing pages or one critical screen that needs immediate improvement.",
-    timeline: "3 days",
-    deliverables: [
-        "Quick audit + prioritized improvements",
-        "Revised wireframe or layout concept",
-        "Lightweight implementation notes"
-    ],
-    investment: "$345",
-    upgradeNote: "If you upgrade to a larger engagement within 14 days, I'll credit this cost toward the next package."
+export const miniReview: MiniReview = {
+  title: "Mini UX Review",
+  subtitle: "one screen, fast improvement",
+  bestFor:
+    "Landing pages, sign-up screens, quote steps, or one conversion-critical moment that needs fast improvement.",
+  deliverables: [
+    "Quick diagnostic review",
+    "Top recommendations",
+    "One revised direction or layout suggestion",
+  ],
+  timeline: "2–3 business days",
+  investment: "Starting at $500",
+  creditNote:
+    "If we continue into a larger sprint, this can be credited toward the next engagement.",
 };
 
-export interface AddOn {
-    name: string;
-    price: string;
-    detail: string;
-}
+export const bestFitSignals: string[] = [
+  "Founders who need clarity fast",
+  "Teams with one high-impact flow to improve",
+  "Products with workflow complexity",
+  "Teams comfortable with focused, async collaboration",
+  "Startups that want thoughtful design without a bloated process",
+];
 
-export const addOns: AddOn[] = [
-    { name: "Dev-ready handoff pack", price: "+$500", detail: "interaction notes, component states, redlines, acceptance checklist" },
-    { name: "User testing lite", price: "+$750", detail: "3–5 sessions + findings summary" },
-    { name: "Copy polish", price: "+$300", detail: "improve clarity + scannability for key screens" },
-    { name: "Analytics / metrics setup guidance", price: "+$300", detail: "what to track + how to interpret" }
+export const notAFitSignals: string[] = [
+  "You need daily design support",
+  "You want an open-ended retainer",
+  "You expect unlimited revisions",
+  "You're only looking for surface-level visual polish",
+  "You need a full-service agency model",
 ];
