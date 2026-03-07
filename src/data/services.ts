@@ -112,3 +112,5 @@ export const notAFitSignals: string[] = [
   "You're only looking for surface-level visual polish",
   "You need a full-service agency model",
 ];
+
+export { engagements as services };
