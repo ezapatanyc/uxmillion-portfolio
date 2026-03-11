@@ -19,7 +19,7 @@ const ValueProp = () => {
 
           <div className="space-y-3 mb-6">
             <p className="text-muted-foreground leading-relaxed">
-              As products grow, the experience often becomes harder to understand before it gets better.
+              As products grow, the experience often gets harder to understand before it gets better.
             </p>
             <p className="text-muted-foreground leading-relaxed">
               Features pile up. Key flows become harder to complete. Teams feel the friction, but they don't always know what to fix first.

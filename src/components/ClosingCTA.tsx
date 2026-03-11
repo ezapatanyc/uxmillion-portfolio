@@ -20,7 +20,7 @@ const ClosingCTA = () => {
           Work with me
         </h2>
         <p className="text-muted-foreground leading-relaxed mb-8 max-w-xl mx-auto">
-          I work with teams through focused product design sprints designed to create momentum without bloated process.
+          I work with teams through focused product design sprints that create momentum without bloated process.
         </p>
 
         <div className="mb-8">
