@@ -1,0 +1,34 @@
+# Emiliano Zapata — UX/Product Designer
+
+> NYC-based Product Designer helping startups and product teams simplify onboarding, dashboards, quote flows, configuration journeys, and other workflow-heavy moments that need more clarity. 15+ projects delivered across Healthcare, Fintech, and E-commerce.
+
+## About
+
+- Name: Emiliano Zapata
+- Role: Product Designer (UX/UI)
+- Location: New York City (remote-friendly)
+- Specialties: Onboarding flows, dashboards, configurators, quote engines, progressive disclosure, design systems
+- Industries: Healthcare, Fintech, E-commerce, Construction, Insurance
+- Email: ezapata.nyc@gmail.com
+- Website: https://uxmillion.com
+
+## Case Studies
+
+- [Pergolade Blade Pro](https://uxmillion.com/projects/pergolade-blade-pro): Redefining a premium configurator-led buying journey across desktop and mobile for luxury outdoor living products.
+- [RailBuild](https://uxmillion.com/projects/railbuild): Streamlining construction procurement and product discovery for three audiences — homeowners, architects, and contractors.
+- [FidemDD Website Redesign](https://uxmillion.com/projects/fidemdd-website-redesign): Redesigned financial services site to improve credibility and increase lead generation by 35%.
+- [CityPups Dog Adoption](https://uxmillion.com/projects/citypups-dog-adoption): Applied Google Ventures Design Sprint to create a lifestyle-based dog matching tool prototype in 5 days.
+- [Birder Mobile App](https://uxmillion.com/projects/birder-mobile-app): A mobile app to identify and explore birds worldwide using AI-powered recognition.
+- [Legal & General Quote Engine](https://uxmillion.com/projects/legal-general-quote-engine): Modernizing a legacy life insurance quote engine to improve conversion through progressive disclosure.
+
+## Services
+
+- Starter Pack: UX audit, competitor analysis, wireframes, and actionable recommendations for early-stage products.
+- MVP Package: End-to-end UX/UI design from research through high-fidelity prototypes and handoff.
+- Full Overhaul: Complete product redesign including information architecture, design systems, and iterative testing.
+
+## Links
+
+- Portfolio: https://uxmillion.com
+- LinkedIn: https://linkedin.com/in/ezapata
+- Full content for AI: https://uxmillion.com/llms-full.txt

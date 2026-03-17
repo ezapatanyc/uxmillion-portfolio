@@ -1,0 +1,170 @@
+# Emiliano Zapata — UX/Product Designer (Full Content)
+
+> NYC-based Product Designer helping startups and product teams simplify onboarding, dashboards, quote flows, configuration journeys, and other workflow-heavy moments that need more clarity. I combine systems thinking, rapid prototyping, and focused design sprints to help teams move from ambiguity to momentum. 15+ projects delivered across Healthcare, Fintech, and E-commerce.
+
+## About
+
+- Name: Emiliano Zapata
+- Role: Product Designer (UX/UI)
+- Location: New York City (remote-friendly)
+- Specialties: Onboarding flows, dashboards, configurators, quote engines, progressive disclosure, design systems
+- Industries: Healthcare, Fintech, E-commerce, Construction, Insurance
+- Email: ezapata.nyc@gmail.com
+- Website: https://uxmillion.com
+- LinkedIn: https://linkedin.com/in/ezapata
+
+---
+
+## Case Study: Pergolade Blade Pro
+
+- URL: https://uxmillion.com/projects/pergolade-blade-pro
+- Role: Lead UX Designer (end-to-end)
+- Subtitle: Digital Experience for Luxury Outdoor Living
+- Timeline: 8 Weeks
+- Team: Me (UX/UI) + 1 Developer + Owner/Stakeholder
+- Service Package: MVP Package
+
+### Description
+Redefining a premium configurator-led buying journey across desktop and mobile.
+
+### Challenge
+Pergolade needed a digital presence that matched the premium quality of their physical product. The challenge was to communicate complex technical features in an elegant, easy-to-understand way for homeowners.
+
+### Solution
+We designed a visually immersive scroll-based experience that breaks down the product features (louver control, weather resistance, styling) into digestible sections. We used large imagery and subtle interactions to convey luxury.
+
+### Results
+The new landing page led to a significant increase in dealer inquiries and customer engagement time.
+
+---
+
+## Case Study: RailBuild
+
+- URL: https://uxmillion.com/projects/railbuild
+- Role: Lead UX Designer
+- Subtitle: Streamlining product discovery + quoting for three buyer types
+- Timeline: 3 Weeks
+- Team: Lead UX (me), 2 Front-End Developers, Marketing Team (feedback + reviews)
+- Service Package: Full Overhaul
+
+### Description
+Streamlining construction procurement for three audiences (Homeowners, Architects, Contractors).
+
+### Challenge
+RailBuild's existing site was confusing for their three distinct user groups: homeowners, architects, and contractors. Users struggled to locate relevant technical documentation and product specifications, and the path to requesting a quote was unclear.
+
+### Solution
+We restructured the Information Architecture (IA) to create distinct pathways for each user persona. We implemented a robust filtering system for products and a dedicated resource center for professionals.
+
+### Results
+Reduced support tickets regarding product specs by 40%. Increased quote requests from contractors by 25%.
+
+---
+
+## Case Study: FidemDD Website Redesign
+
+- URL: https://uxmillion.com/projects/fidemdd-website-redesign
+- Role: Product Designer
+- Subtitle: Trust in Financial Services
+- Timeline: 3 Weeks
+- Service Package: Starter Pack
+
+### Description
+Redesigned financial services site — improved credibility, increased lead generation by 35%.
+
+### Challenge
+FidemDD's digital presence did not reflect their position as a premium financial consultancy. The site was outdated, difficult to navigate on mobile, and failed to convert visitors into consultations.
+
+### Solution
+We implemented a minimalist design system focused on clarity and trust. This included high-end typography, a streamlined user flow for booking calls, and clear service categorization.
+
+### Results
+35% increase in online lead generation and a 20% reduction in bounce rate on the homepage.
+
+---
+
+## Case Study: CityPups Dog Adoption Tool
+
+- URL: https://uxmillion.com/projects/citypups-dog-adoption
+- Role: UX Designer
+- Subtitle: Matching Pups with People
+- Timeline: 2 Weeks
+- Service Package: MVP Package
+
+### Description
+Applied Google Ventures Design Sprint to create a matching tool prototype in 5 days — demonstrating rapid ideation and user testing under tight constraints.
+
+### Challenge
+The adoption process was overly clinical and often resulted in poor matches between dogs and urban dwellers. CityPups needed a way to guide potential owners based on lifestyle, not just breed.
+
+### Solution
+We designed a persona-based matching engine that evaluates factors like apartment size, activity level, and noise tolerance to recommend the perfect canine companion.
+
+### Results
+Adoption success rate (no return within 90 days) increased by 40%, and the application completion rate rose by 25%.
+
+---
+
+## Case Study: Birder Mobile App
+
+- URL: https://uxmillion.com/projects/birder-mobile-app
+- Role: UX Designer
+- Subtitle: A Passion Project
+- Timeline: 7 months
+- Service Package: MVP Package
+
+### Description
+An app to identify and explore birds all around the world.
+
+### Challenge
+Bird enthusiasts often rely on various tools to recognize and find information about birds, which include digital apps, printed guides, and other birders. Very few apps on the market do a fair job recognizing a bird, and they often fall short offering the functionality, reliability, and ease of use that most users are looking for.
+
+### Solution
+With the use of new technological implementations, user research, interviews, surveys and in-depth analysis of leading apps' strengths and weaknesses, Birder plans to provide an effective alternative solution. The purpose of the Birder app is to effectively identify any bird around the world while keeping the user engaged into exploring more about birds in one app while providing a seamless human-computer interaction.
+
+### Results
+The final design prioritizes a visually pleasing and user-centric experience with a simplified interface and color scheme optimized for various lighting conditions, resulting in increased user engagement and satisfaction.
+
+---
+
+## Case Study: Modernizing the Life Insurance Quote Engine (Legal & General)
+
+- URL: https://uxmillion.com/projects/legal-general-quote-engine
+- Role: Senior UX Designer
+- Subtitle: Conversion Rate Optimization & Design System Integration
+- Timeline: 8 Weeks
+- Team: Me (Lead UX), Senior UX Architect, UX Director, 2 Front-End Developers
+- Service Package: Full Overhaul
+
+### Description
+Redesigning a legacy quote engine to improve conversion rates and user trust through progressive disclosure.
+
+### Challenge
+Legal & General's legacy quote engine was a single-page form that acted as a significant barrier to lead generation due to information overload, technical failures on mobile, and high cognitive load.
+
+### Solution
+We reimagined the IA by shifting to a 4-stage progressive disclosure model, translated clinical labels into natural language, and established trust by providing quotes before lead capture.
+
+### Results
+Eliminated mobile keyboard overlap, reduced cognitive load, increased user confidence, and achieved enterprise-wide adoption of new Canopy-compliant components.
+
+---
+
+## Services Offered
+
+### Starter Pack
+UX audit, competitor analysis, wireframes, and actionable recommendations for early-stage products.
+
+### MVP Package
+End-to-end UX/UI design from research through high-fidelity prototypes and developer handoff.
+
+### Full Overhaul
+Complete product redesign including information architecture, design systems, and iterative user testing.
+
+---
+
+## Contact
+
+- Email: ezapata.nyc@gmail.com
+- Website: https://uxmillion.com
+- LinkedIn: https://linkedin.com/in/ezapata

@@ -9,6 +9,8 @@ import Footer from "@/components/Footer";
 import ProjectNav from "@/components/ProjectNav";
 import ProjectProtection from "@/components/ProjectProtection";
 import Contact from "@/components/Contact";
+import SEOHead from "@/components/SEOHead";
+import { generateCreativeWorkSchema } from '@/lib/jsonLd';
 
 import { PropsWithChildren } from 'react';
 
@@ -28,12 +30,40 @@ const CaseStudyLayout = ({ project, nextProject, children, hideDefaultMetadata =
         window.scrollTo(0, 0);
     }, [project.id]);
 
+    // Inject JSON-LD structured data directly into <head>
+    // (react-helmet-async doesn't reliably render script tags with dangerouslySetInnerHTML during SPA navigation)
+    useEffect(() => {
+        const schema = generateCreativeWorkSchema(
+            project.title,
+            project.description,
+            project.caseStudyUrl,
+            project.image && !project.image.startsWith('http') ? project.image : undefined
+        );
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.textContent = JSON.stringify(schema);
+        script.setAttribute('data-case-study', project.id);
+        document.head.appendChild(script);
+
+        return () => {
+            // Clean up on unmount or project change
+            const existing = document.head.querySelector(`script[data-case-study="${project.id}"]`);
+            if (existing) document.head.removeChild(existing);
+        };
+    }, [project.id, project.title, project.description, project.caseStudyUrl, project.image]);
+
     const projectServices = project.servicesUsed
         ? services.filter(s => project.servicesUsed?.includes(s.id))
         : [];
 
     return (
         <ProjectProtection project={project}>
+            <SEOHead
+                title={project.title}
+                description={project.subtitle || project.description}
+                path={project.caseStudyUrl}
+                ogImage={project.image && !project.image.startsWith('http') ? project.image : undefined}
+            />
             <div className="min-h-screen bg-background text-foreground selection:bg-neon-cyan/30">
                 <main className="pt-24 pb-16">
                     <ProjectNav />

@@ -6,22 +6,32 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://uxmillion.com/work</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://uxmillion.com/services</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://uxmillion.com/projects/pergolade-blade-pro</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://uxmillion.com/projects/railbuild</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://uxmillion.com/projects/fidemdd-website-redesign</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://uxmillion.com/projects/citypups-dog-adoption</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://uxmillion.com/projects/birder-mobile-app</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://uxmillion.com/projects/legal-general-quote-engine</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
