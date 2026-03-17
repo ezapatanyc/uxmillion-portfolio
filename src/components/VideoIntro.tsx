@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 
 interface VideoIntroProps {
@@ -6,85 +6,93 @@ interface VideoIntroProps {
 }
 
 const VideoIntro = ({ onComplete }: VideoIntroProps) => {
-  const [showSkip, setShowSkip] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const hasCompletedRef = useRef(false);
+
+  const handleComplete = useCallback(() => {
+    if (hasCompletedRef.current) return;
+    hasCompletedRef.current = true;
+    setIsVisible(false);
+    setTimeout(onComplete, 500); // Wait for fade out animation
+  }, [onComplete]);
 
   useEffect(() => {
-    // Check for reduced motion preference
+    // Check for reduced motion preference — skip immediately
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(mediaQuery.matches);
-    
-    // Skip intro if user prefers reduced motion
     if (mediaQuery.matches) {
       onComplete();
       return;
     }
 
-    // Show skip button after 2 seconds
-    const skipTimer = setTimeout(() => {
-      setShowSkip(true);
-    }, 2000);
+    // Hard timeout safety net: auto-skip after 6s no matter what
+    // (video is ~5s; this catches stalls, buffering, or anything unexpected)
+    const hardTimeout = setTimeout(() => {
+      handleComplete();
+    }, 6000);
 
-    return () => clearTimeout(skipTimer);
-  }, [onComplete]);
-
-  const handleVideoEnd = () => {
-    setIsVisible(false);
-    setTimeout(onComplete, 500); // Wait for fade out animation
-  };
-
-  const handleSkip = () => {
-    setIsVisible(false);
-    setTimeout(onComplete, 500);
-  };
-
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      handleSkip();
+    // Try to play the video and catch autoplay failures
+    const video = videoRef.current;
+    if (video) {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Autoplay was blocked — skip intro immediately
+          handleComplete();
+        });
+      }
     }
-  };
 
+    return () => clearTimeout(hardTimeout);
+  }, [onComplete, handleComplete]);
+
+  // Keyboard shortcut: Enter or Space to skip
   useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleComplete();
+      }
+    };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
-  if (prefersReducedMotion) {
-    return null;
-  }
+  }, [handleComplete]);
 
   return (
-    <div 
-      className={`fixed inset-0 z-50 bg-theme-bg900 transition-opacity duration-500 ${
-        isVisible ? 'opacity-100' : 'opacity-0'
+    <div
+      className={`fixed inset-0 z-50 bg-theme-bg900 transition-opacity duration-500 cursor-pointer ${
+        isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
       }`}
+      onClick={handleComplete}
+      role="button"
+      tabIndex={0}
+      aria-label="Click anywhere to skip introduction"
     >
       <video
         ref={videoRef}
         className="w-full h-full object-cover"
-        autoPlay
         muted
         playsInline
-        onEnded={handleVideoEnd}
+        preload="auto"
+        onEnded={handleComplete}
         aria-label="Introduction video"
       >
         <source src="/assets/hero-intro-final_compressed.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      
-      {showSkip && (
-        <Button
-          onClick={handleSkip}
-          className="absolute top-8 right-8 bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
-          aria-label="Skip introduction video"
-        >
-          Skip Intro
-        </Button>
-      )}
-      
+
+      {/* Skip button — visible immediately with a fade-in */}
+      <Button
+        onClick={(e) => {
+          e.stopPropagation();
+          handleComplete();
+        }}
+        className="absolute top-8 right-8 bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300 animate-fade-in px-6 py-2 text-base"
+        aria-label="Skip introduction video"
+      >
+        Skip Intro
+      </Button>
+
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-1/3 h-2/3 bg-neon-cyan/5 rounded-full blur-[100px]"></div>
         <div className="absolute bottom-0 right-0 w-1/3 h-2/3 bg-neon-pink/5 rounded-full blur-[100px]"></div>
