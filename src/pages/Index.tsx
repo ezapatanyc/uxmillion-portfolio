@@ -10,7 +10,6 @@ import About from '@/components/About';
 import Testimonials from '@/components/Testimonials';
 import Work from '@/components/Work';
 import Resume from '@/components/Resume';
-import ClosingCTA from '@/components/ClosingCTA';
 import Contact from '@/components/Contact';
 import CalendlyBooking from '@/components/CalendlyBooking';
 import Footer from '@/components/Footer';
@@ -143,7 +142,6 @@ const Index = () => {
         <About />
         <Testimonials />
         <Resume />
-        <ClosingCTA />
         <Contact />
         <Footer />
 
