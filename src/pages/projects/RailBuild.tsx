@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Clock, Users, Wrench } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Clock, Users, Wrench, Home, Compass, HardHat, AlertTriangle, CheckCircle2, LayoutGrid, BookOpen, MousePointerClick } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { services } from '@/data/services';
@@ -109,29 +109,54 @@ const RailBuild = () => {
                         </p>
                     </section>
 
-                    {/* The Challenge */}
-                    <section className="space-y-6 max-w-3xl">
-                        <h2 className="text-2xl font-bold text-primary">The Challenge</h2>
-                        <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                            RailBuild’s existing site was confusing for its three core user groups:
-                        </p>
-                        <ul className="space-y-4 text-lg text-muted-foreground">
-                            <li className="flex items-start gap-3">
-                                <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0" />
-                                <span><strong>Homeowners</strong> needed inspiration and plain-language guidance to request a quote confidently</span>
-                            </li>
-                            <li className="flex items-start gap-3">
-                                <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0" />
-                                <span><strong>Architects</strong> needed fast access to specs, details, and documentation</span>
-                            </li>
-                            <li className="flex items-start gap-3">
-                                <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0" />
-                                <span><strong>Contractors</strong> needed product clarity, options, and a straightforward path to pricing/quotes</span>
-                            </li>
-                        </ul>
-                        <p className="text-lg text-muted-foreground leading-relaxed mt-6 mb-4">
-                            <strong>Key friction points:</strong> Hard-to-find technical docs, competing content (marketing vs. specs), and a "Request a Quote" flow that lacked context.
-                        </p>
+                    {/* The Problem */}
+                    <section className="space-y-8">
+                        <div className="max-w-3xl">
+                            <h2 className="text-2xl font-bold text-primary">The Problem</h2>
+                            <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+                                RailBuild's existing site was confusing for its three core user groups — each with fundamentally different goals:
+                            </p>
+                        </div>
+
+                        <div className="grid md:grid-cols-3 gap-6">
+                            <div className="p-6 rounded-2xl bg-secondary/5 border border-border/50 space-y-4 hover:border-primary/30 transition-colors">
+                                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                                    <Home className="w-5 h-5 text-primary" />
+                                </div>
+                                <h3 className="text-lg font-semibold">Homeowners</h3>
+                                <p className="text-muted-foreground text-sm leading-relaxed">
+                                    Needed inspiration and plain-language guidance to request a quote confidently — but found dense, technical-first content.
+                                </p>
+                            </div>
+                            <div className="p-6 rounded-2xl bg-secondary/5 border border-border/50 space-y-4 hover:border-primary/30 transition-colors">
+                                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                                    <Compass className="w-5 h-5 text-primary" />
+                                </div>
+                                <h3 className="text-lg font-semibold">Architects</h3>
+                                <p className="text-muted-foreground text-sm leading-relaxed">
+                                    Needed fast access to specs, CAD details, and documentation — but had to dig through marketing content to find them.
+                                </p>
+                            </div>
+                            <div className="p-6 rounded-2xl bg-secondary/5 border border-border/50 space-y-4 hover:border-primary/30 transition-colors">
+                                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                                    <HardHat className="w-5 h-5 text-primary" />
+                                </div>
+                                <h3 className="text-lg font-semibold">Contractors</h3>
+                                <p className="text-muted-foreground text-sm leading-relaxed">
+                                    Needed product clarity, options, and a straightforward path to pricing — but hit dead ends and unclear CTAs.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="p-5 rounded-2xl bg-destructive/5 border border-destructive/20 flex items-start gap-4 max-w-3xl">
+                            <AlertTriangle className="w-5 h-5 text-destructive mt-0.5 shrink-0" />
+                            <div>
+                                <p className="font-semibold text-sm text-destructive mb-1">Key friction points</p>
+                                <p className="text-sm text-muted-foreground leading-relaxed">
+                                    Hard-to-find technical docs, competing content (marketing vs. specs), and a "Request a Quote" flow that lacked product context.
+                                </p>
+                            </div>
+                        </div>
                     </section>
 
                     {/* Visual Experience */}
@@ -350,26 +375,56 @@ const RailBuild = () => {
                     </section>
 
                     {/* The Solution */}
-                    <section className="space-y-6 max-w-3xl">
-                        <h2 className="text-2xl font-bold text-primary">The Solution</h2>
-                        <ul className="space-y-4 text-lg text-muted-foreground">
-                            <li className="flex items-start gap-3">
-                                <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0" />
-                                <span>Rebuilt the IA so each persona has a clear “front door”</span>
-                            </li>
-                            <li className="flex items-start gap-3">
-                                <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0" />
-                                <span>Introduced a more usable product exploration structure (less guessing, fewer dead ends)</span>
-                            </li>
-                            <li className="flex items-start gap-3">
-                                <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0" />
-                                <span>Strengthened the Resource/Specs experience for pros</span>
-                            </li>
-                            <li className="flex items-start gap-3">
-                                <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0" />
-                                <span>Improved content hierarchy and CTAs so users understand <em>what to do next</em> at every step</span>
-                            </li>
-                        </ul>
+                    <section className="space-y-8">
+                        <div className="max-w-3xl">
+                            <h2 className="text-2xl font-bold text-primary">The Solution</h2>
+                            <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+                                A restructured experience that gives each audience a clear path — from first impression to conversion.
+                            </p>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 gap-6">
+                            <div className="p-6 rounded-2xl bg-secondary/5 border border-border/50 space-y-3 hover:border-primary/30 transition-colors">
+                                <div className="flex items-center gap-3">
+                                    <span className="text-2xl font-bold text-primary">01</span>
+                                    <CheckCircle2 className="w-5 h-5 text-primary" />
+                                </div>
+                                <h3 className="text-lg font-semibold">Persona-based IA</h3>
+                                <p className="text-sm text-muted-foreground leading-relaxed">
+                                    Rebuilt the information architecture so each persona — homeowner, architect, contractor — has a clear "front door" into the experience.
+                                </p>
+                            </div>
+                            <div className="p-6 rounded-2xl bg-secondary/5 border border-border/50 space-y-3 hover:border-primary/30 transition-colors">
+                                <div className="flex items-center gap-3">
+                                    <span className="text-2xl font-bold text-primary">02</span>
+                                    <LayoutGrid className="w-5 h-5 text-primary" />
+                                </div>
+                                <h3 className="text-lg font-semibold">Product Exploration</h3>
+                                <p className="text-sm text-muted-foreground leading-relaxed">
+                                    Introduced a more usable product exploration structure — less guessing, fewer dead ends, and clear product comparison.
+                                </p>
+                            </div>
+                            <div className="p-6 rounded-2xl bg-secondary/5 border border-border/50 space-y-3 hover:border-primary/30 transition-colors">
+                                <div className="flex items-center gap-3">
+                                    <span className="text-2xl font-bold text-primary">03</span>
+                                    <BookOpen className="w-5 h-5 text-primary" />
+                                </div>
+                                <h3 className="text-lg font-semibold">Resource Hub for Pros</h3>
+                                <p className="text-sm text-muted-foreground leading-relaxed">
+                                    Strengthened the specs and documentation experience — giving architects and contractors direct access without hunting.
+                                </p>
+                            </div>
+                            <div className="p-6 rounded-2xl bg-secondary/5 border border-border/50 space-y-3 hover:border-primary/30 transition-colors">
+                                <div className="flex items-center gap-3">
+                                    <span className="text-2xl font-bold text-primary">04</span>
+                                    <MousePointerClick className="w-5 h-5 text-primary" />
+                                </div>
+                                <h3 className="text-lg font-semibold">Clear Content Hierarchy</h3>
+                                <p className="text-sm text-muted-foreground leading-relaxed">
+                                    Improved content hierarchy and CTAs so users always understand <em>what to do next</em> at every step of the journey.
+                                </p>
+                            </div>
+                        </div>
                     </section>
 
                     {/* Outcomes */}
