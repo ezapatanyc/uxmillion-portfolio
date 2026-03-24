@@ -125,7 +125,7 @@ const Index = () => {
     <>
       <SEOHead
         title="Product Designer | High-Impact Workflows"
-        description="I design clear product experiences for high-impact workflows. NYC-based Senior Product Designer and Interaction Designer helping teams simplify complex workflows across onboarding, dashboards, quote flows, and configurators."
+        description="Senior Product Designer and Interaction Designer based in NYC, turning complex workflows into clear, usable product experiences."
         path="/"
         jsonLd={[generateWebSiteSchema(), generatePersonSchema()]}
       />

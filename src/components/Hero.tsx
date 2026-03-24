@@ -384,33 +384,7 @@ const Hero = () => {
                 lineHeight: "1.5",
               }}
             >
-              I design clear product experiences for high-impact workflows
-            </p>
-          </div>
-
-          <div className="animate-fade-in animation-delay-200">
-            <p
-              className="text-muted-foreground max-w-2xl mx-auto mb-3 font-normal tracking-normal"
-              style={{
-                fontSize: "clamp(0.95rem, 1.8vw, 1.1rem)",
-                lineHeight: "1.8",
-              }}
-            >
-              I'm{" "}
-              <strong className="text-foreground font-semibold">
-                Emiliano Zapata
-              </strong>
-              , a NYC-based Senior Product Designer and Interaction Designer helping teams simplify complex workflows across onboarding, dashboards, quote flows, and configurators.
-            </p>
-            <p
-              className="text-muted-foreground/80 max-w-xl mx-auto mb-6 font-normal tracking-normal"
-              style={{
-                fontSize: "clamp(0.9rem, 1.6vw, 1rem)",
-                lineHeight: "1.8",
-              }}
-            >
-              I combine systems thinking, rapid prototyping, and focused design
-              sprints to help teams move from ambiguity to momentum.
+              Senior Product Designer and Interaction Designer based in NYC, turning complex workflows into clear, usable product experiences.
             </p>
           </div>
 
