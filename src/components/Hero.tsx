@@ -400,9 +400,7 @@ const Hero = () => {
               <strong className="text-foreground font-semibold">
                 Emiliano Zapata
               </strong>
-              , a NYC-based Product Designer helping startups and product teams
-              simplify onboarding, dashboards, quote flows, configuration
-              journeys, and other workflow-heavy moments that need more clarity.
+              , a NYC-based Senior Product Designer and Interaction Designer helping teams simplify complex workflows across onboarding, dashboards, quote flows, and configurators.
             </p>
             <p
               className="text-muted-foreground/80 max-w-xl mx-auto mb-6 font-normal tracking-normal"
