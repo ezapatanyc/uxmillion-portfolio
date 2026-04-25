@@ -232,7 +232,7 @@ const EngagementCard = ({
         <div className="w-full mb-8 p-4 rounded-xl bg-foreground/5 border border-border/5">
           <div className="text-[10px] font-black text-primary uppercase tracking-[0.15em] mb-1 flex items-center gap-1.5">
             <DollarSign className="w-3 h-3" />
-            Investment
+            Typical project investment
           </div>
           <div className="text-sm font-bold text-foreground/80">{investment}</div>
         </div>
@@ -358,6 +358,9 @@ const Services = () => {
             <div className="animate-fade-in animation-delay-200 space-y-5 max-w-2xl mx-auto">
               <p className="text-foreground/80 font-normal leading-relaxed" style={{ fontSize: "clamp(1rem, 1.5vw, 1.15rem)" }}>
                 I help startups and product teams improve important parts of the product experience through focused, well-scoped design sprints.
+              </p>
+              <p className="text-foreground/70 font-normal leading-relaxed" style={{ fontSize: "clamp(0.95rem, 1.4vw, 1.05rem)" }}>
+                I take on a limited number of select consulting sprints for teams that need focused product design support around one important workflow.
               </p>
               <p className="text-muted-foreground font-normal leading-relaxed" style={{ fontSize: "clamp(0.95rem, 1.4vw, 1.05rem)" }}>
                 My work is best suited for onboarding, dashboards, quote flows, configuration journeys, request flows, internal tools, and other workflow-heavy moments that need more clarity.
@@ -509,7 +512,7 @@ const Services = () => {
                   <div className="md:w-64 flex flex-col items-center md:items-start gap-4 md:pt-14">
                     <div className="w-full p-4 rounded-xl bg-foreground/5 border border-border/5 text-center md:text-left">
                       <div className="text-[10px] font-black text-primary uppercase tracking-[0.15em] mb-1 flex items-center gap-1.5 justify-center md:justify-start">
-                        <DollarSign className="w-3 h-3" /> Investment
+                        <DollarSign className="w-3 h-3" /> Typical project investment
                       </div>
                       <div className="text-2xl font-black text-foreground/90">Starting at $500</div>
                     </div>

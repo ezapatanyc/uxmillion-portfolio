@@ -978,3 +978,40 @@ video {
 .section-container {
   /* contain: layout style; - Removed to prevent clipping */
 }
+
+/* ─── About Section — Editorial Portrait ───────────────────────── */
+
+/* Portrait wrapper sizing */
+.about-portrait-wrapper {
+  width: 240px;
+  flex-shrink: 0;
+}
+
+/* Portrait frame — 3:4 aspect ratio for balanced editorial feel */
+.about-portrait-frame {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .about-portrait-wrapper {
+    width: 270px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .about-portrait-wrapper {
+    width: 300px;
+  }
+}
+
+/* Mobile stacking — centered portrait */
+@media (max-width: 767px) {
+  .about-portrait-wrapper {
+    width: 250px;
+    margin: 0 auto;
+  }
+}
+

@@ -1,4 +1,4 @@
-import { CheckCircle2, Users, BarChart3, HeartHandshake, Search, Minimize2, Layers, RefreshCw } from "lucide-react";
+import { Search, Minimize2, Layers, RefreshCw } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -35,61 +35,121 @@ const About = () => {
     },
   ];
 
+  const skillTags = [
+    "Product Strategy",
+    "Interaction Design",
+    "Enterprise UX",
+    "Visual Systems",
+    "AI-Augmented Workflows",
+  ];
+
   return <section id="about" className="section-padding section-about">
     <div className="max-w-5xl mx-auto px-4 md:px-6">
 
       {/* Profile + About Card */}
-      <div className="grid md:grid-cols-[1fr_1.5fr] gap-6 md:gap-10 items-center frosted-card p-6 md:p-8 py-8 md:py-12 rounded-xl about-card mx-[15px] md:mx-0">
-        <div className="mx-auto relative">
-          <AnimatePresence>
-            {showBubble && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8, y: 10, x: "-50%" }}
-                animate={{ opacity: 1, scale: 1, y: 0, x: "-50%" }}
-                exit={{ opacity: 0, scale: 0.8, y: 10, x: "-50%" }}
-                className="absolute -top-16 md:-top-20 left-1/2 z-[60] pointer-events-none"
-                style={{ filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.3))' }}
+      <div className="about-card frosted-card rounded-2xl md:rounded-3xl overflow-hidden mx-[15px] md:mx-0">
+        <div className="grid md:grid-cols-[auto_1fr] gap-0 items-start">
+          
+          {/* Left Column — Portrait */}
+          <div className="relative flex items-start justify-center md:justify-start p-6 pb-2 md:p-8 md:pr-0">
+            <AnimatePresence>
+              {showBubble && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8, y: 10, x: "-50%" }}
+                  animate={{ opacity: 1, scale: 1, y: 0, x: "-50%" }}
+                  exit={{ opacity: 0, scale: 0.8, y: 10, x: "-50%" }}
+                  className="absolute -top-10 left-1/2 z-[60] pointer-events-none"
+                  style={{ filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.3))' }}
+                >
+                  <div className="relative px-5 py-2.5 rounded-2xl bg-slate-900/95 backdrop-blur-xl border-2 border-primary/50 shadow-[0_0_15px_rgba(78,214,255,0.3)]">
+                    <span className="text-primary font-black text-xs md:text-sm whitespace-nowrap tracking-tight uppercase">
+                      Check out my case studies above! ☝️
+                    </span>
+                    {/* Speech Bubble Arrow */}
+                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-slate-900/95 border-r-2 border-b-2 border-primary/50 rotate-45"></div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => setShowBubble(true)}
+              className="about-portrait-wrapper cursor-pointer relative"
+            >
+              {/* Glow ring behind the portrait */}
+              <div className="absolute -inset-[3px] rounded-[28px] md:rounded-[32px] bg-gradient-to-br from-[rgba(78,214,255,0.35)] via-[rgba(78,214,255,0.1)] to-[rgba(145,70,255,0.3)] blur-[2px] pointer-events-none" />
+              
+              <div className="about-portrait-frame relative overflow-hidden rounded-[24px] md:rounded-[28px]"
+                style={{
+                  border: '2px solid rgba(56, 189, 248, 0.25)',
+                  boxShadow: '0 0 30px rgba(78, 214, 255, 0.12), 0 8px 32px rgba(0, 0, 0, 0.3)',
+                }}
               >
-                <div className="relative px-5 py-2.5 rounded-2xl bg-slate-900/95 backdrop-blur-xl border-2 border-primary/50 shadow-[0_0_15px_rgba(78,214,255,0.3)]">
-                  <span className="text-primary font-black text-xs md:text-sm whitespace-nowrap tracking-tight uppercase">
-                    Check out my case studies above! ☝️
-                  </span>
-                  {/* Speech Bubble Arrow */}
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-slate-900/95 border-r-2 border-b-2 border-primary/50 rotate-45"></div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setShowBubble(true)}
-            className="w-40 h-40 md:w-54 md:h-54 lg:w-68 lg:h-68 rounded-full overflow-hidden border-4 border-primary/30 shadow-lg shadow-primary/20 relative cursor-pointer z-10"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10 pointer-events-none"></div>
-            <img
-              src="/uxmillion-uploads/profile-pic-2026.jpg"
-              alt="Emiliano"
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </motion.div>
-        </div>
-
-        <div>
-          <h3 className="text-xl font-semibold mb-4 text-gradient md:text-3xl">Systems-focused product design</h3>
-          <div className="space-y-3">
-            <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
-              I'm a Product Designer with experience across startup and enterprise environments.
-            </p>
-            <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
-              I specialize in turning messy ideas and workflow-heavy experiences into clearer product journeys through research, product thinking, rapid prototyping, and practical design execution.
-            </p>
-            <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
-              <span className="text-neon-cyan font-semibold">I'm especially drawn to products where one important part of the experience needs to work better</span> — onboarding, dashboards, internal tools, quote flows, request journeys, and other decision-heavy moments.
-            </p>
+                <img
+                  src="/uxmillion-uploads/profile-pic-2026.jpg"
+                  alt="Emiliano Zapata — Product Designer"
+                  className="about-portrait-img"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center top',
+                    display: 'block',
+                  }}
+                  loading="lazy"
+                />
+                {/* Subtle overlay for cohesion with dark theme */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(14,15,26,0.15)] via-transparent to-transparent pointer-events-none" />
+              </div>
+            </motion.div>
           </div>
+
+          {/* Right Column — Text Content */}
+          <div className="flex flex-col justify-center p-6 pt-4 md:p-8 md:pt-9 md:pb-10 md:pl-8 lg:pl-10">
+            {/* Micro-label */}
+            <span className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-primary/60 mb-2.5 block">
+              About Emiliano
+            </span>
+
+            <h3 className="text-2xl md:text-[1.7rem] lg:text-[1.85rem] font-black mb-5 text-gradient leading-[1.25]">
+              Systems-focused product design<br className="hidden md:inline" /> with a human edge
+            </h3>
+
+            <div className="space-y-3">
+              <p className="text-muted-foreground leading-relaxed text-[0.95rem] md:text-base">
+                I'm a Product Designer focused on turning complex workflows, messy ideas, and decision-heavy experiences into clear, polished product journeys.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-[0.95rem] md:text-base">
+                My work combines research, interaction design, visual systems, and practical execution across startup and enterprise environments.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-[0.95rem] md:text-base">
+                <span className="text-neon-cyan font-semibold">I'm especially drawn to products where one important part of the experience needs to work better</span>, including onboarding, dashboards, internal tools, quote flows, request journeys, and other moments where clarity affects trust, conversion, or team efficiency.
+              </p>
+              <p className="text-muted-foreground/70 leading-relaxed text-[0.9rem] md:text-[0.95rem] italic mt-1">
+                I'm also preparing to release a new book on independent consulting, creative resilience, and making solo work more sustainable.
+              </p>
+            </div>
+
+            {/* Skill Tags */}
+            <div className="flex flex-wrap gap-2.5 mt-6">
+              {skillTags.map((tag) => (
+                <span
+                  key={tag}
+                  className="text-xs font-medium px-3 py-1.5 rounded-full border transition-colors duration-200"
+                  style={{
+                    borderColor: 'rgba(78, 214, 255, 0.2)',
+                    background: 'rgba(78, 214, 255, 0.06)',
+                    color: 'rgba(78, 214, 255, 0.8)',
+                  }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
 
