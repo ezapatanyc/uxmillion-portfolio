@@ -127,8 +127,8 @@ const About = () => {
               <p className="text-muted-foreground leading-relaxed text-[0.95rem] md:text-base">
                 <span className="text-neon-cyan font-semibold">I'm especially drawn to products where one important part of the experience needs to work better</span>, including onboarding, dashboards, internal tools, quote flows, request journeys, and other moments where clarity affects trust, conversion, or team efficiency.
               </p>
-              <p className="text-muted-foreground/70 leading-relaxed text-[0.9rem] md:text-[0.95rem] italic mt-1">
-                I'm also preparing to release a new book on independent consulting, creative resilience, and making solo work more sustainable.
+              <p className="text-muted-foreground leading-relaxed text-[0.95rem] md:text-base">
+                I also explore long-form publishing as a design and communication exercise. My first book, <em className="text-foreground/90 not-italic font-medium">Your First $10K Month as a Solo Consultant</em>, focuses on helping skilled professionals package their expertise into clearer offers, stronger client conversations, and more sustainable independent work.
               </p>
             </div>
 
@@ -169,6 +169,67 @@ const About = () => {
               <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Writing & Creative Experiments */}
+      <div className="mt-20 md:mt-28 mb-8">
+        <div className="text-center md:text-left mb-8 mx-[15px] md:mx-0">
+          <h3 className="text-2xl md:text-3xl font-black text-gradient mb-4">Writing &amp; Creative Experiments</h3>
+          <p className="text-muted-foreground leading-relaxed text-[0.95rem] md:text-base max-w-3xl">
+            I’m also exploring long-form publishing as a design and communication exercise. My first book, <em className="text-foreground/90 not-italic font-medium">Your First $10K Month as a Solo Consultant</em>, focuses on packaging complex business ideas into a clear, practical reader experience.
+          </p>
+        </div>
+
+        <div className="frosted-card rounded-2xl md:rounded-3xl overflow-hidden mx-[15px] md:mx-0">
+          <div className="grid md:grid-cols-[1fr_auto] lg:grid-cols-[1fr_320px] gap-8 p-6 md:p-8 lg:p-10 items-center">
+            
+            {/* Left Column — Text Content */}
+            <div className="flex flex-col justify-center order-2 md:order-1">
+              <span className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-primary/60 mb-2.5 block">
+                Independent publishing experiment
+              </span>
+              <h4 className="text-xl md:text-2xl font-bold text-foreground mb-3">
+                Your First $10K Month as a Solo Consultant
+              </h4>
+              <p className="text-muted-foreground leading-relaxed text-[0.95rem] mb-6">
+                A practical guide for skilled professionals building toward independent consulting income through clearer offers, better client conversations, and more confident pricing.
+              </p>
+              
+              <ul className="space-y-3 mb-8">
+                {[
+                  "Shipped a complete publishing project from concept to final manuscript",
+                  "Designed the cover, positioning, and reader-facing presentation",
+                  "Explored how metadata, visual hierarchy, and audience expectations shape content before someone even opens the book",
+                  "Used the project as a practical exercise in clarity, structure, and product storytelling"
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start text-[0.9rem] text-muted-foreground/90">
+                    <div className="mt-1.5 mr-3 w-1.5 h-1.5 rounded-full bg-primary/60 shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div>
+                <a 
+                  href="https://a.co/d/0bGv8yX7" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary/10 text-primary font-semibold text-sm hover:bg-primary/20 transition-colors border border-primary/20"
+                >
+                  View on Amazon
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column — Book Cover */}
+            <div className="order-1 md:order-2 flex justify-center md:justify-end">
+              <div className="relative w-[180px] sm:w-[200px] md:w-[240px] lg:w-[280px] aspect-[640/1024] rounded-md shadow-[0_20px_40px_rgba(0,0,0,0.4)] border border-white/10 overflow-hidden bg-slate-800/50 flex items-center justify-center group">
+                <img src="/books/your-first-10k-month-cover.jpg" alt="Book cover for Your First $10K Month as a Solo Consultant by Emiliano E. Zapata" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
 
