@@ -128,7 +128,7 @@ const About = () => {
                 <span className="text-neon-cyan font-semibold">I'm especially drawn to products where one important part of the experience needs to work better</span>, including onboarding, dashboards, internal tools, quote flows, request journeys, and other moments where clarity affects trust, conversion, or team efficiency.
               </p>
               <p className="text-muted-foreground leading-relaxed text-[0.95rem] md:text-base">
-                I also explore long-form publishing as a design and communication exercise. My first book, <em className="text-foreground/90 not-italic font-medium">Your First $10K Month as a Solo Consultant</em>, focuses on helping skilled professionals package their expertise into clearer offers, stronger client conversations, and more sustainable independent work.
+                I also explore long-form publishing as a design and communication exercise. My book, <em className="text-foreground/90 not-italic font-medium">Your First $10K Month as a Solo Consultant</em>, is part of that practice: packaging complex ideas about positioning, pricing, and client work into a clearer, more useful reader experience.
               </p>
             </div>
 
@@ -174,11 +174,16 @@ const About = () => {
 
       {/* Writing & Creative Experiments */}
       <div className="mt-20 md:mt-28 mb-8">
-        <div className="text-center md:text-left mb-8 mx-[15px] md:mx-0">
+        <div className="text-center mb-10 mx-[15px] md:mx-0 flex flex-col items-center">
           <h3 className="text-2xl md:text-3xl font-black text-gradient mb-4">Writing &amp; Creative Experiments</h3>
-          <p className="text-muted-foreground leading-relaxed text-[0.95rem] md:text-base max-w-3xl">
-            I’m also exploring long-form publishing as a design and communication exercise. My first book, <em className="text-foreground/90 not-italic font-medium">Your First $10K Month as a Solo Consultant</em>, focuses on packaging complex business ideas into a clear, practical reader experience.
-          </p>
+          <div className="space-y-3">
+            <p className="text-muted-foreground leading-relaxed text-[0.95rem] md:text-base max-w-3xl mx-auto">
+              I use writing as another way to practice product thinking: clarifying the audience, shaping the structure, refining the message, and packaging ideas into an experience people can actually use.
+            </p>
+            <p className="text-muted-foreground leading-relaxed text-[0.95rem] md:text-base max-w-3xl mx-auto">
+              My book, <em className="text-foreground/90 not-italic font-medium">Your First $10K Month as a Solo Consultant</em>, explores positioning, pricing, and client work through that lens.
+            </p>
+          </div>
         </div>
 
         <div className="frosted-card rounded-2xl md:rounded-3xl overflow-hidden mx-[15px] md:mx-0">
